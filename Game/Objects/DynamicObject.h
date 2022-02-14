@@ -11,7 +11,6 @@ struct DynamicObject {
 
     [[nodiscard]] const sf::Vector2f& getPosition() const;
     [[nodiscard]] float getRotate() const;
-
     virtual void setRotate(float newRotate);
     virtual void setMoveSpeed(float newMoveSpeed);
     virtual void setRotateSpeed(float newRotateSpeed);

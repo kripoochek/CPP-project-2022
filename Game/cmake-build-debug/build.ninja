@@ -75,63 +75,70 @@ build cmake_object_order_depends_target_Game: phony || CMakeFiles/Game.dir
 build CMakeFiles/Game.dir/main.cpp.o: CXX_COMPILER__Game_Debug /home/andrey/HSE$ SPB$ PROGRAMMS/Project/CPP-project-2022/Game/main.cpp || cmake_object_order_depends_target_Game
   DEP_FILE = CMakeFiles/Game.dir/main.cpp.o.d
   FLAGS = -g -std=gnu++17
-  INCLUDES = -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Controller" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Objects" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Map" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/theme" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/GameMap"
+  INCLUDES = -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Bullet" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Controller" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Objects" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Map" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/theme" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/GameMap"
   OBJECT_DIR = CMakeFiles/Game.dir
   OBJECT_FILE_DIR = CMakeFiles/Game.dir
+
+build CMakeFiles/Game.dir/Bullet/Bullet.cpp.o: CXX_COMPILER__Game_Debug /home/andrey/HSE$ SPB$ PROGRAMMS/Project/CPP-project-2022/Game/Bullet/Bullet.cpp || cmake_object_order_depends_target_Game
+  DEP_FILE = CMakeFiles/Game.dir/Bullet/Bullet.cpp.o.d
+  FLAGS = -g -std=gnu++17
+  INCLUDES = -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Bullet" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Controller" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Objects" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Map" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/theme" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/GameMap"
+  OBJECT_DIR = CMakeFiles/Game.dir
+  OBJECT_FILE_DIR = CMakeFiles/Game.dir/Bullet
 
 build CMakeFiles/Game.dir/Objects/Tank.cpp.o: CXX_COMPILER__Game_Debug /home/andrey/HSE$ SPB$ PROGRAMMS/Project/CPP-project-2022/Game/Objects/Tank.cpp || cmake_object_order_depends_target_Game
   DEP_FILE = CMakeFiles/Game.dir/Objects/Tank.cpp.o.d
   FLAGS = -g -std=gnu++17
-  INCLUDES = -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Controller" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Objects" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Map" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/theme" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/GameMap"
+  INCLUDES = -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Bullet" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Controller" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Objects" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Map" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/theme" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/GameMap"
   OBJECT_DIR = CMakeFiles/Game.dir
   OBJECT_FILE_DIR = CMakeFiles/Game.dir/Objects
 
 build CMakeFiles/Game.dir/Controller/Controller.cpp.o: CXX_COMPILER__Game_Debug /home/andrey/HSE$ SPB$ PROGRAMMS/Project/CPP-project-2022/Game/Controller/Controller.cpp || cmake_object_order_depends_target_Game
   DEP_FILE = CMakeFiles/Game.dir/Controller/Controller.cpp.o.d
   FLAGS = -g -std=gnu++17
-  INCLUDES = -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Controller" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Objects" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Map" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/theme" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/GameMap"
+  INCLUDES = -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Bullet" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Controller" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Objects" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Map" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/theme" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/GameMap"
   OBJECT_DIR = CMakeFiles/Game.dir
   OBJECT_FILE_DIR = CMakeFiles/Game.dir/Controller
 
 build CMakeFiles/Game.dir/Objects/DynamicObject.cpp.o: CXX_COMPILER__Game_Debug /home/andrey/HSE$ SPB$ PROGRAMMS/Project/CPP-project-2022/Game/Objects/DynamicObject.cpp || cmake_object_order_depends_target_Game
   DEP_FILE = CMakeFiles/Game.dir/Objects/DynamicObject.cpp.o.d
   FLAGS = -g -std=gnu++17
-  INCLUDES = -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Controller" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Objects" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Map" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/theme" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/GameMap"
+  INCLUDES = -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Bullet" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Controller" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Objects" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Map" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/theme" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/GameMap"
   OBJECT_DIR = CMakeFiles/Game.dir
   OBJECT_FILE_DIR = CMakeFiles/Game.dir/Objects
 
 build CMakeFiles/Game.dir/theme/simple_theme.cpp.o: CXX_COMPILER__Game_Debug /home/andrey/HSE$ SPB$ PROGRAMMS/Project/CPP-project-2022/Game/theme/simple_theme.cpp || cmake_object_order_depends_target_Game
   DEP_FILE = CMakeFiles/Game.dir/theme/simple_theme.cpp.o.d
   FLAGS = -g -std=gnu++17
-  INCLUDES = -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Controller" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Objects" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Map" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/theme" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/GameMap"
+  INCLUDES = -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Bullet" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Controller" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Objects" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Map" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/theme" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/GameMap"
   OBJECT_DIR = CMakeFiles/Game.dir
   OBJECT_FILE_DIR = CMakeFiles/Game.dir/theme
 
 build CMakeFiles/Game.dir/Map/utils.cpp.o: CXX_COMPILER__Game_Debug /home/andrey/HSE$ SPB$ PROGRAMMS/Project/CPP-project-2022/Game/Map/utils.cpp || cmake_object_order_depends_target_Game
   DEP_FILE = CMakeFiles/Game.dir/Map/utils.cpp.o.d
   FLAGS = -g -std=gnu++17
-  INCLUDES = -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Controller" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Objects" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Map" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/theme" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/GameMap"
+  INCLUDES = -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Bullet" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Controller" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Objects" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Map" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/theme" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/GameMap"
   OBJECT_DIR = CMakeFiles/Game.dir
   OBJECT_FILE_DIR = CMakeFiles/Game.dir/Map
 
 build CMakeFiles/Game.dir/Map/map_box.cpp.o: CXX_COMPILER__Game_Debug /home/andrey/HSE$ SPB$ PROGRAMMS/Project/CPP-project-2022/Game/Map/map_box.cpp || cmake_object_order_depends_target_Game
   DEP_FILE = CMakeFiles/Game.dir/Map/map_box.cpp.o.d
   FLAGS = -g -std=gnu++17
-  INCLUDES = -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Controller" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Objects" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Map" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/theme" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/GameMap"
+  INCLUDES = -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Bullet" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Controller" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Objects" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Map" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/theme" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/GameMap"
   OBJECT_DIR = CMakeFiles/Game.dir
   OBJECT_FILE_DIR = CMakeFiles/Game.dir/Map
 
 build CMakeFiles/Game.dir/Map/map.cpp.o: CXX_COMPILER__Game_Debug /home/andrey/HSE$ SPB$ PROGRAMMS/Project/CPP-project-2022/Game/Map/map.cpp || cmake_object_order_depends_target_Game
   DEP_FILE = CMakeFiles/Game.dir/Map/map.cpp.o.d
   FLAGS = -g -std=gnu++17
-  INCLUDES = -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Controller" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Objects" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Map" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/theme" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/GameMap"
+  INCLUDES = -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Bullet" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Controller" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Objects" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Map" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/theme" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/GameMap"
   OBJECT_DIR = CMakeFiles/Game.dir
   OBJECT_FILE_DIR = CMakeFiles/Game.dir/Map
 
 build CMakeFiles/Game.dir/GameMap/GameMap.cpp.o: CXX_COMPILER__Game_Debug /home/andrey/HSE$ SPB$ PROGRAMMS/Project/CPP-project-2022/Game/GameMap/GameMap.cpp || cmake_object_order_depends_target_Game
   DEP_FILE = CMakeFiles/Game.dir/GameMap/GameMap.cpp.o.d
   FLAGS = -g -std=gnu++17
-  INCLUDES = -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Controller" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Objects" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Map" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/theme" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/GameMap"
+  INCLUDES = -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Bullet" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Controller" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Objects" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Map" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/theme" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/GameMap"
   OBJECT_DIR = CMakeFiles/Game.dir
   OBJECT_FILE_DIR = CMakeFiles/Game.dir/GameMap
 
@@ -143,7 +150,7 @@ build CMakeFiles/Game.dir/GameMap/GameMap.cpp.o: CXX_COMPILER__Game_Debug /home/
 #############################################
 # Link the executable Game
 
-build Game: CXX_EXECUTABLE_LINKER__Game_Debug CMakeFiles/Game.dir/main.cpp.o CMakeFiles/Game.dir/Objects/Tank.cpp.o CMakeFiles/Game.dir/Controller/Controller.cpp.o CMakeFiles/Game.dir/Objects/DynamicObject.cpp.o CMakeFiles/Game.dir/theme/simple_theme.cpp.o CMakeFiles/Game.dir/Map/utils.cpp.o CMakeFiles/Game.dir/Map/map_box.cpp.o CMakeFiles/Game.dir/Map/map.cpp.o CMakeFiles/Game.dir/GameMap/GameMap.cpp.o | /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1 /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1 /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1 /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.5.1
+build Game: CXX_EXECUTABLE_LINKER__Game_Debug CMakeFiles/Game.dir/main.cpp.o CMakeFiles/Game.dir/Bullet/Bullet.cpp.o CMakeFiles/Game.dir/Objects/Tank.cpp.o CMakeFiles/Game.dir/Controller/Controller.cpp.o CMakeFiles/Game.dir/Objects/DynamicObject.cpp.o CMakeFiles/Game.dir/theme/simple_theme.cpp.o CMakeFiles/Game.dir/Map/utils.cpp.o CMakeFiles/Game.dir/Map/map_box.cpp.o CMakeFiles/Game.dir/Map/map.cpp.o CMakeFiles/Game.dir/GameMap/GameMap.cpp.o | /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1 /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1 /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1 /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.5.1
   FLAGS = -g
   LINK_LIBRARIES = /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1  /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1  /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1  /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.5.1
   OBJECT_DIR = CMakeFiles/Game.dir
