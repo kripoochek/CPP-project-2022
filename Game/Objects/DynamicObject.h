@@ -20,10 +20,10 @@ struct DynamicObject {
     virtual void updatePositions(bool back);
 
     virtual void draw(sf::RenderWindow* window);
-private:
-    float moveSpeed = 0.1f, rotateSpeed = 0.1f;
-    sf::Sprite sprite;
+protected:
     sf::Texture texture;
+    sf::Sprite sprite;
+    float moveSpeed = 0.1f, rotateSpeed = 0.1f;
 };
 
 #endif //TANKS_IN_LABIRINT_DYNAMICOBJECT_H

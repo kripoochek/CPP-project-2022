@@ -4,7 +4,10 @@
 #include "DynamicObject.h"
 
 struct Tank : DynamicObject {
+    Tank(float x, float y, const std::string &file);
 
+    void setTexture(const std::string &file) override;
+    bool intersects(Tank &other);
 };
 
 

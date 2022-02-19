@@ -19,6 +19,7 @@ int main()
         tanksControl.tankMovement();
         window->clear();
         window->draw(map.getSprite());
+
         for (auto i: tanksControl.getTanks()){ i->draw(window); }
         for (auto i: tanksControl.getBullets()){ i->draw(window); }
 

@@ -6,11 +6,11 @@
 struct Controller {
 public:
     Controller();
-    std::vector<DynamicObject*> getTanks();
+    std::vector<Tank*> getTanks();
     std::vector<Bullet::Bullet*> getBullets();
     void tankMovement();
 private:
-    std::vector<DynamicObject*> tanks;
+    std::vector<Tank*> tanks;
     std::vector<Bullet::Bullet*> bullets;
 };
 
