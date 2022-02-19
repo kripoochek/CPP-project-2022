@@ -1,4 +1,5 @@
 #include "Bullet.h"
+#include <iostream>
 namespace Bullet {
 
     const sf::Vector2f &Bullet::getPosition() const { return sprite.getPosition(); }
@@ -21,11 +22,12 @@ namespace Bullet {
     }
 
     void Bullet::updatePositions() {
-        lifeTime--;
-        float rad_angle = sprite.getRotation() * PI / 180.0;
-        float dx = moveSpeed * std::cos(rad_angle);
-        float dy = moveSpeed * std::sin(rad_angle);
-        sprite.move(dx, dy);
+        setDirection(60);
+        this->lifeTime--;
+            float rad_angle = sprite.getRotation() * PI / 180.0;
+            float dx = moveSpeed * std::cos(rad_angle);
+            float dy = moveSpeed * std::sin(rad_angle);
+            sprite.move(dx, dy);
     }
 
     int Bullet::getLifeTime() {

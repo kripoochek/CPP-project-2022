@@ -1,5 +1,6 @@
 #include "GameMap.h"
 #include "Controller.h"
+#include <iostream>
 int main()
 {
     sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode(1024, 768), "SFML works!");
