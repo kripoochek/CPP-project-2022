@@ -1,4 +1,5 @@
 #include "Controller.h"
+
 Controller::Controller() {
     tanks.push_back(new Tank);
     tanks.push_back(new Tank);
@@ -9,6 +10,7 @@ Controller::Controller() {
     bullets[0]->setTexture("../sprites/bullet0.png");
     bullets[0]->setDirection(0.5);
 }
+
 std::vector<DynamicObject*> Controller::getTanks(){
     return tanks;
 }
@@ -16,6 +18,7 @@ std::vector<DynamicObject*> Controller::getTanks(){
 std::vector<Bullet::Bullet*> Controller::getBullets() {
     return bullets;
 }
+
 void Controller::tankMovement() {
     if (bullets[0]->getLifeTime()>=0) {
         bullets[0]->updatePositions();

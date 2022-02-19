@@ -59,27 +59,27 @@
 			[
 				{
 					"backtrace" : 3,
-					"path" : "/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Bullet"
+					"path" : "/home/lol/CLionProjects/tanks_in_labirint/Game/Bullet"
 				},
 				{
 					"backtrace" : 3,
-					"path" : "/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Controller"
+					"path" : "/home/lol/CLionProjects/tanks_in_labirint/Game/Controller"
 				},
 				{
 					"backtrace" : 3,
-					"path" : "/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Objects"
+					"path" : "/home/lol/CLionProjects/tanks_in_labirint/Game/Objects"
 				},
 				{
 					"backtrace" : 3,
-					"path" : "/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/Map"
+					"path" : "/home/lol/CLionProjects/tanks_in_labirint/Game/Map"
 				},
 				{
 					"backtrace" : 3,
-					"path" : "/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/theme"
+					"path" : "/home/lol/CLionProjects/tanks_in_labirint/Game/theme"
 				},
 				{
 					"backtrace" : 3,
-					"path" : "/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Game/GameMap"
+					"path" : "/home/lol/CLionProjects/tanks_in_labirint/Game/GameMap"
 				}
 			],
 			"language" : "CXX",

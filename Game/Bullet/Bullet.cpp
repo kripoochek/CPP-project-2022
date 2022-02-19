@@ -18,7 +18,7 @@ namespace Bullet {
     }
 
     void Bullet::draw(sf::RenderWindow *window) {
-        window->draw(sprite);
+        if (lifeTime > 0) window->draw(sprite);
     }
 
     void Bullet::updatePositions() {

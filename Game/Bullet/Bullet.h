@@ -23,13 +23,13 @@ namespace Bullet {
 
         void setLifeTime(int newLifeTime);
 
-        void setMoveSpeed(float newMoveSpeed);
+        void setMoveSpeed(float newMoveSpeed) override;
 
-        void draw(sf::RenderWindow *window);
+        void draw(sf::RenderWindow *window) override;
 
         void updatePositions();
 
-        void setTexture(const std::string &file);
+        void setTexture(const std::string &file) override;
 
         //virtual void updateDirection();
         [[nodiscard]] const sf::Vector2f &getPosition() const;
