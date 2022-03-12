@@ -1,5 +1,4 @@
 #include "Entity.h"
-
 Entity::Entity() {
     initVariables();
 }
@@ -17,6 +16,10 @@ void Entity::move(float dt, float dir_x, float dir_y) {
     movementComponent->move(dir_x, dir_y, dt);
 }
 
+void Entity::rotate(bool turnDir_) {
+    if (!movementComponent) {return;}
+    movementComponent->rotate(turnDir_);
+}
 void Entity::update(float dt) {
 
 }
@@ -27,6 +30,7 @@ void Entity::render(std::shared_ptr<sf::RenderTarget> target) {
 
 void Entity::initVariables() {
     movementComponent = nullptr;
+    this->sprite.setOrigin(200,200);
 }
 
 void Entity::createMovementComponent(float maxVelocity) {

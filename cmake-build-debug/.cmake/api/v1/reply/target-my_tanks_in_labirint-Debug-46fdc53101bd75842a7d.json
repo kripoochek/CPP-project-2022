@@ -59,27 +59,27 @@
 			[
 				{
 					"backtrace" : 3,
-					"path" : "/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Entity"
+					"path" : "/home/andrey/HSESPB/Project/CPP-project-2022/Entity"
 				},
 				{
 					"backtrace" : 3,
-					"path" : "/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/States"
+					"path" : "/home/andrey/HSESPB/Project/CPP-project-2022/States"
 				},
 				{
 					"backtrace" : 3,
-					"path" : "/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Config"
+					"path" : "/home/andrey/HSESPB/Project/CPP-project-2022/Config"
 				},
 				{
 					"backtrace" : 3,
-					"path" : "/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Button"
+					"path" : "/home/andrey/HSESPB/Project/CPP-project-2022/Button"
 				},
 				{
 					"backtrace" : 3,
-					"path" : "/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Entity/Components"
+					"path" : "/home/andrey/HSESPB/Project/CPP-project-2022/Entity/Components"
 				},
 				{
 					"backtrace" : 3,
-					"path" : "/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Bullet"
+					"path" : "/home/andrey/HSESPB/Project/CPP-project-2022/Bullet"
 				}
 			],
 			"language" : "CXX",

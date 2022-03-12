@@ -7,6 +7,7 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Network.hpp>
 
+#include <cmath>
 #include <vector>
 #include <map>
 #include <utility>

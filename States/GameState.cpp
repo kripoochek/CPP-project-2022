@@ -12,16 +12,16 @@ GameState::GameState(std::shared_ptr<sf::RenderWindow> window,
 void GameState::updateInput(float dt) {
     //Update player input
     if (sf::Keyboard::isKeyPressed(keybinds["MOVE_LEFT"])){
-        player->move(dt, -1, 0);
+        player->rotate(false);
     }
     if (sf::Keyboard::isKeyPressed(keybinds["MOVE_RIGHT"])){
-        player->move(dt, 1, 0);
+        player->rotate(true);
     }
     if (sf::Keyboard::isKeyPressed(keybinds["MOVE_UP"])){
-        player->move(dt, 0, -1);
+        player->move(dt, 1, 1);
     }
     if (sf::Keyboard::isKeyPressed(keybinds["MOVE_DOWN"])){
-        player->move(dt, 0, 1);
+        player->move(dt, -1, -1);
     }
 
     if (sf::Keyboard::isKeyPressed(keybinds["CLOSE"])){

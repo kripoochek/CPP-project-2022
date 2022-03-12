@@ -42,7 +42,7 @@ rule CXX_EXECUTABLE_LINKER__my_tanks_in_labirint_Debug
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = /snap/clion/180/bin/cmake/linux/bin/cmake --regenerate-during-build -S"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022" -B"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/cmake-build-debug"
+  command = /snap/clion/180/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/andrey/HSESPB/Project/CPP-project-2022 -B/home/andrey/HSESPB/Project/CPP-project-2022/cmake-build-debug
   description = Re-running CMake...
   generator = 1
 

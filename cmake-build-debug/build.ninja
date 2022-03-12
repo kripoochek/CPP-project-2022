@@ -39,13 +39,13 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = /home/andrey/HSE$ SPB$ PROGRAMMS/Project/CPP-project-2022/cmake-build-debug/
+cmake_ninja_workdir = /home/andrey/HSESPB/Project/CPP-project-2022/cmake-build-debug/
 
 #############################################
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd "/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/cmake-build-debug" && /snap/clion/180/bin/cmake/linux/bin/cmake --regenerate-during-build -S"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022" -B"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/cmake-build-debug"
+  COMMAND = cd /home/andrey/HSESPB/Project/CPP-project-2022/cmake-build-debug && /snap/clion/180/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/andrey/HSESPB/Project/CPP-project-2022 -B/home/andrey/HSESPB/Project/CPP-project-2022/cmake-build-debug
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -57,7 +57,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd "/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/cmake-build-debug" && /snap/clion/180/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /home/andrey/HSESPB/Project/CPP-project-2022/cmake-build-debug && /snap/clion/180/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -72,91 +72,91 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 
 build cmake_object_order_depends_target_my_tanks_in_labirint: phony || CMakeFiles/my_tanks_in_labirint.dir
 
-build CMakeFiles/my_tanks_in_labirint.dir/Bullet/Bullet.cpp.o: CXX_COMPILER__my_tanks_in_labirint_Debug /home/andrey/HSE$ SPB$ PROGRAMMS/Project/CPP-project-2022/Bullet/Bullet.cpp || cmake_object_order_depends_target_my_tanks_in_labirint
+build CMakeFiles/my_tanks_in_labirint.dir/Bullet/Bullet.cpp.o: CXX_COMPILER__my_tanks_in_labirint_Debug /home/andrey/HSESPB/Project/CPP-project-2022/Bullet/Bullet.cpp || cmake_object_order_depends_target_my_tanks_in_labirint
   DEP_FILE = CMakeFiles/my_tanks_in_labirint.dir/Bullet/Bullet.cpp.o.d
   FLAGS = -g -std=gnu++17
-  INCLUDES = -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Entity" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/States" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Config" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Button" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Entity/Components" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Bullet"
+  INCLUDES = -I/home/andrey/HSESPB/Project/CPP-project-2022/Entity -I/home/andrey/HSESPB/Project/CPP-project-2022/States -I/home/andrey/HSESPB/Project/CPP-project-2022/Config -I/home/andrey/HSESPB/Project/CPP-project-2022/Button -I/home/andrey/HSESPB/Project/CPP-project-2022/Entity/Components -I/home/andrey/HSESPB/Project/CPP-project-2022/Bullet
   OBJECT_DIR = CMakeFiles/my_tanks_in_labirint.dir
   OBJECT_FILE_DIR = CMakeFiles/my_tanks_in_labirint.dir/Bullet
   TARGET_COMPILE_PDB = CMakeFiles/my_tanks_in_labirint.dir/
   TARGET_PDB = my_tanks_in_labirint.pdb
 
-build CMakeFiles/my_tanks_in_labirint.dir/main.cpp.o: CXX_COMPILER__my_tanks_in_labirint_Debug /home/andrey/HSE$ SPB$ PROGRAMMS/Project/CPP-project-2022/main.cpp || cmake_object_order_depends_target_my_tanks_in_labirint
+build CMakeFiles/my_tanks_in_labirint.dir/main.cpp.o: CXX_COMPILER__my_tanks_in_labirint_Debug /home/andrey/HSESPB/Project/CPP-project-2022/main.cpp || cmake_object_order_depends_target_my_tanks_in_labirint
   DEP_FILE = CMakeFiles/my_tanks_in_labirint.dir/main.cpp.o.d
   FLAGS = -g -std=gnu++17
-  INCLUDES = -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Entity" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/States" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Config" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Button" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Entity/Components" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Bullet"
+  INCLUDES = -I/home/andrey/HSESPB/Project/CPP-project-2022/Entity -I/home/andrey/HSESPB/Project/CPP-project-2022/States -I/home/andrey/HSESPB/Project/CPP-project-2022/Config -I/home/andrey/HSESPB/Project/CPP-project-2022/Button -I/home/andrey/HSESPB/Project/CPP-project-2022/Entity/Components -I/home/andrey/HSESPB/Project/CPP-project-2022/Bullet
   OBJECT_DIR = CMakeFiles/my_tanks_in_labirint.dir
   OBJECT_FILE_DIR = CMakeFiles/my_tanks_in_labirint.dir
   TARGET_COMPILE_PDB = CMakeFiles/my_tanks_in_labirint.dir/
   TARGET_PDB = my_tanks_in_labirint.pdb
 
-build CMakeFiles/my_tanks_in_labirint.dir/Game.cpp.o: CXX_COMPILER__my_tanks_in_labirint_Debug /home/andrey/HSE$ SPB$ PROGRAMMS/Project/CPP-project-2022/Game.cpp || cmake_object_order_depends_target_my_tanks_in_labirint
+build CMakeFiles/my_tanks_in_labirint.dir/Game.cpp.o: CXX_COMPILER__my_tanks_in_labirint_Debug /home/andrey/HSESPB/Project/CPP-project-2022/Game.cpp || cmake_object_order_depends_target_my_tanks_in_labirint
   DEP_FILE = CMakeFiles/my_tanks_in_labirint.dir/Game.cpp.o.d
   FLAGS = -g -std=gnu++17
-  INCLUDES = -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Entity" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/States" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Config" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Button" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Entity/Components" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Bullet"
+  INCLUDES = -I/home/andrey/HSESPB/Project/CPP-project-2022/Entity -I/home/andrey/HSESPB/Project/CPP-project-2022/States -I/home/andrey/HSESPB/Project/CPP-project-2022/Config -I/home/andrey/HSESPB/Project/CPP-project-2022/Button -I/home/andrey/HSESPB/Project/CPP-project-2022/Entity/Components -I/home/andrey/HSESPB/Project/CPP-project-2022/Bullet
   OBJECT_DIR = CMakeFiles/my_tanks_in_labirint.dir
   OBJECT_FILE_DIR = CMakeFiles/my_tanks_in_labirint.dir
   TARGET_COMPILE_PDB = CMakeFiles/my_tanks_in_labirint.dir/
   TARGET_PDB = my_tanks_in_labirint.pdb
 
-build CMakeFiles/my_tanks_in_labirint.dir/States/State.cpp.o: CXX_COMPILER__my_tanks_in_labirint_Debug /home/andrey/HSE$ SPB$ PROGRAMMS/Project/CPP-project-2022/States/State.cpp || cmake_object_order_depends_target_my_tanks_in_labirint
+build CMakeFiles/my_tanks_in_labirint.dir/States/State.cpp.o: CXX_COMPILER__my_tanks_in_labirint_Debug /home/andrey/HSESPB/Project/CPP-project-2022/States/State.cpp || cmake_object_order_depends_target_my_tanks_in_labirint
   DEP_FILE = CMakeFiles/my_tanks_in_labirint.dir/States/State.cpp.o.d
   FLAGS = -g -std=gnu++17
-  INCLUDES = -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Entity" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/States" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Config" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Button" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Entity/Components" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Bullet"
+  INCLUDES = -I/home/andrey/HSESPB/Project/CPP-project-2022/Entity -I/home/andrey/HSESPB/Project/CPP-project-2022/States -I/home/andrey/HSESPB/Project/CPP-project-2022/Config -I/home/andrey/HSESPB/Project/CPP-project-2022/Button -I/home/andrey/HSESPB/Project/CPP-project-2022/Entity/Components -I/home/andrey/HSESPB/Project/CPP-project-2022/Bullet
   OBJECT_DIR = CMakeFiles/my_tanks_in_labirint.dir
   OBJECT_FILE_DIR = CMakeFiles/my_tanks_in_labirint.dir/States
   TARGET_COMPILE_PDB = CMakeFiles/my_tanks_in_labirint.dir/
   TARGET_PDB = my_tanks_in_labirint.pdb
 
-build CMakeFiles/my_tanks_in_labirint.dir/States/GameState.cpp.o: CXX_COMPILER__my_tanks_in_labirint_Debug /home/andrey/HSE$ SPB$ PROGRAMMS/Project/CPP-project-2022/States/GameState.cpp || cmake_object_order_depends_target_my_tanks_in_labirint
+build CMakeFiles/my_tanks_in_labirint.dir/States/GameState.cpp.o: CXX_COMPILER__my_tanks_in_labirint_Debug /home/andrey/HSESPB/Project/CPP-project-2022/States/GameState.cpp || cmake_object_order_depends_target_my_tanks_in_labirint
   DEP_FILE = CMakeFiles/my_tanks_in_labirint.dir/States/GameState.cpp.o.d
   FLAGS = -g -std=gnu++17
-  INCLUDES = -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Entity" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/States" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Config" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Button" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Entity/Components" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Bullet"
+  INCLUDES = -I/home/andrey/HSESPB/Project/CPP-project-2022/Entity -I/home/andrey/HSESPB/Project/CPP-project-2022/States -I/home/andrey/HSESPB/Project/CPP-project-2022/Config -I/home/andrey/HSESPB/Project/CPP-project-2022/Button -I/home/andrey/HSESPB/Project/CPP-project-2022/Entity/Components -I/home/andrey/HSESPB/Project/CPP-project-2022/Bullet
   OBJECT_DIR = CMakeFiles/my_tanks_in_labirint.dir
   OBJECT_FILE_DIR = CMakeFiles/my_tanks_in_labirint.dir/States
   TARGET_COMPILE_PDB = CMakeFiles/my_tanks_in_labirint.dir/
   TARGET_PDB = my_tanks_in_labirint.pdb
 
-build CMakeFiles/my_tanks_in_labirint.dir/Entity/Entity.cpp.o: CXX_COMPILER__my_tanks_in_labirint_Debug /home/andrey/HSE$ SPB$ PROGRAMMS/Project/CPP-project-2022/Entity/Entity.cpp || cmake_object_order_depends_target_my_tanks_in_labirint
+build CMakeFiles/my_tanks_in_labirint.dir/Entity/Entity.cpp.o: CXX_COMPILER__my_tanks_in_labirint_Debug /home/andrey/HSESPB/Project/CPP-project-2022/Entity/Entity.cpp || cmake_object_order_depends_target_my_tanks_in_labirint
   DEP_FILE = CMakeFiles/my_tanks_in_labirint.dir/Entity/Entity.cpp.o.d
   FLAGS = -g -std=gnu++17
-  INCLUDES = -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Entity" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/States" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Config" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Button" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Entity/Components" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Bullet"
+  INCLUDES = -I/home/andrey/HSESPB/Project/CPP-project-2022/Entity -I/home/andrey/HSESPB/Project/CPP-project-2022/States -I/home/andrey/HSESPB/Project/CPP-project-2022/Config -I/home/andrey/HSESPB/Project/CPP-project-2022/Button -I/home/andrey/HSESPB/Project/CPP-project-2022/Entity/Components -I/home/andrey/HSESPB/Project/CPP-project-2022/Bullet
   OBJECT_DIR = CMakeFiles/my_tanks_in_labirint.dir
   OBJECT_FILE_DIR = CMakeFiles/my_tanks_in_labirint.dir/Entity
   TARGET_COMPILE_PDB = CMakeFiles/my_tanks_in_labirint.dir/
   TARGET_PDB = my_tanks_in_labirint.pdb
 
-build CMakeFiles/my_tanks_in_labirint.dir/States/MainMenuState.cpp.o: CXX_COMPILER__my_tanks_in_labirint_Debug /home/andrey/HSE$ SPB$ PROGRAMMS/Project/CPP-project-2022/States/MainMenuState.cpp || cmake_object_order_depends_target_my_tanks_in_labirint
+build CMakeFiles/my_tanks_in_labirint.dir/States/MainMenuState.cpp.o: CXX_COMPILER__my_tanks_in_labirint_Debug /home/andrey/HSESPB/Project/CPP-project-2022/States/MainMenuState.cpp || cmake_object_order_depends_target_my_tanks_in_labirint
   DEP_FILE = CMakeFiles/my_tanks_in_labirint.dir/States/MainMenuState.cpp.o.d
   FLAGS = -g -std=gnu++17
-  INCLUDES = -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Entity" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/States" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Config" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Button" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Entity/Components" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Bullet"
+  INCLUDES = -I/home/andrey/HSESPB/Project/CPP-project-2022/Entity -I/home/andrey/HSESPB/Project/CPP-project-2022/States -I/home/andrey/HSESPB/Project/CPP-project-2022/Config -I/home/andrey/HSESPB/Project/CPP-project-2022/Button -I/home/andrey/HSESPB/Project/CPP-project-2022/Entity/Components -I/home/andrey/HSESPB/Project/CPP-project-2022/Bullet
   OBJECT_DIR = CMakeFiles/my_tanks_in_labirint.dir
   OBJECT_FILE_DIR = CMakeFiles/my_tanks_in_labirint.dir/States
   TARGET_COMPILE_PDB = CMakeFiles/my_tanks_in_labirint.dir/
   TARGET_PDB = my_tanks_in_labirint.pdb
 
-build CMakeFiles/my_tanks_in_labirint.dir/Button/Button.cpp.o: CXX_COMPILER__my_tanks_in_labirint_Debug /home/andrey/HSE$ SPB$ PROGRAMMS/Project/CPP-project-2022/Button/Button.cpp || cmake_object_order_depends_target_my_tanks_in_labirint
+build CMakeFiles/my_tanks_in_labirint.dir/Button/Button.cpp.o: CXX_COMPILER__my_tanks_in_labirint_Debug /home/andrey/HSESPB/Project/CPP-project-2022/Button/Button.cpp || cmake_object_order_depends_target_my_tanks_in_labirint
   DEP_FILE = CMakeFiles/my_tanks_in_labirint.dir/Button/Button.cpp.o.d
   FLAGS = -g -std=gnu++17
-  INCLUDES = -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Entity" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/States" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Config" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Button" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Entity/Components" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Bullet"
+  INCLUDES = -I/home/andrey/HSESPB/Project/CPP-project-2022/Entity -I/home/andrey/HSESPB/Project/CPP-project-2022/States -I/home/andrey/HSESPB/Project/CPP-project-2022/Config -I/home/andrey/HSESPB/Project/CPP-project-2022/Button -I/home/andrey/HSESPB/Project/CPP-project-2022/Entity/Components -I/home/andrey/HSESPB/Project/CPP-project-2022/Bullet
   OBJECT_DIR = CMakeFiles/my_tanks_in_labirint.dir
   OBJECT_FILE_DIR = CMakeFiles/my_tanks_in_labirint.dir/Button
   TARGET_COMPILE_PDB = CMakeFiles/my_tanks_in_labirint.dir/
   TARGET_PDB = my_tanks_in_labirint.pdb
 
-build CMakeFiles/my_tanks_in_labirint.dir/Entity/Player.cpp.o: CXX_COMPILER__my_tanks_in_labirint_Debug /home/andrey/HSE$ SPB$ PROGRAMMS/Project/CPP-project-2022/Entity/Player.cpp || cmake_object_order_depends_target_my_tanks_in_labirint
+build CMakeFiles/my_tanks_in_labirint.dir/Entity/Player.cpp.o: CXX_COMPILER__my_tanks_in_labirint_Debug /home/andrey/HSESPB/Project/CPP-project-2022/Entity/Player.cpp || cmake_object_order_depends_target_my_tanks_in_labirint
   DEP_FILE = CMakeFiles/my_tanks_in_labirint.dir/Entity/Player.cpp.o.d
   FLAGS = -g -std=gnu++17
-  INCLUDES = -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Entity" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/States" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Config" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Button" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Entity/Components" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Bullet"
+  INCLUDES = -I/home/andrey/HSESPB/Project/CPP-project-2022/Entity -I/home/andrey/HSESPB/Project/CPP-project-2022/States -I/home/andrey/HSESPB/Project/CPP-project-2022/Config -I/home/andrey/HSESPB/Project/CPP-project-2022/Button -I/home/andrey/HSESPB/Project/CPP-project-2022/Entity/Components -I/home/andrey/HSESPB/Project/CPP-project-2022/Bullet
   OBJECT_DIR = CMakeFiles/my_tanks_in_labirint.dir
   OBJECT_FILE_DIR = CMakeFiles/my_tanks_in_labirint.dir/Entity
   TARGET_COMPILE_PDB = CMakeFiles/my_tanks_in_labirint.dir/
   TARGET_PDB = my_tanks_in_labirint.pdb
 
-build CMakeFiles/my_tanks_in_labirint.dir/Entity/Components/MovementComponent.cpp.o: CXX_COMPILER__my_tanks_in_labirint_Debug /home/andrey/HSE$ SPB$ PROGRAMMS/Project/CPP-project-2022/Entity/Components/MovementComponent.cpp || cmake_object_order_depends_target_my_tanks_in_labirint
+build CMakeFiles/my_tanks_in_labirint.dir/Entity/Components/MovementComponent.cpp.o: CXX_COMPILER__my_tanks_in_labirint_Debug /home/andrey/HSESPB/Project/CPP-project-2022/Entity/Components/MovementComponent.cpp || cmake_object_order_depends_target_my_tanks_in_labirint
   DEP_FILE = CMakeFiles/my_tanks_in_labirint.dir/Entity/Components/MovementComponent.cpp.o.d
   FLAGS = -g -std=gnu++17
-  INCLUDES = -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Entity" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/States" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Config" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Button" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Entity/Components" -I"/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/Bullet"
+  INCLUDES = -I/home/andrey/HSESPB/Project/CPP-project-2022/Entity -I/home/andrey/HSESPB/Project/CPP-project-2022/States -I/home/andrey/HSESPB/Project/CPP-project-2022/Config -I/home/andrey/HSESPB/Project/CPP-project-2022/Button -I/home/andrey/HSESPB/Project/CPP-project-2022/Entity/Components -I/home/andrey/HSESPB/Project/CPP-project-2022/Bullet
   OBJECT_DIR = CMakeFiles/my_tanks_in_labirint.dir
   OBJECT_FILE_DIR = CMakeFiles/my_tanks_in_labirint.dir/Entity/Components
   TARGET_COMPILE_PDB = CMakeFiles/my_tanks_in_labirint.dir/
@@ -189,7 +189,7 @@ build my_tanks_in_labirint: CXX_EXECUTABLE_LINKER__my_tanks_in_labirint_Debug CM
 # =============================================================================
 
 #############################################
-# Folder: /home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/cmake-build-debug
+# Folder: /home/andrey/HSESPB/Project/CPP-project-2022/cmake-build-debug
 
 build all: phony my_tanks_in_labirint
 

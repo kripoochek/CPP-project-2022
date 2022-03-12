@@ -1,3 +1,3 @@
-/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/cmake-build-debug/CMakeFiles/my_tanks_in_labirint.dir
+/home/andrey/HSESPB/Project/CPP-project-2022/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/andrey/HSESPB/Project/CPP-project-2022/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/andrey/HSESPB/Project/CPP-project-2022/cmake-build-debug/CMakeFiles/my_tanks_in_labirint.dir

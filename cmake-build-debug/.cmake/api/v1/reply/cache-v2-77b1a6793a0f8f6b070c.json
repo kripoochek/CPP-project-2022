@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/cmake-build-debug"
+			"value" : "/home/andrey/HSESPB/Project/CPP-project-2022/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -579,7 +579,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022"
+			"value" : "/home/andrey/HSESPB/Project/CPP-project-2022"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1135,7 +1135,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/cmake-build-debug"
+			"value" : "/home/andrey/HSESPB/Project/CPP-project-2022/cmake-build-debug"
 		},
 		{
 			"name" : "my_tanks_in_labirint_IS_TOP_LEVEL",
@@ -1159,7 +1159,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022"
+			"value" : "/home/andrey/HSESPB/Project/CPP-project-2022"
 		}
 	],
 	"kind" : "cache",

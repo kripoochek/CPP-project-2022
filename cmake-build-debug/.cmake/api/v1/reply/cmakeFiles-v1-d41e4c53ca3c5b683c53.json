@@ -738,8 +738,8 @@
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/cmake-build-debug",
-		"source" : "/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022"
+		"build" : "/home/andrey/HSESPB/Project/CPP-project-2022/cmake-build-debug",
+		"source" : "/home/andrey/HSESPB/Project/CPP-project-2022"
 	},
 	"version" : 
 	{

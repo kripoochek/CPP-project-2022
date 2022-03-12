@@ -29,7 +29,7 @@ struct Entity {
 
     virtual void setPosition(float x, float y);
     virtual void move(float dt, float x, float y);
-
+    virtual void rotate(bool turnDir_);
     virtual void update(float dt);
     virtual void render(std::shared_ptr<sf::RenderTarget> target);
 

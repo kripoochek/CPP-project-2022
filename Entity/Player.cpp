@@ -6,10 +6,10 @@ Player::Player(float x, float y, sf::Texture &texture) {
 
     setTexture(texture);
     setPosition(x, y);
+
 }
 
 void Player::initVariables() {
-
 }
 
 void Player::initComponents() {
