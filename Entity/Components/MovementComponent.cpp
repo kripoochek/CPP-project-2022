@@ -13,6 +13,10 @@ void MovementComponent::move(float dir_x, float dir_y, float dt) {
     sprite.move(velocity * dt);
 }
 
+/*void MovementComponent::rotate(bool turnDir) {
+    int dir=(turnDir ? 1:-1);
+    sprite
+}*/
 void MovementComponent::update(float dt) {
 
 }

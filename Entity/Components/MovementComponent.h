@@ -23,7 +23,7 @@ struct MovementComponent {
 
     //Functions
     void move(float dir_x, float dir_y, float dt);
-    void rotate(float )
+    void rotate(bool turnDir);
     void update(float dt);
 private:
     sf::Sprite &sprite;
