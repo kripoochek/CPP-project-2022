@@ -20,8 +20,10 @@ struct MovementComponent {
 
     [[nodiscard]] sf::Vector2f getVelocity() const;
 
+
     //Functions
     void move(float dir_x, float dir_y, float dt);
+    void rotate(float )
     void update(float dt);
 private:
     sf::Sprite &sprite;

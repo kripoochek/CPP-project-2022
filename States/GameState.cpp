@@ -53,7 +53,6 @@ void GameState::initKeybinds() {
 }
 
 void GameState::initTextures() {
-    std::shared_ptr<sf::Texture> temp = std::make_shared<sf::Texture>();
     if (!textures["PLAYER_IDLE"].loadFromFile("../Resources/Images/Sprites/Player/tank1.png")){
         throw std::exception();
     }

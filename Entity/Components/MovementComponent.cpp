@@ -10,7 +10,6 @@ MovementComponent::MovementComponent(sf::Sprite& sprite, float maxVelocity) : sp
 void MovementComponent::move(float dir_x, float dir_y, float dt) {
     velocity.x = maxVelocity * dir_x;
     velocity.y = maxVelocity * dir_y;
-
     sprite.move(velocity * dt);
 }
 

@@ -1,0 +1,5 @@
+/snap/clion/180/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/snap/clion/180/bin/ninja/linux/ninja -DCMAKE_CXX_COMPILER=/bin/g++-10 -G Ninja "/home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022"
+-- Found SFML 2.5.1 in /usr/lib/x86_64-linux-gnu/cmake/SFML
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/andrey/HSE SPB PROGRAMMS/Project/CPP-project-2022/cmake-build-debug

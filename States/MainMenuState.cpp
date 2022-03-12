@@ -13,7 +13,6 @@ MainMenuState::MainMenuState(std::shared_ptr<sf::RenderWindow> window,
 
 
     background.setSize(sf::Vector2f(this->window->getSize()));
-    background.setFillColor(sf::Color::Magenta);
 }
 
 void MainMenuState::updateInput(float dt) {
@@ -78,7 +77,7 @@ void MainMenuState::initKeybinds() {
 }
 
 void MainMenuState::initFonts() {
-    if (!font.loadFromFile("../Fonts/SuperMario256.ttf")){
+    if (!font.loadFromFile("../Fonts/Le chant des Albatros.ttf")){
         std::cout << "Font don't open!\n";
     }
 }
@@ -96,7 +95,7 @@ void MainMenuState::initButtons() {
                                                      sf::Color(150, 150, 150, 255),
                                                      sf::Color(20, 20, 20, 200));
 
-    buttons["EXIT_STATE"] = std::make_shared<Button>(300, 780, 150, 50,
+    buttons["EXIT_STATE"] = std::make_shared<Button>(300, 650, 150, 50,
                                                      font, "Quit",
                                                      sf::Color(100, 100, 100, 200),
                                                      sf::Color(150, 150, 150, 255),
@@ -106,7 +105,7 @@ void MainMenuState::initButtons() {
 void MainMenuState::initBackground() {
     background.setSize(sf::Vector2f(window->getSize().x,
                                     window->getSize().y));
-    if (!backgroundTexture.loadFromFile("../Resources/Images/Backgrounds/bg.png")){
+    if (!backgroundTexture.loadFromFile("../Resources/Images/Backgrounds/mainmenu.png")){
         throw std::exception();
     }
     background.setTexture(&backgroundTexture);
