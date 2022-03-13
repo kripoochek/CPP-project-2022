@@ -1,23 +1,21 @@
 #include "MovementComponent.h"
 
-#include <utility>
 
-
-MovementComponent::MovementComponent(sf::Sprite& sprite, float maxVelocity) : sprite(sprite), maxVelocity(maxVelocity) {
+MovementComponent::MovementComponent(sf::Sprite& sprite, float maxVelocityMove, float maxVelocityRotate) :
+sprite(sprite), maxVelocityMove(maxVelocityMove), maxVelocityRotate(maxVelocityRotate) {
 
 }
 
-void MovementComponent::move(float dir_x, float dir_y, float dt) {
-    double angle=sprite.getRotation()*3.1415/180;
-    velocity.x = cos(angle)*maxVelocity * dir_x;
-    velocity.y = sin(angle)*maxVelocity * dir_y;
-    sprite.move(velocity * dt);
+void MovementComponent::move(bool forward, float dt) {
+    float angle = sprite.getRotation() * 3.1415/180;
+    velocity.x = cos(angle) * maxVelocityMove;
+    velocity.y = sin(angle) * maxVelocityMove;
+    sprite.move(velocity * (forward ? 1.f : -1.f) * dt);
 }
 
-void MovementComponent::rotate(bool turnDir_) {
-    float turnDir=(turnDir_ ? 1.0f : -1.0f);
-    float currentAngle=sprite.getRotation();
-    sprite.setRotation(currentAngle+turnDir);
+void MovementComponent::rotate(bool clockwise, float dt) {
+    float d_angle = (clockwise ? 1.0f : -1.0f);
+    sprite.rotate(d_angle * maxVelocityRotate * dt);
 }
 void MovementComponent::update(float dt) {
 

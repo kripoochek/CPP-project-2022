@@ -23,13 +23,13 @@ struct Entity {
 
     //Component functions
     void setTexture(sf::Texture &texture);
-    void createMovementComponent(float maxVelocity);
+    void createMovementComponent(float maxVelocityMove, float maxVelocityRotate);
     //Functions
 
 
     virtual void setPosition(float x, float y);
-    virtual void move(float dt, float x, float y);
-    virtual void rotate(bool turnDir_);
+    virtual void move(bool forward, float dt);
+    virtual void rotate(bool clockwise, float dt);
     virtual void update(float dt);
     virtual void render(std::shared_ptr<sf::RenderTarget> target);
 

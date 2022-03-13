@@ -16,20 +16,21 @@
 #include<fstream>
 
 struct MovementComponent {
-    MovementComponent(sf::Sprite& sprite, float maxVelocity);
+    MovementComponent(sf::Sprite& sprite, float maxVelocityMove, float maxVelocityRotate);
 
 
     [[nodiscard]] sf::Vector2f getVelocity() const;
 
 
     //Functions
-    void move(float dir_x, float dir_y, float dt);
-    void rotate(bool turnDir);
+    void move(bool forward, float dt);
+    void rotate(bool clockwise, float dt);
     void update(float dt);
 private:
     sf::Sprite &sprite;
 
-    float maxVelocity;
+    float maxVelocityMove;
+    float maxVelocityRotate;
 
     sf::Vector2f velocity;
     sf::Vector2f acceleration;
