@@ -3,7 +3,7 @@
 GameState::GameState(std::shared_ptr<sf::RenderWindow> window,
                      std::map<std::string, sf::Keyboard::Key> supportedKey,
                      std::shared_ptr<std::vector<std::shared_ptr<State>>> states) :
-                     State(std::move(window), std::move(supportedKey), std::move(states)){
+        State(std::move(window), std::move(supportedKey), std::move(states)){
     initKeybinds();
     initTextures();
     initPlayers();
@@ -12,16 +12,16 @@ GameState::GameState(std::shared_ptr<sf::RenderWindow> window,
 void GameState::updateInput(float dt) {
     //Update player input
     if (sf::Keyboard::isKeyPressed(keybinds["MOVE_LEFT"])){
-        player->rotate(false);
+        player->rotate(false, dt);
     }
     if (sf::Keyboard::isKeyPressed(keybinds["MOVE_RIGHT"])){
-        player->rotate(true);
+        player->rotate(true, dt);
     }
     if (sf::Keyboard::isKeyPressed(keybinds["MOVE_UP"])){
-        player->move(dt, 1, 1);
+        player->move(true, dt);
     }
     if (sf::Keyboard::isKeyPressed(keybinds["MOVE_DOWN"])){
-        player->move(dt, -1, -1);
+        player->move(false, dt);
     }
 
     if (sf::Keyboard::isKeyPressed(keybinds["CLOSE"])){
