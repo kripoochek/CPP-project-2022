@@ -20,7 +20,7 @@ struct GameState : State {
     void render(std::shared_ptr<sf::RenderTarget> target) final;
 private:
     std::shared_ptr<Player> player;
-
+    std::shared_ptr<GameMap>
     void initKeybinds() final;
     void initTextures();
     void initPlayers();
