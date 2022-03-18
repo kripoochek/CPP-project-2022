@@ -7,16 +7,21 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 #include <string>
-
+#include <memory>
+enum class Type{
+    horizontal=0,
+    vertical=1
+};
 class Wall {
 private:
-    sf::Sprite wall;
-    sf::Vector2f coordinates;
+    sf::Sprite sprite;
+    Type type;
 public:
-    Wall(sf::Vector2f coordinates_,const sf::Texture& texture_,bool position);
-    void initSize(bool position);
+    Wall(sf::Vector2f coordinates,const sf::Texture& texture_,bool type);
     void setTexture(const sf::Texture& texture_);
     void setPosition(sf::Vector2f coordinates);
+    void render(std::shared_ptr<sf::RenderTarget> target);
+    Type getType();
 };
 
 

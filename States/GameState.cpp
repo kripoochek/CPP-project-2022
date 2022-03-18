@@ -51,6 +51,7 @@ void GameState::update(float dt) {
 
 void GameState::render(std::shared_ptr<sf::RenderTarget> target) {
     if (!target){ target = window;}
+    box->render(target);
     for (auto player:players) {
         player->render(target);
     }
@@ -75,9 +76,19 @@ void GameState::initTextures() {
     if (!textures["PLAYER_IDLE2"].loadFromFile("../Resources/Images/Sprites/Player/tank0.png")){
         throw std::exception();
     }
+    if (!textures["VERTICAL_BORDER"].loadFromFile("../Resources/Images/Sprites/vertical.png")){
+        throw std::exception();
+    }
+    if (!textures["HORIZONTAL_BORDER"].loadFromFile("../Resources/Images/Sprites/horizontal.png")){
+        throw std::exception();
+    }
+    if (!textures["BOX"].loadFromFile("../Resources/Images/Backgrounds/grass.png")){
+        throw std::exception();
+    }
 }
 
 void GameState::initPlayers() {
+    box= std::make_shared<Box>(sf::Vector2f(0,0),textures["BOX"],textures["VERTICAL_BORDER"],textures["HORIZONTAL_BORDER"]);
     players.push_back( std::make_shared<Player>(0, 0, textures["PLAYER_IDLE1"]));
     players.push_back( std::make_shared<Player>(0, 0, textures["PLAYER_IDLE2"]));
     /*for (auto player:players){
