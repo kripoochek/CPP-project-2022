@@ -1,5 +1,8 @@
 #include "Wall.h"
-Wall::Wall(sf::Vector2f coordinates_):coordinates(coordinates_) {
+Wall::Wall(sf::Vector2f coordinates_, const sf::Texture &texture_, bool position) {
+    initSize(position);
+    setTexture(texture_);
+    setPosition(coordinates_);
 }
 
 void Wall::initSize(bool position) {
@@ -9,5 +12,12 @@ void Wall::initSize(bool position) {
     else{
         wall.setScale(20,80);
     }
-    
+}
+
+void Wall::setTexture(const sf::Texture &texture_) {
+    wall.setTexture(texture_);
+}
+
+void Wall::setPosition(sf::Vector2f coordinates) {
+    wall.setPosition(coordinates);
 }

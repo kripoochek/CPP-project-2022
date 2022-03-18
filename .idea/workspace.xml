@@ -13,13 +13,15 @@
   <component name="ChangeListManager">
     <list default="true" id="186892db-bc70-4185-9f7f-bb83463b679b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/gamestate_keybinds.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/gamestate_keybinds.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/States/GameState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/States/GameState.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/States/GameState.h" beforeDir="false" afterPath="$PROJECT_DIR$/States/GameState.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Map/Wall.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Map/Wall.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Map/Wall.h" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Map/Wall.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Map/simple_theme.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Map/simple_theme.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Map/theme.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Player.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Player.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/my_tanks_in_labirint.dir/States/GameState.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/my_tanks_in_labirint.dir/States/GameState.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/my_tanks_in_labirint.dir/States/MainMenuState.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/my_tanks_in_labirint.dir/States/MainMenuState.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/my_tanks_in_labirint.dir/Entity/Player.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/my_tanks_in_labirint.dir/Entity/Player.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/my_tanks_in_labirint" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/my_tanks_in_labirint" afterDir="false" />
     </list>
@@ -89,7 +91,7 @@
       <workItem from="1647076154842" duration="3240000" />
       <workItem from="1647090200090" duration="5000" />
       <workItem from="1647090372262" duration="2678000" />
-      <workItem from="1647546561079" duration="15667000" />
+      <workItem from="1647546561079" duration="18651000" />
     </task>
     <servers />
   </component>

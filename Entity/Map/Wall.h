@@ -6,15 +6,17 @@
 
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
-
+#include <string>
 
 class Wall {
 private:
     sf::Sprite wall;
     sf::Vector2f coordinates;
 public:
-    Wall(sf::Vector2f coordinates_);
+    Wall(sf::Vector2f coordinates_,const sf::Texture& texture_,bool position);
     void initSize(bool position);
+    void setTexture(const sf::Texture& texture_);
+    void setPosition(sf::Vector2f coordinates);
 };
 
 

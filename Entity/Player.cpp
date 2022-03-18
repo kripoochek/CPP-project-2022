@@ -15,5 +15,5 @@ void Player::initVariables() {
 }
 
 void Player::initComponents() {
-    createMovementComponent(1000.f, 1000.f);
+    createMovementComponent(700.f, 500.f);
 }
