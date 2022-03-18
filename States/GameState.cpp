@@ -11,33 +11,49 @@ GameState::GameState(std::shared_ptr<sf::RenderWindow> window,
 
 void GameState::updateInput(float dt) {
     //Update player input
-    if (sf::Keyboard::isKeyPressed(keybinds["MOVE_LEFT"])){
-        player->rotate(false, dt);
+    if (sf::Keyboard::isKeyPressed(keybinds["MOVE_LEFT1"])){
+        players[0]->rotate(false, dt);
     }
-    if (sf::Keyboard::isKeyPressed(keybinds["MOVE_RIGHT"])){
-        player->rotate(true, dt);
+    if (sf::Keyboard::isKeyPressed(keybinds["MOVE_RIGHT1"])){
+        players[0]->rotate(true, dt);
     }
-    if (sf::Keyboard::isKeyPressed(keybinds["MOVE_UP"])){
-        player->move(true, dt);
+    if (sf::Keyboard::isKeyPressed(keybinds["MOVE_UP1"])){
+        players[0]->move(true, dt);
     }
-    if (sf::Keyboard::isKeyPressed(keybinds["MOVE_DOWN"])){
-        player->move(false, dt);
+    if (sf::Keyboard::isKeyPressed(keybinds["MOVE_DOWN1"])){
+        players[0]->move(false, dt);
     }
 
     if (sf::Keyboard::isKeyPressed(keybinds["CLOSE"])){
         quit = true;
+    }
+    if (sf::Keyboard::isKeyPressed(keybinds["MOVE_LEFT2"])){
+        players[1]->rotate(false, dt);
+    }
+    if (sf::Keyboard::isKeyPressed(keybinds["MOVE_RIGHT2"])){
+        players[1]->rotate(true, dt);
+    }
+    if (sf::Keyboard::isKeyPressed(keybinds["MOVE_UP2"])){
+        players[1]->move(true, dt);
+    }
+    if (sf::Keyboard::isKeyPressed(keybinds["MOVE_DOWN2"])){
+        players[1]->move(false, dt);
     }
 }
 
 void GameState::update(float dt) {
     updateMousePositions();
     updateInput(dt);
-    player->update(dt);
+    for (auto player:players) {
+        player->update(dt);
+    }
 }
 
 void GameState::render(std::shared_ptr<sf::RenderTarget> target) {
     if (!target){ target = window;}
-    player->render(target);
+    for (auto player:players) {
+        player->render(target);
+    }
 }
 
 void GameState::initKeybinds() {
@@ -53,13 +69,20 @@ void GameState::initKeybinds() {
 }
 
 void GameState::initTextures() {
-    if (!textures["PLAYER_IDLE"].loadFromFile("../Resources/Images/Sprites/Player/tank1.png")){
+    if (!textures["PLAYER_IDLE1"].loadFromFile("../Resources/Images/Sprites/Player/tank1.png")){
+        throw std::exception();
+    }
+    if (!textures["PLAYER_IDLE2"].loadFromFile("../Resources/Images/Sprites/Player/tank0.png")){
         throw std::exception();
     }
 }
 
 void GameState::initPlayers() {
-    player = std::make_shared<Player>(0, 0, textures["PLAYER_IDLE"]);
+    players.push_back( std::make_shared<Player>(0, 0, textures["PLAYER_IDLE1"]));
+    players.push_back( std::make_shared<Player>(0, 0, textures["PLAYER_IDLE2"]));
+    /*for (auto player:players){
+        player = std::make_shared<Player>(0, 0, textures["PLAYER_IDLE"]);
+    }*/
 }
 
 

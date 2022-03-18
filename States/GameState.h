@@ -17,7 +17,7 @@ struct GameState : State {
     //Render
     void render(std::shared_ptr<sf::RenderTarget> target) final;
 private:
-    std::shared_ptr<Player> player;
+    std::vector<std::shared_ptr<Player>> players;
     void initKeybinds() final;
     void initTextures();
     void initPlayers();
