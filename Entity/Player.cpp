@@ -6,7 +6,8 @@ Player::Player(float x, float y, sf::Texture &texture) {
 
     setTexture(texture);
     setPosition(x, y);
-    this->sprite.setOrigin(256,200);
+    sprite.setOrigin(512/2,397/2);
+    sprite.setScale(0.25,0.25);
 }
 
 void Player::initVariables() {
@@ -14,5 +15,5 @@ void Player::initVariables() {
 }
 
 void Player::initComponents() {
-    createMovementComponent(1000.f, 100.f);
+    createMovementComponent(1000.f, 1000.f);
 }
