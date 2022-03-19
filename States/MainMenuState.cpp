@@ -77,7 +77,7 @@ void MainMenuState::initKeybinds() {
 }
 
 void MainMenuState::initFonts() {
-    if (!font.loadFromFile("../Fonts/Le chant des Albatros.ttf")){
+    if (!font.loadFromFile("../Fonts/SuperMario256.ttf")){
         std::cout << "Font don't open!\n";
     }
 }

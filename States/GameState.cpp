@@ -88,12 +88,10 @@ void GameState::initTextures() {
 }
 
 void GameState::initPlayers() {
-    box= std::make_shared<Box>(sf::Vector2f(0,0),textures["BOX"],textures["VERTICAL_BORDER"],textures["HORIZONTAL_BORDER"]);
+    box= std::make_shared<Box>(sf::Vector2f(50,50),textures["BOX"],textures["VERTICAL_BORDER"],textures["HORIZONTAL_BORDER"]);
     players.push_back( std::make_shared<Player>(0, 0, textures["PLAYER_IDLE1"]));
     players.push_back( std::make_shared<Player>(0, 0, textures["PLAYER_IDLE2"]));
-    /*for (auto player:players){
-        player = std::make_shared<Player>(0, 0, textures["PLAYER_IDLE"]);
-    }*/
+
 }
 
 

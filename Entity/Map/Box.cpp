@@ -2,10 +2,12 @@
 Box::Box(sf::Vector2f coordinates, const sf::Texture &texture_,const sf::Texture& verticalTexture,const sf::Texture& horizontalTexture) {
     setTexture(texture_);
     setPosition(coordinates);
+    sprite.setScale(200.0/512,200.0/512);
+    coordinates=sf::Vector2f(coordinates.x-100,coordinates.y-100);
     edges.push_back(std::make_shared<Wall>(coordinates,horizontalTexture,true));
     edges.push_back(std::make_shared<Wall>(coordinates,verticalTexture,false));
-    edges.push_back(std::make_shared<Wall>(sf::Vector2f(coordinates.x,coordinates.y+sprite.getScale().y),horizontalTexture,true));
-    edges.push_back(std::make_shared<Wall>(sf::Vector2f(coordinates.x+sprite.getScale().x,coordinates.y),verticalTexture,false));
+    edges.push_back(std::make_shared<Wall>(sf::Vector2f(coordinates.x,coordinates.y+200),horizontalTexture,true));
+    edges.push_back(std::make_shared<Wall>(sf::Vector2f(coordinates.x+200,coordinates.y),verticalTexture,false));
 }
 
 void Box::setPosition(sf::Vector2f coordinates) {
