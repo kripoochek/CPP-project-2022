@@ -64,3 +64,7 @@ void Box::addEdge(const std::shared_ptr<Wall>& wall,const std::string& posWall) 
 Edges Box::getEdges() {
     return edges;
 }
+
+sf::Vector2f Box::getCoordinates() {
+    return sprite.getPosition();
+}

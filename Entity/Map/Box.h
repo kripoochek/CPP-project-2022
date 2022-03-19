@@ -21,6 +21,7 @@ public:
     void deleteEdge(const std::string& posWall);
     void addEdge(const std::shared_ptr<Wall>& wall,const std::string& posWall);
     Edges getEdges();
+    sf::Vector2f getCoordinates();
 };
 
 #endif //MY_TANKS_IN_LABIRINT_BOX_H

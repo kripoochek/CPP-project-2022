@@ -57,35 +57,30 @@ void Map::addWalls( const sf::Texture &verticalTexture,
                    const sf::Texture &horizontalTexture) {
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < witdh; j++) {
-            /*
-            std::shared_ptr<Wall> upper=std::make_shared<Wall>(sf::Vector2f(coordinates.x,coordinates.y-50),horizontalTexture);
-            std::shared_ptr<Wall> lower=std::make_shared<Wall>(sf::Vector2f(coordinates.x,coordinates.y+50),horizontalTexture);
-            std::shared_ptr<Wall> right=std::make_shared<Wall>(sf::Vector2f(coordinates.x+50,coordinates.y),horizontalTexture);
-            std::shared_ptr<Wall> left=std::make_shared<Wall>(sf::Vector2f(coordinates.x-50,coordinates.y),horizontalTexture);*/
             Edges edges=map[i][j]->getEdges();
             if (edges.upper== nullptr){
-                std::shared_ptr<Wall> upper=std::make_shared<Wall>(sf::Vector2f(map[i][j],coordinates.y-50),horizontalTexture);
+                std::shared_ptr<Wall> upper=std::make_shared<Wall>(sf::Vector2f(map[i][j]->getCoordinates().x,map[i][j]->getCoordinates().y-50),horizontalTexture);
                 map[i][j]->addEdge(upper,"upper");
                 if (i-1>=0){
                     map[i-1][j]->addEdge(upper,"lower");
                 }
             }
             if (edges.lower== nullptr){
-                std::shared_ptr<Wall> lower=std::make_shared<Wall>(sf::Vector2f(coordinates.x,coordinates.y+50),horizontalTexture);
+                std::shared_ptr<Wall> lower=std::make_shared<Wall>(sf::Vector2f(map[i][j]->getCoordinates().x,map[i][j]->getCoordinates().y+50),horizontalTexture);
                 map[i][j]->addEdge(lower,"lower");
                 if (i+1<height){
                     map[i+1][j]->addEdge(lower,"upper");
                 }
             }
             if (edges.left== nullptr){
-                std::shared_ptr<Wall> left=std::make_shared<Wall>(sf::Vector2f(coordinates.x-50,coordinates.y),verticalTexture);
+                std::shared_ptr<Wall> left=std::make_shared<Wall>(sf::Vector2f(map[i][j]->getCoordinates().x-50,map[i][j]->getCoordinates().y),verticalTexture);
                 map[i][j]->addEdge(left,"left");
                 if (j-1>=0){
                     map[i][j-1]->addEdge(left,"right");
                 }
             }
-            if (edges.upper== nullptr){
-                std::shared_ptr<Wall> right=std::make_shared<Wall>(sf::Vector2f(coordinates.x+50,coordinates.y),verticalTexture);
+            if (edges.right== nullptr){
+                std::shared_ptr<Wall> right=std::make_shared<Wall>(sf::Vector2f(map[i][j]->getCoordinates().x+50,map[i][j]->getCoordinates().y),verticalTexture);
                 map[i][j]->addEdge(right,"right");
                 if (j+1<witdh){
                     map[i][j+1]->addEdge(right,"left");
@@ -98,7 +93,7 @@ void Map::addWalls( const sf::Texture &verticalTexture,
 
 void Map::render(std::shared_ptr<sf::RenderTarget> target) {
     for (int i = 0; i < height; i++) {
-        for (int j = 0; j < witdh; j++) {
+        for (int j = 1; j < witdh; j++) {
             map[i][j]->render(target);
         }
     }
