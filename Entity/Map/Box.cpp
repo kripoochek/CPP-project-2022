@@ -1,13 +1,9 @@
 #include "Box.h"
-Box::Box(sf::Vector2f coordinates, const sf::Texture &texture_,const sf::Texture& verticalTexture,const sf::Texture& horizontalTexture) {
+Box::Box(sf::Vector2f coordinates, const sf::Texture &texture_) {
     setTexture(texture_);
     setPosition(coordinates);
-    sprite.setScale(200.0/512,200.0/512);
-    coordinates=sf::Vector2f(coordinates.x-100,coordinates.y-100);
-    edges.push_back(std::make_shared<Wall>(coordinates,horizontalTexture,true));
-    edges.push_back(std::make_shared<Wall>(coordinates,verticalTexture,false));
-    edges.push_back(std::make_shared<Wall>(sf::Vector2f(coordinates.x,coordinates.y+200),horizontalTexture,true));
-    edges.push_back(std::make_shared<Wall>(sf::Vector2f(coordinates.x+200,coordinates.y),verticalTexture,false));
+    sprite.setScale(100.0/512,100.0/512);
+
 }
 
 void Box::setPosition(sf::Vector2f coordinates) {
@@ -20,7 +16,51 @@ void Box::setTexture(const sf::Texture &texture_) {
 
 void Box::render(std::shared_ptr<sf::RenderTarget> target) {
     target->draw(sprite);
-    for (auto edge:edges){
-        edge->render(target);
+    if (edges.upper!= nullptr and !edges.upper->hidden){
+        edges.upper->render(target);
     }
+    if (edges.lower!= nullptr and !edges.lower->hidden){
+        edges.lower->render(target);
+    }
+    if (edges.left!= nullptr and !edges.left->hidden){
+        edges.left->render(target);
+    }
+    if (edges.right!= nullptr and !edges.right->hidden){
+        edges.right->render(target);
+    }
+}
+
+void Box::deleteEdge(const std::string &posWall) {
+    if (posWall=="upper"){
+        edges.upper->hidden= true;
+    }
+    if (posWall=="lower"){
+        edges.lower->hidden= true;
+    }
+    if (posWall=="left"){
+        edges.left->hidden= true;
+    }
+    if (posWall=="right"){
+        edges.right->hidden= true;
+    }
+}
+
+void Box::addEdge(const std::shared_ptr<Wall>& wall,const std::string& posWall) {
+    if (posWall=="upper"){
+        edges.upper=wall;
+    }
+    if (posWall=="lower"){
+        edges.lower=wall;
+    }
+    if (posWall=="left"){
+        edges.left=wall;
+    }
+    if (posWall=="right"){
+        edges.right=wall;
+    }
+
+}
+
+Edges Box::getEdges() {
+    return edges;
 }

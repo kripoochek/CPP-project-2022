@@ -51,7 +51,7 @@ void GameState::update(float dt) {
 
 void GameState::render(std::shared_ptr<sf::RenderTarget> target) {
     if (!target){ target = window;}
-    box->render(target);
+    map->render(target);
     for (auto player:players) {
         player->render(target);
     }
@@ -88,7 +88,7 @@ void GameState::initTextures() {
 }
 
 void GameState::initPlayers() {
-    box= std::make_shared<Box>(sf::Vector2f(50,50),textures["BOX"],textures["VERTICAL_BORDER"],textures["HORIZONTAL_BORDER"]);
+    map= std::make_shared<Map>(sf::Vector2f(200,50),textures["BOX"],textures["VERTICAL_BORDER"],textures["HORIZONTAL_BORDER"]);
     players.push_back( std::make_shared<Player>(0, 0, textures["PLAYER_IDLE1"]));
     players.push_back( std::make_shared<Player>(0, 0, textures["PLAYER_IDLE2"]));
 

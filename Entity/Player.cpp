@@ -7,7 +7,7 @@ Player::Player(float x, float y, sf::Texture &texture) {
     setTexture(texture);
     setPosition(x, y);
     sprite.setOrigin(512/2,397/2);
-    sprite.setScale(0.25,0.25);
+    sprite.setScale(0.10,0.10);
 }
 
 void Player::initVariables() {

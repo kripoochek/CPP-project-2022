@@ -2,8 +2,10 @@
 #include <random>
 #include <iostream>
 
-std::mt19937 rnd(time(0));
+std::random_device rd;
+std::mt19937 gen(rd());
 
-int randNum(long long a, long long b) {
-    return rnd() % (b - a + 1) + a;
+int randNum(int a, int b) {
+    std::uniform_int_distribution<> genInt(a, b);
+    return genInt(gen);
 }

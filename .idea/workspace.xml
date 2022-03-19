@@ -13,9 +13,28 @@
   <component name="ChangeListManager">
     <list default="true" id="186892db-bc70-4185-9f7f-bb83463b679b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Map/Box.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Map/Box.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Map/Box.h" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Map/Box.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Map/Map.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Map/Map.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Map/Map.h" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Map/Map.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Map/Wall.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Map/Wall.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Map/Wall.h" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Map/Wall.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Map/utils.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Map/utils.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Map/utils.h" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Map/utils.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Player.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Player.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/States/GameState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/States/GameState.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/States/GameState.h" beforeDir="false" afterPath="$PROJECT_DIR$/States/GameState.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/my_tanks_in_labirint.dir/Entity/Player.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/my_tanks_in_labirint.dir/Entity/Player.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/my_tanks_in_labirint.dir/Game.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/my_tanks_in_labirint.dir/Game.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/my_tanks_in_labirint.dir/States/GameState.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/my_tanks_in_labirint.dir/States/GameState.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/my_tanks_in_labirint.dir/States/MainMenuState.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/my_tanks_in_labirint.dir/States/MainMenuState.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/my_tanks_in_labirint.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/my_tanks_in_labirint.dir/main.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/my_tanks_in_labirint" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/my_tanks_in_labirint" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +47,14 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -52,6 +79,7 @@
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="structure.view.defaults.are.configured" value="true" />
   </component>
   <component name="RecentsManager">
@@ -60,11 +88,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="my_tanks_in_labirint" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="my_tanks_in_labirint" TARGET_NAME="my_tanks_in_labirint" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="my_tanks_in_labirint" RUN_TARGET_NAME="my_tanks_in_labirint">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -86,7 +109,10 @@
       <workItem from="1647546561079" duration="18651000" />
       <workItem from="1647603240309" duration="291000" />
       <workItem from="1647603547268" duration="11647000" />
-      <workItem from="1647684016602" duration="613000" />
+      <workItem from="1647684016602" duration="5234000" />
+      <workItem from="1647709116253" duration="4709000" />
+      <workItem from="1647716964567" duration="4000" />
+      <workItem from="1647717272738" duration="9616000" />
     </task>
     <servers />
   </component>

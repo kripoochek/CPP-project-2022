@@ -3,7 +3,7 @@
 
 #include "State.h"
 #include "Player.h"
-#include "Box.h"
+#include "Map.h"
 struct GameState : State {
     //Constructors/Destructors
     explicit GameState(std::shared_ptr<sf::RenderWindow> window,
@@ -19,7 +19,7 @@ struct GameState : State {
     void render(std::shared_ptr<sf::RenderTarget> target) final;
 private:
     std::vector<std::shared_ptr<Player>> players;
-    std::shared_ptr<Box> box;
+    std::shared_ptr<Map> map;
     void initKeybinds() final;
     void initTextures();
     void initPlayers();
