@@ -17,7 +17,8 @@ public:
     Box(sf::Vector2f coordinates,const sf::Texture& texture_);
     void setTexture(const sf::Texture& texture_);
     void setPosition(sf::Vector2f coordinates);
-    void render(std::shared_ptr<sf::RenderTarget> target);
+    void renderBox(std::shared_ptr<sf::RenderTarget> target);
+    void renderEdges(std::shared_ptr<sf::RenderTarget> target);
     void deleteEdge(const std::string& posWall);
     void addEdge(const std::shared_ptr<Wall>& wall,const std::string& posWall);
     Edges getEdges();

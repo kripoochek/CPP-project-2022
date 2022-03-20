@@ -44,13 +44,13 @@ Map::Map(sf::Vector2f coordinates, const sf::Texture &texture_, const sf::Textur
         map.push_back(std::vector<std::shared_ptr<Box>>{
                 std::make_shared<Box>(coordinates, texture_)});
         coordinates = sf::Vector2f(coordinates.x, coordinates.y + 100);
-        for (int j = 1; j < witdh; j++) {
+        for (int j = 0; j < witdh; j++) {
             map[i].push_back(std::make_shared<Box>(rowcoor, texture_));
             rowcoor = sf::Vector2f(rowcoor.x + 100, rowcoor.y);
         }
     }
     addWalls(verticalTexture,horizontalTexture);
-    generateMap();
+    //generateMap();
 }
 
 void Map::addWalls( const sf::Texture &verticalTexture,
@@ -94,10 +94,29 @@ void Map::addWalls( const sf::Texture &verticalTexture,
 void Map::render(std::shared_ptr<sf::RenderTarget> target) {
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < witdh; j++) {
-            map[i][j]->render(target);
+            map[i][j]->renderBox(target);
+        }
+    }
+    for (int i = 0; i < height; i++) {
+        for (int j = 0; j < witdh; j++) {
+            map[i][j]->renderEdges(target);
         }
     }
 }
 
 void Map::generateMap() {
+    std::vector<std::pair<int,int>> availableBoxes;
+    std::vector<std::vector<bool>> used(height,std::vector<bool>(witdh,false));
+    std::pair<int,int> from={randNum(0,height-1), randNum(0,witdh-1)};
+    used[from.first][from.second]=true;
+    addAvailable(from,availableBoxes,height,witdh,used);
+    int cntMark=1;
+    int save=0;
+    while (cntMark!=witdh*height and save!=100){
+
+
+
+
+        save++;
+    }
 }

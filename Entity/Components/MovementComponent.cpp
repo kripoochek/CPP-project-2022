@@ -5,7 +5,7 @@
 MovementComponent::MovementComponent(sf::Sprite& sprite, float maxVelocityMove, float maxVelocityRotate) :
 sprite(sprite), maxVelocityMove(maxVelocityMove), maxVelocityRotate(maxVelocityRotate) {
     currentVelocityMove = 0;
-    intervalToStopMovement = std::chrono::duration<double>(0.3);
+    intervalToStopMovement = std::chrono::duration<double>(0.01);
 }
 
 void MovementComponent::move(bool isForward, float dt) {
@@ -51,9 +51,9 @@ bool MovementComponent::isStopMove() {
 
 
 void MovementComponent::gracefullyReduceVelocity(float dt) {
-    currentVelocityMove = (currentVelocityMove > 0 ? currentVelocityMove - 3 : currentVelocityMove + 3);
+    currentVelocityMove = (currentVelocityMove > 0 ? currentVelocityMove - 10 : currentVelocityMove + 10);
 
-    if (currentVelocityMove < 10 && currentVelocityMove > -10) {
+    if (currentVelocityMove < 20 && currentVelocityMove > -20) {
         currentVelocityMove = 0;
     }
 }

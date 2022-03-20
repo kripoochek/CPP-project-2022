@@ -14,7 +14,10 @@
     <list default="true" id="186892db-bc70-4185-9f7f-bb83463b679b" name="Changes" comment="feat: smooth graceful move stop">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Entity/Components/MovementComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Components/MovementComponent.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Map/Box.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Map/Box.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Map/Box.h" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Map/Box.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Entity/Map/Map.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Map/Map.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Map/Wall.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Map/Wall.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Entity/Player.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Player.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -62,7 +65,7 @@
     <property name="cf.first.check.clang-format" value="false" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Entity/Components/SmoothMovement" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="structure.view.defaults.are.configured" value="true" />
@@ -78,6 +81,11 @@
     </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="my_tanks_in_labirint" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="my_tanks_in_labirint" TARGET_NAME="my_tanks_in_labirint" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="my_tanks_in_labirint" RUN_TARGET_NAME="my_tanks_in_labirint">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -104,6 +112,7 @@
       <workItem from="1647716964567" duration="4000" />
       <workItem from="1647717272738" duration="11060000" />
       <workItem from="1647767405498" duration="6891000" />
+      <workItem from="1647778657375" duration="8384000" />
     </task>
     <task id="LOCAL-00001" summary="fix: gitignore (no cmake-build-debug dir)">
       <created>1647742017953</created>
@@ -197,5 +206,16 @@
     <MESSAGE value="feat: better smooth movement (no stopping )" />
     <MESSAGE value="feat: smooth graceful move stop" />
     <option name="LAST_COMMIT_MESSAGE" value="feat: smooth graceful move stop" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Entity/Map/Map.cpp</url>
+          <line>94</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

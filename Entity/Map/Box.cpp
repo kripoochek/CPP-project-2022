@@ -14,22 +14,24 @@ void Box::setTexture(const sf::Texture &texture_) {
     sprite.setTexture(texture_);
 }
 
-void Box::render(std::shared_ptr<sf::RenderTarget> target) {
+void Box::renderBox(std::shared_ptr<sf::RenderTarget> target) {
     target->draw(sprite);
-    if (edges.upper!= nullptr and !edges.upper->hidden){
+}
+
+void Box::renderEdges(std::shared_ptr<sf::RenderTarget> target) {
+    if (edges.upper!= nullptr){
         edges.upper->render(target);
     }
-    if (edges.lower!= nullptr and !edges.lower->hidden){
+    if (edges.lower!= nullptr){
         edges.lower->render(target);
     }
-    if (edges.left!= nullptr and !edges.left->hidden){
+    if (edges.left!= nullptr ){
         edges.left->render(target);
     }
-    if (edges.right!= nullptr and !edges.right->hidden){
+    if (edges.right!= nullptr){
         edges.right->render(target);
     }
 }
-
 void Box::deleteEdge(const std::string &posWall) {
     if (posWall=="upper"){
         edges.upper->hidden= true;
