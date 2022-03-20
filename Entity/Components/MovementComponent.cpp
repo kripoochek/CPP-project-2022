@@ -12,7 +12,7 @@ MovementComponent::MovementComponent(sf::Sprite& sprite, float maxVelocityMove, 
 void MovementComponent::move(bool isForward, float dt) {
     lastMoveCommandTime = std::chrono::system_clock::now();
 
-    float acc = ( isForward ? acceleration : -deceleration);
+    float acc = ( isForward ? acceleration : -acceleration);
     currentVelocityMove += acc * dt;
 
     if (currentVelocityMove > 0 && currentVelocityMove > maxVelocityMove) {
