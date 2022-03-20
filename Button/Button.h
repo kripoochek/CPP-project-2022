@@ -16,7 +16,8 @@ enum class ButtonStates{ IDLE, HOVER, ACTIVE};
 
 struct Button {
     Button(float x, float y, float width, float height,
-           const sf::Font& font, const std::string& text,
+           const sf::Font& font, const std::string& text, int characterSize,
+           sf::Color textIdleColor, sf::Color textHoverColor, sf::Color textActiveColor,
            sf::Color idleColor, sf::Color hoverColor, sf::Color activeColor);
     //Functions
     bool isPressed() const;
@@ -27,6 +28,10 @@ private:
     sf::RectangleShape shape;
     sf::Font font;
     sf::Text text;
+
+    sf::Color textIdleColor;
+    sf::Color textHoverColor;
+    sf::Color textActiveColor;
 
     sf::Color idleColor;
     sf::Color hoverColor;

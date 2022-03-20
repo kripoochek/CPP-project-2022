@@ -18,7 +18,7 @@
 #include <chrono>
 
 struct MovementComponent {
-    MovementComponent(sf::Sprite& sprite, float maxVelocityMove, float maxVelocityRotate);
+    MovementComponent(sf::Sprite& sprite, float maxVelocityMove, float maxVelocityRotate, float acceleration, float deceleration);
 
 
     [[nodiscard]] sf::Vector2f getVelocity() const;
@@ -41,8 +41,8 @@ private:
     std::chrono::duration<double> intervalToStopMovement;
 
     sf::Vector2f velocity;
-    float acceleration = 360.f;
-    float deceleration = 360.f;
+    float acceleration;
+    float deceleration;
 
     // assert if there's no movements actions last time;
     bool isStopMove();

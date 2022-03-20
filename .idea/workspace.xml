@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
       <config projectName="my_tanks_in_labirint" targetName="my_tanks_in_labirint" />
@@ -12,13 +15,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="186892db-bc70-4185-9f7f-bb83463b679b" name="Changes" comment="feat: smooth graceful move stop">
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/bullet.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bullet/Bullet.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Bullet/Bullet.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bullet/Bullet.h" beforeDir="false" afterPath="$PROJECT_DIR$/Bullet/Bullet.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Button/Button.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Button/Button.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Button/Button.h" beforeDir="false" afterPath="$PROJECT_DIR$/Button/Button.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Entity/Components/MovementComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Components/MovementComponent.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/Map/Box.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Map/Box.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/Map/Box.h" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Map/Box.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/Map/Map.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Map/Map.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/Map/Wall.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Map/Wall.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Components/MovementComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Components/MovementComponent.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Entity.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Entity.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Entity.h" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Entity.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Entity/Player.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Player.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Player.h" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Player.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/States/GameState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/States/GameState.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/States/GameState.h" beforeDir="false" afterPath="$PROJECT_DIR$/States/GameState.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/States/GameTextures.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/States/GameTextures.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/States/GameTextures.h" beforeDir="false" afterPath="$PROJECT_DIR$/States/GameTextures.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/States/MainMenuState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/States/MainMenuState.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,10 +75,15 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="cf.advertisement.text.has.clang-format" value="true" />
     <property name="cf.first.check.clang-format" value="false" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="structure.view.defaults.are.configured" value="true" />
@@ -81,9 +99,9 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="my_tanks_in_labirint" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="my_tanks_in_labirint" TARGET_NAME="my_tanks_in_labirint" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="my_tanks_in_labirint" RUN_TARGET_NAME="my_tanks_in_labirint">
@@ -113,6 +131,7 @@
       <workItem from="1647717272738" duration="11060000" />
       <workItem from="1647767405498" duration="6891000" />
       <workItem from="1647778657375" duration="8384000" />
+      <workItem from="1647788846652" duration="15201000" />
     </task>
     <task id="LOCAL-00001" summary="fix: gitignore (no cmake-build-debug dir)">
       <created>1647742017953</created>
@@ -206,16 +225,5 @@
     <MESSAGE value="feat: better smooth movement (no stopping )" />
     <MESSAGE value="feat: smooth graceful move stop" />
     <option name="LAST_COMMIT_MESSAGE" value="feat: smooth graceful move stop" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Entity/Map/Map.cpp</url>
-          <line>94</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

@@ -3,7 +3,9 @@
 
 #include "State.h"
 #include "Player.h"
+#include "Bullet.h"
 #include "Map.h"
+
 struct GameState : State {
     // Initialisation
     explicit GameState(std::shared_ptr<sf::RenderWindow> window,
@@ -20,8 +22,10 @@ private:
     // Texture assets
     std::shared_ptr<GameTextures> textures;
 
+    std::shared_ptr<Bullet> bulletTest;
     std::vector<std::shared_ptr<Player>> players;
     std::shared_ptr<Map> map;
+
     void initKeybindings() final;
     void initTextures();
     void initPlayers();

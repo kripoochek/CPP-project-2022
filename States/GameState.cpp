@@ -7,6 +7,8 @@ GameState::GameState(std::shared_ptr<sf::RenderWindow> window,
     initKeybindings();
     initTextures();
     initPlayers();
+
+    bulletTest = std::make_shared<Bullet>(100, 100, 100, textures->Bullet);
 }
 
 void GameState::updateInput(float dt) {
@@ -44,17 +46,21 @@ void GameState::updateInput(float dt) {
 void GameState::update(float dt) {
     updateMousePositions();
     updateInput(dt);
-    for (const std::shared_ptr<Player>& player:players) {
+
+    for (const std::shared_ptr<Player>& player: players) {
         player->update(dt);
     }
 }
 
 void GameState::render(std::shared_ptr<sf::RenderTarget> target) {
     if (!target){ target = window;}
+
     map->render(target);
-    for (const std::shared_ptr<Player>&  player:players) {
+    bulletTest->render(target);
+    for (const std::shared_ptr<Player>&  player: players) {
         player->render(target);
     }
+
 }
 
 void GameState::initKeybindings() {

@@ -23,7 +23,7 @@ struct Entity {
 
     //Component functions
     void setTexture(sf::Texture &texture);
-    void createMovementComponent(float maxVelocityMove, float maxVelocityRotate);
+    void createMovementComponent(float maxVelocityMove, float maxVelocityRotate, float acceleration, float deceleration);
 
     //Functions
     virtual void setPosition(float x, float y);

@@ -22,7 +22,9 @@ void Entity::rotate(bool clockwise, float dt) {
 }
 
 void Entity::update(float dt) {
-    this->movementComponent->update(dt);
+    if (movementComponent){
+        this->movementComponent->update(dt);
+    }
 }
 
 void Entity::render(const std::shared_ptr<sf::RenderTarget>& target) {
@@ -33,8 +35,8 @@ void Entity::initVariables() {
     movementComponent = nullptr;
 }
 
-void Entity::createMovementComponent(float maxVelocityMove, float maxVelocityRotate) {
-    movementComponent = std::make_shared<MovementComponent>(sprite, maxVelocityMove, maxVelocityRotate);
+void Entity::createMovementComponent(float maxVelocityMove, float maxVelocityRotate, float acceleration, float deceleration) {
+    movementComponent = std::make_shared<MovementComponent>(sprite, maxVelocityMove, maxVelocityRotate, acceleration, deceleration);
 }
 
 

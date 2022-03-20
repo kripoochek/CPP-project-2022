@@ -83,24 +83,31 @@ void MainMenuState::initFonts() {
 }
 
 void MainMenuState::initButtons() {
-    const sf::Color idleColor(70, 70, 70, 200);
-    const sf::Color hoverColor(150, 150, 150, 255);
-    const sf::Color activeColor(20, 20, 20, 200);
+    const sf::Color idleColor(70, 70, 70, 0);
+    const sf::Color hoverColor(150, 150, 150, 0);
+    const sf::Color activeColor(20, 20, 20, 0);
+
+    const sf::Color textIdleColor(100, 100, 100, 225);
+    const sf::Color textHoverColor(255, 255, 255, 250);
+    const sf::Color textActiveColor(20, 20, 20, 50);
 
     const uint btnWidth = 150, btnHeight = 50;
     const uint initialX = this->window->getSize().x / 4, initialY = this->window->getSize().y / 3;
     const uint btnPadding = btnHeight + 25;
 
     buttons["GAME_STATE"] = std::make_shared<Button>(initialX, initialY, btnWidth, btnHeight,
-                                                     font, "New Game",
+                                                     font, "New Game", 50,
+                                                     textIdleColor, textHoverColor, textActiveColor,
                                                      idleColor, hoverColor, activeColor);
 
     buttons["SETTINGS"] = std::make_shared<Button>(initialX, initialY + btnPadding, btnWidth, btnHeight,
-                                                   font, "Settings",
+                                                   font, "Settings", 50,
+                                                   textIdleColor, textHoverColor, textActiveColor,
                                                    idleColor, hoverColor, activeColor);
 
     buttons["EXIT_STATE"] = std::make_shared<Button>(initialX, initialY + 2 * btnPadding, btnWidth, btnHeight,
-                                                     font, "Quit",
+                                                     font, "Quit", 50,
+                                                     textIdleColor, textHoverColor, textActiveColor,
                                                      idleColor, hoverColor, activeColor);
 }
 

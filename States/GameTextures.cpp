@@ -10,6 +10,9 @@ GameTextures::GameTextures() {
     if (!this->SecondPlayerIdle.loadFromFile(spritesDirPath / "tank-red.png")){
         throw std::exception();
     }
+    if (!this->Bullet.loadFromFile(spritesDirPath / "bullet.png")){
+        throw std::exception();
+    }
     if (!this->VerticalBorder.loadFromFile(spritesDirPath / "vertical-border.png")){
         throw std::exception();
     }

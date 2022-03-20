@@ -8,6 +8,9 @@ public:
     // loads assets into GameTextures fields.
     GameTextures();
 
+    // texture of bullet.
+    sf::Texture Bullet;
+
     // textures of tanks, playable models.
     sf::Texture FirstPlayerIdle;
     sf::Texture SecondPlayerIdle;

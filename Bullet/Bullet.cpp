@@ -1,49 +1,22 @@
-/*#include "Bullet.h"
-#include <iostream>
-namespace Bullet {
-    Bullet::Bullet(const float &direction, const float &x, const float &y, const int &lifetime) {
-        setDirection(direction);
-        setStartPosition(x,y);
-        setLifeTime(lifetime);
-    }
-    Bullet::Bullet() {
-        setStartPosition(50,50);
-    }
-    void Bullet::setDirection(float newDirection) {
-        direction = newDirection;
-        sprite.setRotation(direction);
-    }
+#include "Bullet.h"
 
-    void Bullet::setLifeTime(int newLifeTime) {
-        lifeTime = newLifeTime;
-    }
+Bullet::Bullet(float x, float y, float lifeTime, sf::Texture &texture) : lifeTime(lifeTime) {
+    initVariables();
+    initComponents();
 
-    void Bullet::draw(sf::RenderWindow *window) {
-        if (lifeTime > 0) window->draw(sprite);
-    }
+    texture.setSmooth(true);
+    this->setTexture(texture);
+    this->setPosition(x, y);
 
-    void Bullet::updatePositions() {
-        setDirection(60);
-        this->lifeTime--;
-            float rad_angle = sprite.getRotation() * PI / 180.0;
-            float dx = moveSpeed * std::cos(rad_angle);
-            float dy = moveSpeed * std::sin(rad_angle);
-            sprite.move(dx, dy);
-    }
+    sf::Vector2u size = texture.getSize();
+    sprite.setOrigin(size.x / 2,size.y / 2);
+    sprite.setScale(0.05f,0.05f);
+}
 
+void Bullet::initVariables() {
 
-    int Bullet::getLifeTime() {
-        return lifeTime;
-    }
-    void Bullet::setTexture(const std::string &file) {
-        texture.loadFromFile(file);
-        texture.setSmooth(true);
-        sprite.setTexture(texture);
-        sprite.setScale(0.03f, 0.03f);
-        sprite.setOrigin(256.f, 256.f);
+}
 
-    }
-    void Bullet::setStartPosition(const float &x, const float &y) {
-        this->sprite.setPosition(x,y);
-    }
-}*/
+void Bullet::initComponents() {
+    createMovementComponent(200.f, 200.f, 200.f,  400.f);
+}
