@@ -5,6 +5,8 @@
 
 struct Player : Entity {
     Player(float x, float y, sf::Texture &texture);
+
+    void update(float dt) final;
 protected:
 
 private:

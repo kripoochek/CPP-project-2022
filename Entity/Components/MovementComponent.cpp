@@ -13,6 +13,9 @@ void MovementComponent::move(bool isForward, float dt) {
     lastMoveCommandTime = std::chrono::system_clock::now();
 
     float acc = ( isForward ? acceleration : -acceleration);
+    if (currentVelocityMove * acc < 0){
+        gracefullyReduceVelocity(dt);
+    }
     currentVelocityMove += acc * dt;
 
     if (currentVelocityMove > 0 && currentVelocityMove > maxVelocityMove) {

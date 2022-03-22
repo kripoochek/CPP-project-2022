@@ -56,9 +56,9 @@ void GameState::render(std::shared_ptr<sf::RenderTarget> target) {
     if (!target){ target = window;}
 
     map->render(target);
-    bulletTest->render(target);
+    bulletTest->render(*target);
     for (const std::shared_ptr<Player>&  player: players) {
-        player->render(target);
+        player->render(*target);
     }
 
 }

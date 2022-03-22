@@ -27,8 +27,12 @@ void Entity::update(float dt) {
     }
 }
 
-void Entity::render(const std::shared_ptr<sf::RenderTarget>& target) {
-    target->draw(sprite);
+void Entity::render(sf::RenderTarget& target) {
+    target.draw(sprite);
+
+    if (hitboxComponent){
+        hitboxComponent->render(target);
+    }
 }
 
 void Entity::initVariables() {
@@ -37,6 +41,15 @@ void Entity::initVariables() {
 
 void Entity::createMovementComponent(float maxVelocityMove, float maxVelocityRotate, float acceleration, float deceleration) {
     movementComponent = std::make_shared<MovementComponent>(sprite, maxVelocityMove, maxVelocityRotate, acceleration, deceleration);
+}
+
+void Entity::createHitboxComponent(sf::Sprite &sprite, float offsetX, float offsetY, float width, float height) {
+    hitboxComponent = std::make_shared<HitboxComponent>(sprite, offsetX, offsetY, width, height);
+}
+
+sf::FloatRect Entity::getGlobalBounds() const {
+    if (hitboxComponent){ return hitboxComponent->getGlobalBounds(); }
+    return sprite.getGlobalBounds();
 }
 
 

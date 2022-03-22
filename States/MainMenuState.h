@@ -18,7 +18,7 @@ struct MainMenuState : State {
     void update(float dt) final;
 
     // Rendering
-    void renderButtons(std::shared_ptr<sf::RenderTarget> target);
+    void renderButtons(sf::RenderTarget &target);
     void render(std::shared_ptr<sf::RenderTarget> target) final;
 private:
     sf::RectangleShape backgroundLayout;

@@ -23,7 +23,7 @@ struct Button {
     bool isPressed() const;
 
     void update(sf::Vector2f mousePos);
-    void render(std::shared_ptr<sf::RenderTarget> target);
+    void render(sf::RenderTarget &target);
 private:
     sf::RectangleShape shape;
     sf::Font font;

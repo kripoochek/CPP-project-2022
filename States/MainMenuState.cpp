@@ -39,7 +39,7 @@ void MainMenuState::update(float dt) {
 }
 
 
-void MainMenuState::renderButtons(std::shared_ptr<sf::RenderTarget> target) {
+void MainMenuState::renderButtons(sf::RenderTarget &target) {
     for (auto &[name, button]: buttons){
         button->render(target);
     }
@@ -50,7 +50,7 @@ void MainMenuState::render(std::shared_ptr<sf::RenderTarget> target) {
 
     target->draw(backgroundLayout);
 
-    renderButtons(target);
+    renderButtons(*target);
 
     //REMOVE LATER!!
     sf::Text mouseText;
