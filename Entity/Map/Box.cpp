@@ -20,16 +20,16 @@ void Box::renderBox(std::shared_ptr<sf::RenderTarget> target) {
 
 void Box::renderEdges(std::shared_ptr<sf::RenderTarget> target) {
     if (edges.upper!= nullptr){
-        edges.upper->render(target);
+        edges.upper->render(*target);
     }
     if (edges.lower!= nullptr){
-        edges.lower->render(target);
+        edges.lower->render(*target);
     }
     if (edges.left!= nullptr ){
-        edges.left->render(target);
+        edges.left->render(*target);
     }
     if (edges.right!= nullptr){
-        edges.right->render(target);
+        edges.right->render(*target);
     }
 }
 void Box::deleteEdge(const std::string &posWall) {

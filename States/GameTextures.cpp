@@ -13,10 +13,10 @@ GameTextures::GameTextures() {
     if (!this->Bullet.loadFromFile(spritesDirPath / "bullet.png")){
         throw std::exception();
     }
-    if (!this->VerticalBorder.loadFromFile(spritesDirPath / "vertical-border.png")){
+    if (!this->VerticalBorder.loadFromFile(spritesDirPath / "verticalBorder.png")){
         throw std::exception();
     }
-    if (!this->HorizontalBorder.loadFromFile(spritesDirPath / "horizontal-border.png")){
+    if (!this->HorizontalBorder.loadFromFile(spritesDirPath / "horizontalBorder.png")){
         throw std::exception();
     }
     if (!this->Box.loadFromFile(spritesDirPath / "grass-plate.png")){
