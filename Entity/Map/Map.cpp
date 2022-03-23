@@ -1,56 +1,46 @@
 
 #include "Map.h"
-
-bool checkerBorders(const std::pair<int, int> &p, const int &step, const int &h, const int &w) {
-    if (p.first == 0 and step == 0) return false;
-    if (p.first == h - 1 and step == 1) return false;
-    if (p.first == 0 and step == 2) return false;
-    if (p.first == w - 1 and step == 3) return false;
-    return true;
+bool checkerBorders(const std::pair<int,int>& p,const std::vector<std::vector<bool>> &used,int height, int witdh){
+    return (p.first>=0 && p.first<height && p.second>=0 && p.second<witdh && !used[p.first][p.second]);
 }
 
 void
-addAvailable(const std::pair<int, int> current, std::vector<std::pair<int, int>> &availableBoxes, int height, int witdh,
-             const std::vector<std::vector<bool>> &used) {
-    if (checkerBorders({current.first - 1, current.second}, 0, height, witdh) and
-        !used[current.first - 1][current.second]) {
-        availableBoxes.push_back({current.first - 1, current.second});
+addAvailable(const std::pair<int, int>& current, std::vector<std::pair<std::pair<int,int>,std::string>>& availableBoxes, int height, int witdh,std::vector<std::vector<bool>> &used) {
+    if (checkerBorders({current.first+1,current.second},used,height,witdh)){
+        used[current.first+1][current.second]=true;
+        availableBoxes.push_back({{current.first+1,current.second},"upper"});
     }
-    if (checkerBorders({current.first + 1, current.second}, 1, height, witdh) and
-        !used[current.first + 1][current.second]) {
-        availableBoxes.push_back({current.first + 1, current.second});
+    if (checkerBorders({current.first-1,current.second},used,height,witdh)){
+        used[current.first-1][current.second]=true;
+        availableBoxes.push_back({{current.first-1,current.second},"lower"});
     }
-    if (checkerBorders({current.first, current.second - 1}, 2, height, witdh) and
-        !used[current.first][current.second - 1]) {
-        availableBoxes.push_back({current.first, current.second - 1});
+    if (checkerBorders({current.first,current.second+1},used,height,witdh)){
+        used[current.first][current.second+1]=true;
+
+        availableBoxes.push_back({{current.first,current.second+1},"left"});
     }
-    if (checkerBorders({current.first, current.second + 1}, 3, height, witdh) and
-        !used[current.first][current.second + 1]) {
-        availableBoxes.push_back({current.first, current.second + 1});
+    if (checkerBorders({current.first,current.second-1},used,height,witdh)){
+        used[current.first][current.second-1]=true;
+
+        availableBoxes.push_back({{current.first,current.second-1},"right"});
     }
 }
 
-std::pair<int, int> getCommonBorder(const std::pair<int, int> &from, const std::pair<int, int> &to) {
-    if ((to.first - from.first) == 1) return {1, 0};
-    if ((to.first - from.first) == -1) return {0, 1};
-    if ((to.second - from.second) == 1) return {3, 2};
-    if ((to.second - from.second) == -1) return {2, 3};
-}
 
 Map::Map(sf::Vector2f coordinates, const sf::Texture &texture_, const sf::Texture &verticalTexture,
          const sf::Texture &horizontalTexture) {
     for (int i = 0; i < height; i++) {
-        sf::Vector2f rowcoor = coordinates;
         map.push_back(std::vector<std::shared_ptr<Box>>{
                 std::make_shared<Box>(coordinates, texture_)});
         coordinates = sf::Vector2f(coordinates.x, coordinates.y + 100);
+        sf::Vector2f rowCoor=sf::Vector2f(coordinates.x+100,coordinates.y-100);
         for (int j = 0; j < witdh; j++) {
-            map[i].push_back(std::make_shared<Box>(rowcoor, texture_));
-            rowcoor = sf::Vector2f(rowcoor.x + 100, rowcoor.y);
+            map[i].push_back(std::make_shared<Box>(rowCoor, texture_));
+            rowCoor = sf::Vector2f(rowCoor.x + 100, rowCoor.y);
         }
     }
     addWalls(verticalTexture,horizontalTexture);
-    //generateMap();
+    generateMap();
 }
 
 void Map::addWalls( const sf::Texture &verticalTexture,
@@ -105,18 +95,22 @@ void Map::render(std::shared_ptr<sf::RenderTarget> target) {
 }
 
 void Map::generateMap() {
-    std::vector<std::pair<int,int>> availableBoxes;
+    std::vector<std::pair<std::pair<int,int>,std::string>> availableBoxes;
     std::vector<std::vector<bool>> used(height,std::vector<bool>(witdh,false));
     std::pair<int,int> from={randNum(0,height-1), randNum(0,witdh-1)};
     used[from.first][from.second]=true;
     addAvailable(from,availableBoxes,height,witdh,used);
     int cntMark=1;
     int save=0;
-    while (cntMark!=witdh*height and save!=100){
-
-
-
-
+    while (cntMark!=witdh*height ){
+        int indx= randNum(0,static_cast<int>(availableBoxes.size())-1);
+        std::pair<std::pair<int,int>,std::string> currBox=availableBoxes[indx];
+        map[currBox.first.first][currBox.first.second]->deleteEdge(currBox.second);
+        used[currBox.first.first][currBox.first.second];
+        swap(availableBoxes[indx],availableBoxes[availableBoxes.size()-1]);
+        availableBoxes.pop_back();
+        addAvailable({currBox.first.first,currBox.first.second},availableBoxes,height,witdh,used);
+        cntMark++;
         save++;
     }
 }
