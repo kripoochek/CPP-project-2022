@@ -27,3 +27,13 @@ void Player::update(float dt) {
     movementComponent->update(dt);
     hitboxComponent->update();
 }
+
+void Player::handleHitTank(std::shared_ptr<Player> other) {
+    movementComponent->stop();
+}
+
+void Player::handleHitWall(std::shared_ptr<Wall> other) {
+    movementComponent->stop();
+}
+
+

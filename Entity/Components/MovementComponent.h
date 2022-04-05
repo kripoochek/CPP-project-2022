@@ -28,6 +28,7 @@ struct MovementComponent {
     void move(bool isForward, float dt);
     void rotate(bool clockwise, float dt);
     void update(float dt);
+    void stop();
 private:
     sf::Sprite &sprite;
 

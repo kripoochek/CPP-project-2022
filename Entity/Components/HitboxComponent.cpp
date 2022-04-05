@@ -2,12 +2,12 @@
 
 HitboxComponent::HitboxComponent(sf::Sprite& sprite, float offsetX, float offsetY, float width, float height) :
     sprite(sprite), offsetX(offsetX), offsetY(offsetY) {
-    hitbox.setPosition(sprite.getPosition().x + offsetX, sprite.getPosition().y + offsetY);
-    hitbox.setSize(sf::Vector2f(width, height));
-    hitbox.setOrigin(width / 2, height / 2);
-    hitbox.setFillColor(sf::Color::Transparent);
-    hitbox.setOutlineThickness(1.f);
-    hitbox.setOutlineColor(sf::Color::Green);
+    hitboxShape.setPosition(sprite.getPosition().x + offsetX, sprite.getPosition().y + offsetY);
+    hitboxShape.setSize(sf::Vector2f(width, height));
+    hitboxShape.setOrigin(width / 2, height / 2);
+    hitboxShape.setFillColor(sf::Color::Transparent);
+    hitboxShape.setOutlineThickness(1.f);
+    hitboxShape.setOutlineColor(sf::Color::Green);
 }
 
 bool HitboxComponent::checkIntersect(const sf::FloatRect &frect) {
@@ -15,14 +15,18 @@ bool HitboxComponent::checkIntersect(const sf::FloatRect &frect) {
 }
 
 void HitboxComponent::update() {
-    hitbox.setPosition(sprite.getPosition().x + offsetX, sprite.getPosition().y + offsetY);
-    hitbox.setRotation(sprite.getRotation());
+    hitboxShape.setPosition(sprite.getPosition().x + offsetX, sprite.getPosition().y + offsetY);
+    hitboxShape.setRotation(sprite.getRotation());
 }
 
 void HitboxComponent::render(sf::RenderTarget &target) {
-    target.draw(hitbox);
+    target.draw(hitboxShape);
 }
 
 sf::FloatRect HitboxComponent::getGlobalBounds() const {
-    return hitbox.getGlobalBounds();
+    return hitboxShape.getGlobalBounds();
+}
+
+bool HitboxComponent::intersect(std::shared_ptr<HitboxComponent> other) {
+    return hitboxShape.getGlobalBounds().intersects(other->hitboxShape.getGlobalBounds());
 }

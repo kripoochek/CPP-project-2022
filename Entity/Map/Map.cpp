@@ -29,12 +29,12 @@ addAvailable(const std::pair<int, int>& current, std::vector<std::pair<std::pair
 
 Map::Map(sf::Vector2f coordinates, const sf::Texture &texture_, const sf::Texture &verticalTexture,
          const sf::Texture &horizontalTexture) {
-    for (int i = 0; i < height; i++) {
+    for (int i = 0; i < rows; i++) {
         map.push_back(std::vector<std::shared_ptr<Box>>{
                 std::make_shared<Box>(coordinates, texture_)});
         coordinates = sf::Vector2f(coordinates.x, coordinates.y + 100);
         sf::Vector2f rowCoor=sf::Vector2f(coordinates.x+100,coordinates.y-100);
-        for (int j = 0; j < witdh; j++) {
+        for (int j = 0; j < columns; j++) {
             map[i].push_back(std::make_shared<Box>(rowCoor, texture_));
             rowCoor = sf::Vector2f(rowCoor.x + 100, rowCoor.y);
         }
@@ -45,8 +45,8 @@ Map::Map(sf::Vector2f coordinates, const sf::Texture &texture_, const sf::Textur
 
 void Map::addWalls( const sf::Texture &verticalTexture,
                    const sf::Texture &horizontalTexture) {
-    for (int i = 0; i < height; i++) {
-        for (int j = 0; j < witdh; j++) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < columns; j++) {
             Edges edges=map[i][j]->getEdges();
             if (edges.upper== nullptr){
                 std::shared_ptr<Wall> upper=std::make_shared<Wall>(sf::Vector2f(map[i][j]->getCoordinates().x+50,map[i][j]->getCoordinates().y),horizontalTexture);
@@ -58,7 +58,7 @@ void Map::addWalls( const sf::Texture &verticalTexture,
             if (edges.lower== nullptr){
                 std::shared_ptr<Wall> lower=std::make_shared<Wall>(sf::Vector2f(map[i][j]->getCoordinates().x+50,map[i][j]->getCoordinates().y+100),horizontalTexture);
                 map[i][j]->addEdge(lower,"lower");
-                if (i+1<height){
+                if (i+1 < rows){
                     map[i+1][j]->addEdge(lower,"upper");
                 }
             }
@@ -72,7 +72,7 @@ void Map::addWalls( const sf::Texture &verticalTexture,
             if (edges.right== nullptr){
                 std::shared_ptr<Wall> right=std::make_shared<Wall>(sf::Vector2f(map[i][j]->getCoordinates().x+100,map[i][j]->getCoordinates().y+50),verticalTexture);
                 map[i][j]->addEdge(right,"right");
-                if (j+1<witdh){
+                if (j+1 < columns){
                     map[i][j+1]->addEdge(right,"left");
                 }
             }
@@ -82,13 +82,13 @@ void Map::addWalls( const sf::Texture &verticalTexture,
 }
 
 void Map::render(std::shared_ptr<sf::RenderTarget> target) {
-    for (int i = 0; i < height; i++) {
-        for (int j = 0; j < witdh; j++) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < columns; j++) {
             map[i][j]->renderBox(target);
         }
     }
-    for (int i = 0; i < height; i++) {
-        for (int j = 0; j < witdh; j++) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < columns; j++) {
             map[i][j]->renderEdges(target);
         }
     }
@@ -96,21 +96,42 @@ void Map::render(std::shared_ptr<sf::RenderTarget> target) {
 
 void Map::generateMap() {
     std::vector<std::pair<std::pair<int,int>,std::string>> availableBoxes;
-    std::vector<std::vector<bool>> used(height,std::vector<bool>(witdh,false));
-    std::pair<int,int> from={randNum(0,height-1), randNum(0,witdh-1)};
+    std::vector<std::vector<bool>> used(rows, std::vector<bool>(columns, false));
+    std::pair<int,int> from={randNum(0, rows - 1), randNum(0, columns - 1)};
     used[from.first][from.second]=true;
-    addAvailable(from,availableBoxes,height,witdh,used);
+    addAvailable(from, availableBoxes, rows, columns, used);
     int cntMark=1;
     int save=0;
-    while (cntMark!=witdh*height ){
+    while (cntMark != columns * rows ){
         int indx= randNum(0,static_cast<int>(availableBoxes.size())-1);
         std::pair<std::pair<int,int>,std::string> currBox=availableBoxes[indx];
         map[currBox.first.first][currBox.first.second]->deleteEdge(currBox.second);
         used[currBox.first.first][currBox.first.second];
         swap(availableBoxes[indx],availableBoxes[availableBoxes.size()-1]);
         availableBoxes.pop_back();
-        addAvailable({currBox.first.first,currBox.first.second},availableBoxes,height,witdh,used);
+        addAvailable({currBox.first.first,currBox.first.second}, availableBoxes, rows, columns, used);
         cntMark++;
         save++;
     }
+}
+
+std::vector<std::shared_ptr<Wall>> Map::getActiveWalls() {
+    std::set<std::shared_ptr<Wall>> activeWalls;
+    for (int i=0; i < rows; i++){
+        for (int j=0; j < columns; j++){
+            if (!map[i][j]->getEdges().upper->hidden){
+                activeWalls.insert(map[i][j]->getEdges().upper);
+            }
+            if (!map[i][j]->getEdges().lower->hidden){
+                activeWalls.insert(map[i][j]->getEdges().lower);
+            }
+            if (!map[i][j]->getEdges().left->hidden){
+                activeWalls.insert(map[i][j]->getEdges().left);
+            }
+            if (!map[i][j]->getEdges().right->hidden){
+                activeWalls.insert(map[i][j]->getEdges().right);
+            }
+        }
+    }
+    return std::vector<std::shared_ptr<Wall>>(activeWalls.begin(),activeWalls.end());
 }

@@ -15,14 +15,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="186892db-bc70-4185-9f7f-bb83463b679b" name="Changes" comment="feat: smooth graceful move stop">
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/horizontalBorder.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/verticalBorder.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CollisionManager/CollisionManager.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CollisionManager/CollisionManager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_20_03_2022,_0_18_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_20_03_2022__0_18__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/Map/Box.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Map/Box.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Components/HitboxComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Components/HitboxComponent.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Components/HitboxComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Components/HitboxComponent.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Components/MovementComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Components/MovementComponent.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Components/MovementComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Components/MovementComponent.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Entity.h" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Entity.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Entity/Map/Map.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Map/Map.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/Map/Wall.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Map/Wall.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Map/Map.h" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Map/Map.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Entity/Map/Wall.h" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Map/Wall.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/States/GameTextures.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/States/GameTextures.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Map/utils.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Map/Utils.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Map/utils.h" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Map/Utils.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Player.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Player.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Player.h" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Player.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/States/GameState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/States/GameState.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/States/GameState.h" beforeDir="false" afterPath="$PROJECT_DIR$/States/GameState.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,9 +102,9 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
     <configuration name="my_tanks_in_labirint" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="my_tanks_in_labirint" TARGET_NAME="my_tanks_in_labirint" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="my_tanks_in_labirint" RUN_TARGET_NAME="my_tanks_in_labirint">
@@ -127,6 +139,7 @@
       <workItem from="1647881829606" duration="20000" />
       <workItem from="1647899399172" duration="8447000" />
       <workItem from="1648063040447" duration="2652000" />
+      <workItem from="1649156235543" duration="6859000" />
     </task>
     <task id="LOCAL-00001" summary="fix: gitignore (no cmake-build-debug dir)">
       <created>1647742017953</created>
@@ -220,5 +233,26 @@
     <MESSAGE value="feat: better smooth movement (no stopping )" />
     <MESSAGE value="feat: smooth graceful move stop" />
     <option name="LAST_COMMIT_MESSAGE" value="feat: smooth graceful move stop" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/CollisionManager/CollisionManager.cpp</url>
+          <line>7</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Entity/Map/Map.cpp</url>
+          <line>118</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="CMakeRunConfiguration">
+        <watch expression="activeWalls" language="ObjectiveC" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

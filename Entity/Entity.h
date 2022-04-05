@@ -22,10 +22,9 @@ struct Entity {
     virtual void rotate(bool clockwise, float dt);
     virtual void update(float dt);
     virtual void render(sf::RenderTarget& target);
-
+    std::shared_ptr<HitboxComponent> hitboxComponent;
 protected:
     std::shared_ptr<MovementComponent> movementComponent;
-    std::shared_ptr<HitboxComponent> hitboxComponent;
     sf::Sprite sprite;
 private:
     void initVariables();

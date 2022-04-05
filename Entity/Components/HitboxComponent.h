@@ -22,12 +22,12 @@ struct HitboxComponent {
 
     //Getters
     sf::FloatRect getGlobalBounds() const;
-
+    bool intersect(std::shared_ptr<HitboxComponent> other);
     void update();
     void render(sf::RenderTarget& target);
 private:
     sf::Sprite &sprite;
-    sf::RectangleShape hitbox;
+    sf::RectangleShape hitboxShape;
     float offsetX, offsetY;
 };
 

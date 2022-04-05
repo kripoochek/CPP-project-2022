@@ -61,3 +61,8 @@ void MovementComponent::gracefullyReduceVelocity(float dt) {
         currentVelocityMove = std::min(currentVelocityMove, 0.f);
     }
 }
+
+void MovementComponent::stop() {
+    currentVelocityMove*=-5;
+
+}

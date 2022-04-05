@@ -50,6 +50,7 @@ void GameState::update(float dt) {
     for (const std::shared_ptr<Player>& player: players) {
         player->update(dt);
     }
+    collisionManager->update();
 }
 
 void GameState::render(std::shared_ptr<sf::RenderTarget> target) {
@@ -81,7 +82,8 @@ void GameState::initPlayers() {
                                textures->VerticalBorder,
                                textures->HorizontalBorder);
     players.push_back( std::make_shared<Player>(50, 50, textures->FirstPlayerIdle));
-    players.push_back( std::make_shared<Player>(50, 50, textures->SecondPlayerIdle));
+    players.push_back( std::make_shared<Player>(50, 300, textures->SecondPlayerIdle));
+    collisionManager= std::make_shared<CollisionManager>(map,players);
 }
 
 

@@ -1,6 +1,6 @@
 #ifndef MY_TANKS_IN_LABIRINT_GAMESTATE_H
 #define MY_TANKS_IN_LABIRINT_GAMESTATE_H
-
+#include "CollisionManager.h"
 #include "State.h"
 #include "Player.h"
 #include "Bullet.h"
@@ -21,7 +21,7 @@ struct GameState : State {
 private:
     // Texture assets
     std::shared_ptr<GameTextures> textures;
-
+    std::shared_ptr<CollisionManager> collisionManager;
     std::shared_ptr<Bullet> bulletTest;
     std::vector<std::shared_ptr<Player>> players;
     std::shared_ptr<Map> map;
