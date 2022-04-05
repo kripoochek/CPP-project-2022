@@ -7,12 +7,13 @@ GameState::GameState(std::shared_ptr<sf::RenderWindow> window,
     initKeybindings();
     initTextures();
     initPlayers();
-
-    bulletTest = std::make_shared<Bullet>(100, 100, 100, textures->Bullet);
 }
 
 void GameState::updateInput(float dt) {
     //Update player input
+    if (sf::Keyboard::isKeyPressed(keybindings["ATTACK1"])){
+        players[0]->attack(bullets, textures->Bullet, dt);
+    }
     if (sf::Keyboard::isKeyPressed(keybindings["MOVE_LEFT1"])){
         players[0]->rotate(false, dt);
     }
@@ -26,8 +27,8 @@ void GameState::updateInput(float dt) {
         players[0]->move(false, dt);
     }
 
-    if (sf::Keyboard::isKeyPressed(keybindings["CLOSE"])){
-        quit = true;
+    if (sf::Keyboard::isKeyPressed(keybindings["ATTACK2"])){
+        players[1]->attack(bullets, textures->Bullet, dt);
     }
     if (sf::Keyboard::isKeyPressed(keybindings["MOVE_LEFT2"])){
         players[1]->rotate(false, dt);
@@ -41,15 +42,28 @@ void GameState::updateInput(float dt) {
     if (sf::Keyboard::isKeyPressed(keybindings["MOVE_DOWN2"])){
         players[1]->move(false, dt);
     }
+
+    if (sf::Keyboard::isKeyPressed(keybindings["CLOSE"])){
+        quit = true;
+    }
 }
 
 void GameState::update(float dt) {
     updateMousePositions();
     updateInput(dt);
 
-    for (const std::shared_ptr<Player>& player: players) {
+    while(!bullets.empty() && bullets.front()->isDeathTime()){
+        bullets.pop_front();
+    }
+
+    for (auto& bullet: bullets) {
+        bullet->update(dt);
+    }
+
+    for (auto& player: players) {
         player->update(dt);
     }
+
     collisionManager->update();
 }
 
@@ -57,7 +71,10 @@ void GameState::render(std::shared_ptr<sf::RenderTarget> target) {
     if (!target){ target = window;}
 
     map->render(target);
-    bulletTest->render(*target);
+
+    for (auto& bullet: bullets){
+        bullet->render(*target);
+    }
     for (const std::shared_ptr<Player>&  player: players) {
         player->render(*target);
     }

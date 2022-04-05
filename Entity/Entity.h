@@ -13,7 +13,7 @@ struct Entity {
 
     //Component functions
     void setTexture(sf::Texture &texture);
-    void createMovementComponent(float maxVelocityMove, float maxVelocityRotate, float acceleration, float deceleration);
+    void createMovementComponent(float maxVelocityMove, float maxVelocityRotate, float currentVelocityMove, float acceleration, float deceleration);
     void createHitboxComponent(sf::Sprite &sprite, float offsetX, float offsetY, float width, float height);
 
     //Functions

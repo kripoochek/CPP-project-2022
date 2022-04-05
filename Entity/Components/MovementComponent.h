@@ -9,6 +9,7 @@
 
 #include <cmath>
 #include <vector>
+#include <deque>
 #include <map>
 #include <utility>
 #include <memory>
@@ -18,8 +19,7 @@
 #include <chrono>
 
 struct MovementComponent {
-    MovementComponent(sf::Sprite& sprite, float maxVelocityMove, float maxVelocityRotate, float acceleration, float deceleration);
-
+    MovementComponent(sf::Sprite& sprite, float maxVelocityMove, float currentVelocityMove, float maxVelocityRotate, float acceleration, float deceleration);
 
     [[nodiscard]] sf::Vector2f getVelocity() const;
 

@@ -23,7 +23,10 @@ void Entity::rotate(bool clockwise, float dt) {
 
 void Entity::update(float dt) {
     if (movementComponent){
-        this->movementComponent->update(dt);
+        movementComponent->update(dt);
+    }
+    if (hitboxComponent){
+        hitboxComponent->update();
     }
 }
 
@@ -39,8 +42,8 @@ void Entity::initVariables() {
     movementComponent = nullptr;
 }
 
-void Entity::createMovementComponent(float maxVelocityMove, float maxVelocityRotate, float acceleration, float deceleration) {
-    movementComponent = std::make_shared<MovementComponent>(sprite, maxVelocityMove, maxVelocityRotate, acceleration, deceleration);
+void Entity::createMovementComponent(float maxVelocityMove, float maxVelocityRotate, float currentVelocityMove, float acceleration, float deceleration) {
+    movementComponent = std::make_shared<MovementComponent>(sprite, maxVelocityMove, maxVelocityRotate, currentVelocityMove, acceleration, deceleration);
 }
 
 void Entity::createHitboxComponent(sf::Sprite &sprite, float offsetX, float offsetY, float width, float height) {

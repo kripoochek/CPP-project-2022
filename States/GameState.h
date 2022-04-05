@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "Bullet.h"
 #include "Map.h"
+#include <deque>
 
 struct GameState : State {
     // Initialisation
@@ -22,7 +23,7 @@ private:
     // Texture assets
     std::shared_ptr<GameTextures> textures;
     std::shared_ptr<CollisionManager> collisionManager;
-    std::shared_ptr<Bullet> bulletTest;
+    std::deque<std::shared_ptr<Bullet>> bullets;
     std::vector<std::shared_ptr<Player>> players;
     std::shared_ptr<Map> map;
 
