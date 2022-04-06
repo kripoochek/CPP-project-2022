@@ -2,7 +2,8 @@
 
 #include <cmath>
 
-MovementComponent::MovementComponent(sf::Sprite& sprite, float maxVelocityMove, float maxVelocityRotate, float currentVelocityMove,
+MovementComponent::MovementComponent(sf::Sprite &sprite, float maxVelocityMove, float maxVelocityRotate,
+                                     float currentVelocityMove,
                                      float acceleration, float deceleration) :
         sprite(sprite), maxVelocityMove(maxVelocityMove), maxVelocityRotate(maxVelocityRotate),
         acceleration(acceleration), deceleration(deceleration),
@@ -12,8 +13,8 @@ MovementComponent::MovementComponent(sf::Sprite& sprite, float maxVelocityMove, 
 void MovementComponent::move(bool isForward, float dt) {
     lastMoveCommandTime = std::chrono::system_clock::now();
 
-    float acc = ( isForward ? acceleration : -acceleration);
-    if (currentVelocityMove * acc < 0){
+    float acc = (isForward ? acceleration : -acceleration);
+    if (currentVelocityMove * acc < 0) {
         gracefullyReduceVelocity(dt);
     }
     currentVelocityMove += acc * dt;
@@ -52,17 +53,55 @@ bool MovementComponent::isStopMove() {
 
 
 void MovementComponent::gracefullyReduceVelocity(float dt) {
-    if (currentVelocityMove > 0){
+    if (currentVelocityMove > 0) {
         currentVelocityMove -= deceleration * dt;
         currentVelocityMove = std::max(currentVelocityMove, 0.f);
-    }
-    else if (currentVelocityMove < 0){
+    } else if (currentVelocityMove < 0) {
         currentVelocityMove += deceleration * dt;
         currentVelocityMove = std::min(currentVelocityMove, 0.f);
     }
 }
 
 void MovementComponent::stop() {
-    currentVelocityMove*=-5;
+    currentVelocityMove *= -5;
+
+}
+
+void MovementComponent::snapBack(std::shared_ptr<Wall> wall) {
+    sf::FloatRect playerBounds = sprite.getGlobalBounds();
+    sf::FloatRect wallBounds = wall->hitboxComponent->getGlobalBounds();
+    //bottom
+    if (playerBounds.top < wallBounds.top
+        && playerBounds.top + playerBounds.height < wallBounds.top + wallBounds.height
+        && playerBounds.left < wallBounds.left + wallBounds.width
+        && playerBounds.left + playerBounds.width > wallBounds.left) {
+        velocity.y = 0.f;
+        sprite.setPosition(playerBounds.left, wallBounds.top - playerBounds.height);
+    }
+        //top
+    else if (playerBounds.top > wallBounds.top
+             && playerBounds.top + playerBounds.height > wallBounds.top + wallBounds.height
+             && playerBounds.left < wallBounds.left + wallBounds.width
+             && playerBounds.left + playerBounds.width > wallBounds.left) {
+        velocity.y = 0.f;
+        sprite.setPosition(playerBounds.left, wallBounds.top - wallBounds.height);
+    }
+    //right
+    if (playerBounds.left < wallBounds.left
+    && playerBounds.top < wallBounds.top + wallBounds.top + wallBounds.height
+    && playerBounds.top + playerBounds.height > wallBounds.top)
+    {
+        velocity.x=0.f;
+        sprite.setPosition(wallBounds.left-playerBounds.width,playerBounds.top);
+    }
+
+    //left
+    else if (playerBounds.left > wallBounds.left
+             && playerBounds.top > wallBounds.top + wallBounds.top + wallBounds.height
+             && playerBounds.top + playerBounds.height > wallBounds.top)
+    {
+        velocity.x=0.f;
+        sprite.setPosition(wallBounds.left-playerBounds.width,playerBounds.top);
+    }
 
 }

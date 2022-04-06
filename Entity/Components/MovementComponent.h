@@ -6,6 +6,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <SFML/Network.hpp>
+#include "Wall.h"
 
 #include <cmath>
 #include <vector>
@@ -29,6 +30,7 @@ struct MovementComponent {
     void rotate(bool clockwise, float dt);
     void update(float dt);
     void stop();
+    void snapBack(std::shared_ptr<Wall> wall);
 private:
     sf::Sprite &sprite;
 

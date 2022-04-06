@@ -28,7 +28,7 @@ void Player::handleHitTank(std::shared_ptr<Player> other) {
 }
 
 void Player::handleHitWall(std::shared_ptr<Wall> other) {
-    movementComponent->stop();
+    movementComponent->snapBack(other);
 }
 
 void Player::attack(std::deque<std::pair<int, std::shared_ptr<Bullet>>> &bullets, sf::Texture &texture, float dt) {

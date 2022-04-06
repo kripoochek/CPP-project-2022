@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 include_directories(Entity States Config Button Entity/Components Entity/Map/Map Entity/Map Bullet CollisionManager)
 find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)
-
+find_package(Box2D COMPONENTS Collision Common Dynamics Rope REQUIRED)
 add_executable(my_tanks_in_labirint Bullet/Bullet.cpp main.cpp Game.cpp
         States/State.cpp States/State.h States/GameState.cpp 
         Entity/Entity.cpp Entity/Entity.h
