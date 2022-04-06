@@ -99,7 +99,7 @@ void GameState::initPlayers() {
                                textures->Box,
                                textures->VerticalBorder,
                                textures->HorizontalBorder);
-    players.push_back( std::make_shared<Player>(50, 50, 5, 0, textures->FirstPlayerIdle));
+    players.push_back( std::make_shared<Player>(250, 100, 5, 0, textures->FirstPlayerIdle));
     players.push_back( std::make_shared<Player>(50, 300, 5, 1, textures->SecondPlayerIdle));
     collisionManager = std::make_shared<CollisionManager>(map,players);
 }

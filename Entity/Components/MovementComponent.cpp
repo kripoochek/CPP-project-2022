@@ -63,7 +63,7 @@ void MovementComponent::gracefullyReduceVelocity(float dt) {
 }
 
 void MovementComponent::stop() {
-    currentVelocityMove *= -5;
+    currentVelocityMove = -55;
 
 }
 
@@ -76,7 +76,7 @@ void MovementComponent::snapBack(std::shared_ptr<Wall> wall) {
         && playerBounds.left < wallBounds.left + wallBounds.width
         && playerBounds.left + playerBounds.width > wallBounds.left) {
         velocity.y = 0.f;
-        sprite.setPosition(playerBounds.left, wallBounds.top - playerBounds.height);
+        sprite.setPosition(playerBounds.left+playerBounds.width/2, wallBounds.top - playerBounds.height/2);
     }
         //top
     else if (playerBounds.top > wallBounds.top
@@ -84,24 +84,26 @@ void MovementComponent::snapBack(std::shared_ptr<Wall> wall) {
              && playerBounds.left < wallBounds.left + wallBounds.width
              && playerBounds.left + playerBounds.width > wallBounds.left) {
         velocity.y = 0.f;
-        sprite.setPosition(playerBounds.left, wallBounds.top - wallBounds.height);
+        sprite.setPosition(playerBounds.left+playerBounds.width/2, wallBounds.top + wallBounds.height/2);
     }
     //right
     if (playerBounds.left < wallBounds.left
-    && playerBounds.top < wallBounds.top + wallBounds.top + wallBounds.height
+    && playerBounds.left + playerBounds.width < wallBounds.left + wallBounds.width
+    && playerBounds.top < wallBounds.top + wallBounds.height
     && playerBounds.top + playerBounds.height > wallBounds.top)
     {
         velocity.x=0.f;
-        sprite.setPosition(wallBounds.left-playerBounds.width,playerBounds.top);
+        sprite.setPosition(wallBounds.left-playerBounds.width/2,playerBounds.top+playerBounds.height/2);
     }
 
     //left
     else if (playerBounds.left > wallBounds.left
+             && playerBounds.left + playerBounds.width > wallBounds.left + wallBounds.width
              && playerBounds.top > wallBounds.top + wallBounds.top + wallBounds.height
              && playerBounds.top + playerBounds.height > wallBounds.top)
     {
         velocity.x=0.f;
-        sprite.setPosition(wallBounds.left-playerBounds.width,playerBounds.top);
+        sprite.setPosition(wallBounds.left + wallBounds.width +playerBounds.width/2,playerBounds.top+playerBounds.height/2);
     }
 
 }

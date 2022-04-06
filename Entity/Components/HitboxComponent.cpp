@@ -20,7 +20,7 @@ void HitboxComponent::update() {
 }
 
 void HitboxComponent::render(sf::RenderTarget &target) {
-//    target.draw(hitboxShape);
+    target.draw(hitboxShape);
 }
 
 sf::FloatRect HitboxComponent::getGlobalBounds() const {
