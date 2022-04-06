@@ -52,11 +52,12 @@ void GameState::update(float dt) {
     updateMousePositions();
     updateInput(dt);
 
-    while(!bullets.empty() && bullets.front()->isDeathTime()){
+    while(!bullets.empty() && bullets.front().second->isDeathTime()){
+        players[bullets.front().first]->addBullet();
         bullets.pop_front();
     }
 
-    for (auto& bullet: bullets) {
+    for (auto& [id, bullet]: bullets) {
         bullet->update(dt);
     }
 
@@ -72,13 +73,13 @@ void GameState::render(std::shared_ptr<sf::RenderTarget> target) {
 
     map->render(target);
 
-    for (auto& bullet: bullets){
+    for (auto& [id, bullet]: bullets){
         bullet->render(*target);
     }
+
     for (const std::shared_ptr<Player>&  player: players) {
         player->render(*target);
     }
-
 }
 
 void GameState::initKeybindings() {
@@ -98,9 +99,9 @@ void GameState::initPlayers() {
                                textures->Box,
                                textures->VerticalBorder,
                                textures->HorizontalBorder);
-    players.push_back( std::make_shared<Player>(50, 50, textures->FirstPlayerIdle));
-    players.push_back( std::make_shared<Player>(50, 300, textures->SecondPlayerIdle));
-    collisionManager= std::make_shared<CollisionManager>(map,players);
+    players.push_back( std::make_shared<Player>(50, 50, 5, 0, textures->FirstPlayerIdle));
+    players.push_back( std::make_shared<Player>(50, 300, 5, 1, textures->SecondPlayerIdle));
+    collisionManager = std::make_shared<CollisionManager>(map,players);
 }
 
 

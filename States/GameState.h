@@ -23,7 +23,7 @@ private:
     // Texture assets
     std::shared_ptr<GameTextures> textures;
     std::shared_ptr<CollisionManager> collisionManager;
-    std::deque<std::shared_ptr<Bullet>> bullets;
+    std::deque<std::pair<int, std::shared_ptr<Bullet>>> bullets;
     std::vector<std::shared_ptr<Player>> players;
     std::shared_ptr<Map> map;
 
