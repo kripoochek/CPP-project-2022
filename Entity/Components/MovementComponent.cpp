@@ -14,32 +14,33 @@ void MovementComponent::move(bool isForward, float dt) {
     lastMoveCommandTime = std::chrono::system_clock::now();
 
     float acc = (isForward ? acceleration : -acceleration);
-    if (currentVelocityMove * acc < 0) {
-        gracefullyReduceVelocity(dt);
-    }
+    if (currentVelocityMove * acc < 0) { gracefullyReduceVelocity(dt); }
     currentVelocityMove += acc * dt;
 
-    if (currentVelocityMove > 0 && currentVelocityMove > maxVelocityMove) {
-        currentVelocityMove = maxVelocityMove;
-    } else if (currentVelocityMove < 0 && currentVelocityMove < -maxVelocityMove) {
-        currentVelocityMove = -maxVelocityMove;
+    if (currentVelocityMove > 0) {
+        currentVelocityMove = std::min(currentVelocityMove, maxVelocityMove);
     }
+    else{
+        currentVelocityMove = std::max(currentVelocityMove, -maxVelocityMove);
+    }
+
+    float angle = sprite.getRotation() * 3.1415f / 180;
+    velocity.x = std::cos(angle) * currentVelocityMove;
+    velocity.y = std::sin(angle) * currentVelocityMove;
 }
 
 void MovementComponent::rotate(bool clockwise, float dt) {
     float d_angle = (clockwise ? 1.0f : -1.0f);
     sprite.rotate(d_angle * maxVelocityRotate * dt);
-}
 
-void MovementComponent::update(float dt) {
-    if (this->isStopMove()) {
-        gracefullyReduceVelocity(dt);
-    }
-
-    // regular movements
     float angle = sprite.getRotation() * 3.1415f / 180;
     velocity.x = std::cos(angle) * currentVelocityMove;
     velocity.y = std::sin(angle) * currentVelocityMove;
+}
+
+void MovementComponent::update(float dt) {
+    if (this->isStopMove()) { gracefullyReduceVelocity(dt); }
+// regular movements
     sprite.move(velocity * dt);
 }
 
@@ -60,50 +61,14 @@ void MovementComponent::gracefullyReduceVelocity(float dt) {
         currentVelocityMove += deceleration * dt;
         currentVelocityMove = std::min(currentVelocityMove, 0.f);
     }
+
+    float angle = sprite.getRotation() * 3.1415f / 180;
+    velocity.x = std::cos(angle) * currentVelocityMove;
+    velocity.y = std::sin(angle) * currentVelocityMove;
 }
 
-void MovementComponent::stop() {
-    currentVelocityMove = -55;
+void MovementComponent::stopVelocity() { currentVelocityMove = 0; }
 
-}
+void MovementComponent::stopVelocityX() { velocity.x = 0; }
 
-void MovementComponent::snapBack(std::shared_ptr<Wall> wall) {
-    sf::FloatRect playerBounds = sprite.getGlobalBounds();
-    sf::FloatRect wallBounds = wall->hitboxComponent->getGlobalBounds();
-    //bottom
-    if (playerBounds.top < wallBounds.top
-        && playerBounds.top + playerBounds.height < wallBounds.top + wallBounds.height
-        && playerBounds.left < wallBounds.left + wallBounds.width
-        && playerBounds.left + playerBounds.width > wallBounds.left) {
-        velocity.y = 0.f;
-        sprite.setPosition(playerBounds.left+playerBounds.width/2, wallBounds.top - playerBounds.height/2);
-    }
-        //top
-    else if (playerBounds.top > wallBounds.top
-             && playerBounds.top + playerBounds.height > wallBounds.top + wallBounds.height
-             && playerBounds.left < wallBounds.left + wallBounds.width
-             && playerBounds.left + playerBounds.width > wallBounds.left) {
-        velocity.y = 0.f;
-        sprite.setPosition(playerBounds.left+playerBounds.width/2, wallBounds.top + wallBounds.height/2);
-    }
-    //right
-    if (playerBounds.left < wallBounds.left
-    && playerBounds.left + playerBounds.width < wallBounds.left + wallBounds.width
-    && playerBounds.top < wallBounds.top + wallBounds.height
-    && playerBounds.top + playerBounds.height > wallBounds.top)
-    {
-        velocity.x=0.f;
-        sprite.setPosition(wallBounds.left-playerBounds.width/2,playerBounds.top+playerBounds.height/2);
-    }
-
-    //left
-    else if (playerBounds.left > wallBounds.left
-             && playerBounds.left + playerBounds.width > wallBounds.left + wallBounds.width
-             && playerBounds.top > wallBounds.top + wallBounds.top + wallBounds.height
-             && playerBounds.top + playerBounds.height > wallBounds.top)
-    {
-        velocity.x=0.f;
-        sprite.setPosition(wallBounds.left + wallBounds.width +playerBounds.width/2,playerBounds.top+playerBounds.height/2);
-    }
-
-}
+void MovementComponent::stopVelocityY() { velocity.y = 0; }

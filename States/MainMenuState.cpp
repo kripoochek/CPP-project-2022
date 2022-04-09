@@ -92,15 +92,15 @@ void MainMenuState::initButtons() {
     const sf::Color textActiveColor(20, 20, 20, 50);
 
     const uint btnWidth = 150, btnHeight = 50;
-    const uint initialX = this->window->getSize().x / 4, initialY = this->window->getSize().y / 3;
+    const uint initialX = this->window->getSize().x / 3, initialY = this->window->getSize().y / 3;
     const uint btnPadding = btnHeight + 25;
 
-    buttons["GAME_STATE"] = std::make_shared<Button>(initialX, initialY, btnWidth, btnHeight,
+    buttons["GAME_STATE"] = std::make_shared<Button>(initialX, initialY, 2 * btnWidth, btnHeight,
                                                      font, "New Game", 50,
                                                      textIdleColor, textHoverColor, textActiveColor,
                                                      idleColor, hoverColor, activeColor);
 
-    buttons["SETTINGS"] = std::make_shared<Button>(initialX, initialY + btnPadding, btnWidth, btnHeight,
+    buttons["SETTINGS"] = std::make_shared<Button>(initialX, initialY + btnPadding, 2 * btnWidth, btnHeight,
                                                    font, "Settings", 50,
                                                    textIdleColor, textHoverColor, textActiveColor,
                                                    idleColor, hoverColor, activeColor);

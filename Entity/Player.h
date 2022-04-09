@@ -8,9 +8,6 @@
 struct Player : Entity {
     Player(float x, float y, int maxBulletCount, int id, sf::Texture &texture);
 
-    void handleHitTank(std::shared_ptr<Player> other);
-    void handleHitWall(std::shared_ptr<Wall> other);
-
     void attack(std::deque<std::pair<int, std::shared_ptr<Bullet>>> &bullets, sf::Texture &texture, float dt);
     void addBullet();
 protected:

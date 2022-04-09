@@ -18,16 +18,26 @@ struct HitboxComponent {
     HitboxComponent(sf::Sprite& sprite, float offsetX, float offsetY, float width, float height);
 
     //Functions
-    bool checkIntersect(const sf::FloatRect &frect);
+    bool intersects(const sf::FloatRect &frect);
 
     //Getters
+    const sf::Vector2f& getPosition() const;
+    sf::FloatRect getNextPosition(const sf::Vector2f& velocity);
     sf::FloatRect getGlobalBounds() const;
+
+    //Setters
+    void setPosition(const sf::Vector2f& position);
+    void setPosition(float x, float y);
+    void setOrigin(float x, float y);
+
     bool intersect(std::shared_ptr<HitboxComponent> other);
+
     void update();
     void render(sf::RenderTarget& target);
+
 private:
     sf::Sprite &sprite;
-    sf::RectangleShape hitboxShape;
+    sf::RectangleShape hitbox;
     float offsetX, offsetY;
 };
 

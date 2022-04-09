@@ -6,12 +6,14 @@ Button::Button(float x, float y, float width, float height,
                sf::Color idleColor, sf::Color hoverColor, sf::Color activeColor) :
                font(font), idleColor(idleColor), hoverColor(hoverColor), activeColor(activeColor),
                textIdleColor(textIdleColor), textHoverColor(textHoverColor), textActiveColor(textActiveColor) {
+    shape.setOrigin(width / 2, height / 2);
     shape.setPosition(sf::Vector2f(x, y));
     shape.setSize(sf::Vector2f(width, height));
     this->shape.setFillColor(idleColor);
 
     buttonState = ButtonStates::IDLE;
 
+    this->text.setOrigin(width / 2, height / 2);
     this->text.setFont(font);
     this->text.setString(text);
     this->text.setFillColor(sf::Color::White);

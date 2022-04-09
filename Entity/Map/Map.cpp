@@ -27,8 +27,8 @@ addAvailable(const std::pair<int, int>& current, std::vector<std::pair<std::pair
 }
 
 
-Map::Map(sf::Vector2f coordinates, const sf::Texture &texture_, const sf::Texture &verticalTexture,
-         const sf::Texture &horizontalTexture) {
+Map::Map(sf::Vector2f coordinates, sf::Texture &texture_, sf::Texture &verticalTexture,
+         sf::Texture &horizontalTexture) {
     for (int i = 0; i < rows; i++) {
         map.push_back(std::vector<std::shared_ptr<Box>>{
                 std::make_shared<Box>(coordinates, texture_)});
@@ -43,34 +43,33 @@ Map::Map(sf::Vector2f coordinates, const sf::Texture &texture_, const sf::Textur
     generateMap();
 }
 
-void Map::addWalls( const sf::Texture &verticalTexture,
-                   const sf::Texture &horizontalTexture) {
+void Map::addWalls(sf::Texture &verticalTexture, sf::Texture &horizontalTexture) {
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < columns; j++) {
             Edges edges=map[i][j]->getEdges();
             if (edges.upper== nullptr){
-                std::shared_ptr<Wall> upper=std::make_shared<Wall>(sf::Vector2f(map[i][j]->getCoordinates().x+50,map[i][j]->getCoordinates().y),horizontalTexture);
+                std::shared_ptr<Wall> upper = std::make_shared<Wall>(map[i][j]->getCoordinates().x+50, map[i][j]->getCoordinates().y, horizontalTexture);
                 map[i][j]->addEdge(upper,"upper");
                 if (i-1>=0){
                     map[i-1][j]->addEdge(upper,"lower");
                 }
             }
             if (edges.lower== nullptr){
-                std::shared_ptr<Wall> lower=std::make_shared<Wall>(sf::Vector2f(map[i][j]->getCoordinates().x+50,map[i][j]->getCoordinates().y+100),horizontalTexture);
+                std::shared_ptr<Wall> lower = std::make_shared<Wall>(map[i][j]->getCoordinates().x+50, map[i][j]->getCoordinates().y+100, horizontalTexture);
                 map[i][j]->addEdge(lower,"lower");
                 if (i+1 < rows){
                     map[i+1][j]->addEdge(lower,"upper");
                 }
             }
             if (edges.left== nullptr){
-                std::shared_ptr<Wall> left=std::make_shared<Wall>(sf::Vector2f(map[i][j]->getCoordinates().x,map[i][j]->getCoordinates().y+50),verticalTexture);
+                std::shared_ptr<Wall> left=std::make_shared<Wall>(map[i][j]->getCoordinates().x,map[i][j]->getCoordinates().y+50,verticalTexture);
                 map[i][j]->addEdge(left,"left");
                 if (j-1>=0){
                     map[i][j-1]->addEdge(left,"right");
                 }
             }
             if (edges.right== nullptr){
-                std::shared_ptr<Wall> right=std::make_shared<Wall>(sf::Vector2f(map[i][j]->getCoordinates().x+100,map[i][j]->getCoordinates().y+50),verticalTexture);
+                std::shared_ptr<Wall> right=std::make_shared<Wall>(map[i][j]->getCoordinates().x+100,map[i][j]->getCoordinates().y+50,verticalTexture);
                 map[i][j]->addEdge(right,"right");
                 if (j+1 < columns){
                     map[i][j+1]->addEdge(right,"left");
@@ -119,16 +118,16 @@ std::vector<std::shared_ptr<Wall>> Map::getActiveWalls() {
     std::set<std::shared_ptr<Wall>> activeWalls;
     for (int i=0; i < rows; i++){
         for (int j=0; j < columns; j++){
-            if (!map[i][j]->getEdges().upper->hidden){
+            if (!map[i][j]->getEdges().upper->isHidden()){
                 activeWalls.insert(map[i][j]->getEdges().upper);
             }
-            if (!map[i][j]->getEdges().lower->hidden){
+            if (!map[i][j]->getEdges().lower->isHidden()){
                 activeWalls.insert(map[i][j]->getEdges().lower);
             }
-            if (!map[i][j]->getEdges().left->hidden){
+            if (!map[i][j]->getEdges().left->isHidden()){
                 activeWalls.insert(map[i][j]->getEdges().left);
             }
-            if (!map[i][j]->getEdges().right->hidden){
+            if (!map[i][j]->getEdges().right->isHidden()){
                 activeWalls.insert(map[i][j]->getEdges().right);
             }
         }

@@ -6,7 +6,7 @@ Player::Player(float x, float y, int maxBulletCount, int id, sf::Texture &textur
     setTexture(texture);
     setPosition(x, y);
     sf::Vector2u size = texture.getSize();
-    sprite.setOrigin(size.x / 2,size.y / 2);
+    sprite.setOrigin(size.x / 2, size.y / 2);
     sprite.setScale(0.10f,0.10f);
     intervalNewAttack = std::chrono::duration<double>(0.20);
     initComponents();
@@ -20,15 +20,6 @@ void Player::initComponents() {
     createMovementComponent(200.f, 200.f, 0,200.f,  400.f);
 
     createHitboxComponent(sprite, 0, 0, sprite.getGlobalBounds().width, sprite.getGlobalBounds().height);
-}
-
-
-void Player::handleHitTank(std::shared_ptr<Player> other) {
-    movementComponent->stop();
-}
-
-void Player::handleHitWall(std::shared_ptr<Wall> other) {
-    movementComponent->snapBack(other);
 }
 
 void Player::attack(std::deque<std::pair<int, std::shared_ptr<Bullet>>> &bullets, sf::Texture &texture, float dt) {

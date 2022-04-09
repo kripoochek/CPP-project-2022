@@ -52,6 +52,8 @@ void GameState::update(float dt) {
     updateMousePositions();
     updateInput(dt);
 
+    collisionManager->update(dt);
+
     while(!bullets.empty() && bullets.front().second->isDeathTime()){
         players[bullets.front().first]->addBullet();
         bullets.pop_front();
@@ -65,11 +67,11 @@ void GameState::update(float dt) {
         player->update(dt);
     }
 
-    collisionManager->update();
+
 }
 
 void GameState::render(std::shared_ptr<sf::RenderTarget> target) {
-    if (!target){ target = window;}
+    if (!target){ target = window; }
 
     map->render(target);
 

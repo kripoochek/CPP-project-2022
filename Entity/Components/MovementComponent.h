@@ -6,7 +6,6 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <SFML/Network.hpp>
-#include "Wall.h"
 
 #include <cmath>
 #include <vector>
@@ -16,7 +15,6 @@
 #include <memory>
 #include <iostream>
 #include<fstream>
-
 #include <chrono>
 
 struct MovementComponent {
@@ -28,29 +26,29 @@ struct MovementComponent {
     //Functions
     void move(bool isForward, float dt);
     void rotate(bool clockwise, float dt);
+
     void update(float dt);
-    void stop();
-    void snapBack(std::shared_ptr<Wall> wall);
+
+    void stopVelocity();
+    void stopVelocityX();
+    void stopVelocityY();
 private:
     sf::Sprite &sprite;
 
     float maxVelocityMove;
     float maxVelocityRotate;
-
     float currentVelocityMove;
-
-    // solution, to start stop vehicle (tank)
-    std::chrono::time_point<std::chrono::system_clock, std::chrono::duration<double>> lastMoveCommandTime;
-    std::chrono::duration<double> intervalToStopMovement;
 
     sf::Vector2f velocity;
     float acceleration;
     float deceleration;
 
-    // assert if there's no movements actions last time;
-    bool isStopMove();
+    // solution, to start stop vehicle (tank)
+    std::chrono::time_point<std::chrono::system_clock, std::chrono::duration<double>> lastMoveCommandTime;
+    std::chrono::duration<double> intervalToStopMovement;
 
     // gracefully reduces velocity to zero;
+    bool isStopMove();
     void gracefullyReduceVelocity(float dt);
 };
 
