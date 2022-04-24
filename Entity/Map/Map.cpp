@@ -1,11 +1,10 @@
-
 #include "Map.h"
+
 bool checkerBorders(const std::pair<int,int>& p,const std::vector<std::vector<bool>> &used,int height, int witdh){
     return (p.first>=0 && p.first<height && p.second>=0 && p.second<witdh && !used[p.first][p.second]);
 }
 
-void
-addAvailable(const std::pair<int, int>& current, std::vector<std::pair<std::pair<int,int>,std::string>>& availableBoxes, int height, int witdh,std::vector<std::vector<bool>> &used) {
+void addAvailable(const std::pair<int, int>& current, std::vector<std::pair<std::pair<int,int>,std::string>>& availableBoxes, int height, int witdh,std::vector<std::vector<bool>> &used) {
     if (checkerBorders({current.first+1,current.second},used,height,witdh)){
         used[current.first+1][current.second]=true;
         availableBoxes.push_back({{current.first+1,current.second},"upper"});
@@ -27,8 +26,10 @@ addAvailable(const std::pair<int, int>& current, std::vector<std::pair<std::pair
 }
 
 
-Map::Map(sf::Vector2f coordinates, sf::Texture &texture_, sf::Texture &verticalTexture,
+Map::Map(std::shared_ptr<b2World> world, sf::Vector2f coordinates, sf::Texture &texture_, sf::Texture &verticalTexture,
          sf::Texture &horizontalTexture) {
+    this->world = world;
+
     for (int i = 0; i < rows; i++) {
         map.push_back(std::vector<std::shared_ptr<Box>>{
                 std::make_shared<Box>(coordinates, texture_)});
@@ -48,28 +49,28 @@ void Map::addWalls(sf::Texture &verticalTexture, sf::Texture &horizontalTexture)
         for (int j = 0; j < columns; j++) {
             Edges edges=map[i][j]->getEdges();
             if (edges.upper== nullptr){
-                std::shared_ptr<Wall> upper = std::make_shared<Wall>(map[i][j]->getCoordinates().x+50, map[i][j]->getCoordinates().y, horizontalTexture);
+                std::shared_ptr<Wall> upper = std::make_shared<Wall>(world, map[i][j]->getCoordinates().x+50, map[i][j]->getCoordinates().y, horizontalTexture);
                 map[i][j]->addEdge(upper,"upper");
                 if (i-1>=0){
                     map[i-1][j]->addEdge(upper,"lower");
                 }
             }
             if (edges.lower== nullptr){
-                std::shared_ptr<Wall> lower = std::make_shared<Wall>(map[i][j]->getCoordinates().x+50, map[i][j]->getCoordinates().y+100, horizontalTexture);
+                std::shared_ptr<Wall> lower = std::make_shared<Wall>(world, map[i][j]->getCoordinates().x+50, map[i][j]->getCoordinates().y+100, horizontalTexture);
                 map[i][j]->addEdge(lower,"lower");
                 if (i+1 < rows){
                     map[i+1][j]->addEdge(lower,"upper");
                 }
             }
             if (edges.left== nullptr){
-                std::shared_ptr<Wall> left=std::make_shared<Wall>(map[i][j]->getCoordinates().x,map[i][j]->getCoordinates().y+50,verticalTexture);
+                std::shared_ptr<Wall> left=std::make_shared<Wall>(world, map[i][j]->getCoordinates().x,map[i][j]->getCoordinates().y+50,verticalTexture);
                 map[i][j]->addEdge(left,"left");
                 if (j-1>=0){
                     map[i][j-1]->addEdge(left,"right");
                 }
             }
             if (edges.right== nullptr){
-                std::shared_ptr<Wall> right=std::make_shared<Wall>(map[i][j]->getCoordinates().x+100,map[i][j]->getCoordinates().y+50,verticalTexture);
+                std::shared_ptr<Wall> right=std::make_shared<Wall>(world, map[i][j]->getCoordinates().x+100,map[i][j]->getCoordinates().y+50,verticalTexture);
                 map[i][j]->addEdge(right,"right");
                 if (j+1 < columns){
                     map[i][j+1]->addEdge(right,"left");

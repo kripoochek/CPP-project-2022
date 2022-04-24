@@ -2,10 +2,10 @@
 
 #include <cmath>
 
-MovementComponent::MovementComponent(sf::Sprite &sprite, float maxVelocityMove, float maxVelocityRotate,
+MovementComponent::MovementComponent(sf::Sprite &sprite, b2Body* body, float maxVelocityMove, float maxVelocityRotate,
                                      float currentVelocityMove,
                                      float acceleration, float deceleration) :
-        sprite(sprite), maxVelocityMove(maxVelocityMove), maxVelocityRotate(maxVelocityRotate),
+        sprite(sprite), body(body), maxVelocityMove(maxVelocityMove), maxVelocityRotate(maxVelocityRotate),
         acceleration(acceleration), deceleration(deceleration),
         currentVelocityMove(currentVelocityMove), intervalToStopMovement(std::chrono::duration<double>(0.01)) {
 }

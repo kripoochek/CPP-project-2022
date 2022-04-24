@@ -6,6 +6,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <SFML/Network.hpp>
+#include <Box2D/Box2D.h>
 
 #include <cmath>
 #include <vector>
@@ -18,10 +19,9 @@
 #include <chrono>
 
 struct MovementComponent {
-    MovementComponent(sf::Sprite& sprite, float maxVelocityMove, float currentVelocityMove, float maxVelocityRotate, float acceleration, float deceleration);
+    MovementComponent(sf::Sprite& sprite, b2Body* body, float maxVelocityMove, float currentVelocityMove, float maxVelocityRotate, float acceleration, float deceleration);
 
     [[nodiscard]] sf::Vector2f getVelocity() const;
-
 
     //Functions
     void move(bool isForward, float dt);
@@ -33,7 +33,11 @@ struct MovementComponent {
     void stopVelocityX();
     void stopVelocityY();
 private:
+    const float SCALE = 30.f;
+    const float DEG = 57.29577f;
+
     sf::Sprite &sprite;
+    b2Body* body;
 
     float maxVelocityMove;
     float maxVelocityRotate;

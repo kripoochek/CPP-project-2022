@@ -1,7 +1,5 @@
 #include "Entity.h"
 
-Entity::Entity() { initVariables(); }
-
 void Entity::setTexture(sf::Texture &texture) { sprite.setTexture(texture); }
 
 void Entity::setPosition(float x, float y) { sprite.setPosition(x, y); }
@@ -34,7 +32,7 @@ void Entity::initVariables() {
 }
 
 void Entity::createMovementComponent(float maxVelocityMove, float maxVelocityRotate, float currentVelocityMove, float acceleration, float deceleration) {
-    movementComponent = std::make_shared<MovementComponent>(sprite, maxVelocityMove, maxVelocityRotate, currentVelocityMove, acceleration, deceleration);
+    movementComponent = std::make_shared<MovementComponent>(sprite, body, maxVelocityMove, maxVelocityRotate, currentVelocityMove, acceleration, deceleration);
 }
 
 void Entity::createHitboxComponent(sf::Sprite &sprite, float offsetX, float offsetY, float width, float height) {
@@ -55,7 +53,7 @@ const sf::Vector2f &Entity::getSpritePosition() const { return sprite.getPositio
 
 sf::FloatRect Entity::getNextPositionBounds(float dt) const {
     if (hitboxComponent && movementComponent){
-        return hitboxComponent->getNextPosition(movementComponent->getVelocity() * dt);
+        return hitboxComponent->getNextPosition(dt * movementComponent->getVelocity());
     }
     return sf::FloatRect(-1, -1, -1, -1);
 }
@@ -72,8 +70,3 @@ void Entity::setOrigin(float x, float y) {
     if (hitboxComponent){ hitboxComponent->setOrigin(x, y);}
     sprite.setOrigin(x, y);
 }
-
-
-
-
-

@@ -1,13 +1,15 @@
 #ifndef MY_TANKS_IN_LABIRINT_ENTITY_H
 #define MY_TANKS_IN_LABIRINT_ENTITY_H
 
+#include <Box2D/Box2D.h>
+
 #include "MovementComponent.h"
 #include "HitboxComponent.h"
 
+
 struct Entity {
     //Constructors/Destructors
-    Entity();
-
+    Entity() = default;
     //Component functions
     virtual void setTexture(sf::Texture &texture);
     virtual void createMovementComponent(float maxVelocityMove, float maxVelocityRotate, float currentVelocityMove, float acceleration, float deceleration);
@@ -36,7 +38,17 @@ struct Entity {
 protected:
     std::shared_ptr<MovementComponent> movementComponent;
     std::shared_ptr<HitboxComponent> hitboxComponent;
+
     sf::Sprite sprite;
+
+    b2Body* body;
+    std::shared_ptr<b2World> world;
+    std::shared_ptr<b2BodyDef> bodyDef;
+    std::shared_ptr<b2PolygonShape> shape;
+    std::shared_ptr<b2FixtureDef> fixtureDef;
+
+    const float SCALE = 30.f;
+    const float DEG = 57.29;
 private:
     void initVariables();
 };
