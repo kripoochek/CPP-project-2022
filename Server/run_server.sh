@@ -1,0 +1,1 @@
+g++ dest/addressbook.pb.cc server.cpp -std=c++17 -pthread -lprotobuf -lpthread -o server && ./server
