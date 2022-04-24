@@ -3,9 +3,11 @@ project(my_tanks_in_labirint)
 
 set(CMAKE_CXX_STANDARD 17)
 
-include_directories(Entity States Config Button Entity/Components Entity/Map/Map Entity/Map Bullet CollisionManager)
 find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)
-find_package(Box2D COMPONENTS Collision Common Dynamics Rope REQUIRED)
+find_package(Box2D COMPONENTS collision common dynamics rope REQUIRED)
+
+include_directories(Entity States Config Button Entity/Components Entity/Map Bullet CollisionManager)
+
 add_executable(my_tanks_in_labirint Bullet/Bullet.cpp main.cpp Game.cpp
         States/State.cpp States/State.h States/GameState.cpp 
         Entity/Entity.cpp Entity/Entity.h
@@ -17,4 +19,4 @@ add_executable(my_tanks_in_labirint Bullet/Bullet.cpp main.cpp Game.cpp
         CollisionManager/CollisionManager.cpp
         )
 
-target_link_libraries(my_tanks_in_labirint sfml-graphics sfml-audio)
+target_link_libraries(my_tanks_in_labirint sfml-graphics sfml-audio Box2D)

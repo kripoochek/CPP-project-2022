@@ -52,7 +52,6 @@ bool MovementComponent::isStopMove() {
     return (currentInterval > intervalToStopMovement);
 }
 
-
 void MovementComponent::gracefullyReduceVelocity(float dt) {
     if (currentVelocityMove > 0) {
         currentVelocityMove -= deceleration * dt;
