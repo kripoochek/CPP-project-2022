@@ -13,6 +13,7 @@
 #include "../States/GameState.h"
 #include <Box2D/Box2D.h>
 #include "../Serialization/GameStateSerializator.h"
+#include "../Serialization/proto/GameState.pb.h"
 
 std::string testProtobuf() {
     tutorial::Person person;
@@ -51,7 +52,14 @@ std::string time_in_HH_MM_SS_MMM()
 
 class GameServer : public olc::net::server_interface<GameMessage> {
     public:
-        GameServer(uint16_t nPort) : olc::net::server_interface<GameMessage>(nPort){};
+        std::shared_ptr<GameState> gameStatePtr;
+        GameServer(uint16_t nPort, std::shared_ptr<GameState> ptr) : olc::net::server_interface<GameMessage>(nPort), gameStatePtr(ptr){};
+        ~GameServer() {
+            olc::net::message<GameMessage> msg;
+            msg.header.id = GameMessage::SERVER_STOP;
+            MessageAllClients(msg);
+            Stop();
+        }
     protected:
         bool OnClientConnect(std::shared_ptr<olc::net::connection<GameMessage>> client) override
         {
@@ -80,9 +88,12 @@ class GameServer : public olc::net::server_interface<GameMessage> {
                 std::cout << client->GetID() << " pressed: " << key << ",time: " << time_in_HH_MM_SS_MMM() << "\n";
                 olc::net::message<GameMessage> msg;
                 msg.header.id = GameMessage::NEW_GAME_STATE;
-                std::string str = testProtobuf();
-                char char_array[1000];
-                strcpy(char_array, str.c_str());
+
+                GameStateSerializator gameStateSerializator(gameStatePtr);
+                serialized::GameState serializedGameState = gameStateSerializator.serialize();
+                std::string str;
+                char char_array[25000];
+                serializedGameState.SerializeToArray(&char_array, 25000);
                 msg << char_array;
                 MessageAllClients(msg);
             }
@@ -102,8 +113,12 @@ int main() {
         // }
     }).detach();
     auto gameState = std::make_shared<GameState>(game.window, game.supportedKeys, game.states);
-    GameStateSerializator gameStateSerializator(gameState);
-    gameStateSerializator.serialize();
+    GameServer server(60000, gameState);
+    server.Start();
+    game.window->close();
+    while (true) {
+        server.Update(-1, true);
+    }
     // game.run();
     return 0;
 }

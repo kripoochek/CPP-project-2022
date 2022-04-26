@@ -1,9 +1,14 @@
 #pragma once
 
 enum GameMessage {
+    // Test (remove later)
     Send,
-    CLIENT_ACCEPTED,
+
+    // Client sending
     ON_KEY_PRESSED,
 
-    NEW_GAME_STATE
+    // Server sending
+    NEW_GAME_STATE,
+    SERVER_STOP,
+    CLIENT_ACCEPTED
 };
