@@ -1,11 +1,14 @@
 #ifndef MY_TANKS_IN_LABIRINT_GAMESTATE_H
 #define MY_TANKS_IN_LABIRINT_GAMESTATE_H
+
+#include <Box2D/Box2D.h>
+#include <deque>
+
 #include "CollisionManager.h"
 #include "State.h"
 #include "Player.h"
 #include "Bullet.h"
 #include "Map.h"
-#include <deque>
 
 struct GameState : State {
     // Initialisation
@@ -27,9 +30,12 @@ private:
     std::vector<std::shared_ptr<Player>> players;
     std::shared_ptr<Map> map;
 
+    std::shared_ptr<b2World> world;
+
     void initKeybindings() final;
     void initTextures();
     void initPlayers();
+    void initWorld();
 };
 
 #endif //MY_TANKS_IN_LABIRINT_GAMESTATE_H

@@ -14,7 +14,7 @@ add_executable(my_tanks_in_labirint Bullet/Bullet.cpp main.cpp Game.cpp
         States/MainMenuState.cpp States/MainMenuState.h
         Button/Button.cpp Button/Button.h Entity/Player.cpp Entity/Player.h
         Entity/Components/MovementComponent.cpp Entity/Components/MovementComponent
-        Entity/Map/Wall.cpp Entity/Map/Box.cpp Entity/Map/Map.cpp Entity/Map/Utils.cpp
+        Entity/Map/Wall.cpp Entity/Map/Box.cpp Entity/Map/Map.cpp Utils.cpp
         States/GameTextures.h States/GameTextures.cpp Entity/Components/HitboxComponent.cpp Entity/Components/HitboxComponent.h
         CollisionManager/CollisionManager.cpp
         )

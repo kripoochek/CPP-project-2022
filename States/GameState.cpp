@@ -4,8 +4,10 @@ GameState::GameState(std::shared_ptr<sf::RenderWindow> window,
                      std::map<std::string, sf::Keyboard::Key> supportedKey,
                      std::shared_ptr<std::vector<std::shared_ptr<State>>> states) :
         State(std::move(window), std::move(supportedKey), std::move(states)){
-    initKeybindings();
+
+    initWorld();
     initTextures();
+    initKeybindings();
     initPlayers();
 }
 
@@ -49,6 +51,7 @@ void GameState::updateInput(float dt) {
 }
 
 void GameState::update(float dt) {
+    world->Step(1/60.f, 8, 3);
     updateMousePositions();
     updateInput(dt);
 
@@ -97,18 +100,22 @@ void GameState::initKeybindings() {
 }
 
 void GameState::initPlayers() {
-    map= std::make_shared<Map>(sf::Vector2f(200,50),
+    map = std::make_shared<Map>(world, sf::Vector2f(200,50),
                                textures->Box,
                                textures->VerticalBorder,
                                textures->HorizontalBorder);
-    players.push_back( std::make_shared<Player>(250, 100, 5, 0, textures->FirstPlayerIdle));
-    players.push_back( std::make_shared<Player>(50, 300, 5, 1, textures->SecondPlayerIdle));
+    players.push_back( std::make_shared<Player>(world, 100, 100, 5, 0, textures->FirstPlayerIdle));
+    players.push_back( std::make_shared<Player>(world, 100, 400, 5, 1, textures->SecondPlayerIdle));
     collisionManager = std::make_shared<CollisionManager>(map,players);
 }
 
 
 void GameState::initTextures() {
     textures = std::make_shared<GameTextures>();
+}
+
+void GameState::initWorld() {
+    world = std::make_shared<b2World>(b2Vec2(0, 0));
 }
 
 
