@@ -39,11 +39,11 @@ void Player::attack(
 void Player::addBullet() { bulletCount++; }
 
 void Player::initSFML(float x, float y, sf::Texture &texture) {
-    sf::Vector2u size = texture.getSize();
-    sprite.setScale(0.10f, 0.10f);
-    sprite.setOrigin(size.x / 2, size.y / 2);
     setTexture(texture);
     setPosition(x, y);
+    sf::Vector2u size = texture.getSize();
+    sprite.setOrigin(size.x / 2, size.y / 2);
+    sprite.setScale(0.10f, 0.10f);
 }
 
 void Player::initBox2D(std::shared_ptr<b2World> initWorld) {
@@ -57,7 +57,7 @@ void Player::initBox2D(std::shared_ptr<b2World> initWorld) {
 
     shape = std::make_shared<b2PolygonShape>();
     auto size = sprite.getGlobalBounds();
-    shape->SetAsBox(size.width / 2 / SCALE,  size.height / 2 / SCALE);
+    shape->SetAsBox(size.width / 2 / SCALE - b2_polygonRadius,  size.height / 2 / SCALE - b2_polygonRadius);
 
     fixtureDef = std::make_shared<b2FixtureDef>();
     fixtureDef->shape = shape.get();
