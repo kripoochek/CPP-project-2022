@@ -27,7 +27,7 @@ void Bullet::initSFML(float x, float y, float angle, sf::Texture &texture) {
 
     sf::Vector2u size = texture.getSize();
     sprite.setOrigin(size.x / 2,size.y / 2);
-    sprite.setScale(0.05f,0.05f);
+    sprite.setScale(0.01f,0.01f);
     sprite.setRotation(angle);
 }
 

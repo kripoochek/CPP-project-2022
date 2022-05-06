@@ -17,6 +17,10 @@ void Entity::rotate(bool clockwise, float dt) {
 void Entity::update(float dt) {
     if (movementComponent){ movementComponent->update(dt); }
     if (hitboxComponent){ hitboxComponent->update(); }
+    b2Vec2 pos=body->GetPosition();
+    float ang=body->GetAngle();
+    sprite.setPosition(pos.x*SCALE,pos.y*SCALE);
+    sprite.setRotation(ang*SCALE);
 }
 
 void Entity::render(sf::RenderTarget& target) {

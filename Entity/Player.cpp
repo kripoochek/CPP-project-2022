@@ -14,7 +14,7 @@ Player::Player(std::shared_ptr<b2World> world,
 }
 
 void Player::initComponents() {
-    createMovementComponent(200.f, 200.f, 0, 200.f, 400.f);
+    createMovementComponent(200.f, 5.f, 1.5f, 200.f, 400.f);
     createHitboxComponent(sprite, 0, 0, sprite.getGlobalBounds().width,
                           sprite.getGlobalBounds().height);
 }
@@ -31,8 +31,11 @@ void Player::attack(
     }
     lastAttackCommandTime = std::chrono::system_clock::now();
     bulletCount--;
+    sf::Vector2f bulletPos;
+    bulletPos.x=sprite.getPosition().x+std::cos(sprite.getRotation()*(3.1415f)/180)*(sprite.getGlobalBounds().width/2);
+    bulletPos.y=sprite.getPosition().y+std::sin(sprite.getRotation()*(3.1415f)/180)*(sprite.getGlobalBounds().height/2);
     bullets.emplace_back(id, std::make_shared<Bullet>(
-                                 world, sprite.getPosition().x, sprite.getPosition().y,
+                                 world, bulletPos.x,bulletPos.y,
                                  sprite.getRotation(), 2, texture));
 }
 
@@ -57,12 +60,13 @@ void Player::initBox2D(std::shared_ptr<b2World> initWorld) {
 
     shape = std::make_shared<b2PolygonShape>();
     auto size = sprite.getGlobalBounds();
-    shape->SetAsBox(size.width / 2 / SCALE - b2_polygonRadius,  size.height / 2 / SCALE - b2_polygonRadius);
-
+    shape->SetAsBox(size.width / (2 * SCALE),  size.height / (2 * SCALE));
     fixtureDef = std::make_shared<b2FixtureDef>();
     fixtureDef->shape = shape.get();
     fixtureDef->density = 1.0f;
     fixtureDef->friction = 0.3f;
     body->CreateFixture(fixtureDef.get());
+    char* type="player";
+    body->SetUserData(type);
 }
 

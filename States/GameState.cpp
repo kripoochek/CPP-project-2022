@@ -55,7 +55,7 @@ void GameState::update(float dt) {
     updateMousePositions();
     updateInput(dt);
 
-    collisionManager->update(dt);
+   //collisionManager->update(dt);
 
     while(!bullets.empty() && bullets.front().second->isDeathTime()){
         players[bullets.front().first]->addBullet();

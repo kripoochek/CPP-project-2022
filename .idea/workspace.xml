@@ -17,10 +17,13 @@
     <list default="true" id="186892db-bc70-4185-9f7f-bb83463b679b" name="Changes" comment="feat: smooth graceful move stop">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Bullet/Bullet.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Bullet/Bullet.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bullet/Bullet.h" beforeDir="false" afterPath="$PROJECT_DIR$/Bullet/Bullet.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Components/HitboxComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Components/HitboxComponent.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Components/MovementComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Components/MovementComponent.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Components/MovementComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Components/MovementComponent.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Entity.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Entity.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Map/Map.h" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Map/Map.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Player.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Player.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/States/GameState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/States/GameState.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/States/GameState.h" beforeDir="false" afterPath="$PROJECT_DIR$/States/GameState.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,6 +90,11 @@
     </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="my_tanks_in_labirint" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="my_tanks_in_labirint" TARGET_NAME="my_tanks_in_labirint" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="my_tanks_in_labirint" RUN_TARGET_NAME="my_tanks_in_labirint">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -139,6 +147,7 @@
       <workItem from="1650921424495" duration="10000" />
       <workItem from="1651665888996" duration="639000" />
       <workItem from="1651760759823" duration="352000" />
+      <workItem from="1651778662604" duration="9673000" />
     </task>
     <task id="LOCAL-00001" summary="fix: gitignore (no cmake-build-debug dir)">
       <created>1647742017953</created>
@@ -232,5 +241,21 @@
     <MESSAGE value="feat: better smooth movement (no stopping )" />
     <MESSAGE value="feat: smooth graceful move stop" />
     <option name="LAST_COMMIT_MESSAGE" value="feat: smooth graceful move stop" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Entity/Player.h</url>
+          <line>22</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Entity/Map/Map.h</url>
+          <line>13</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

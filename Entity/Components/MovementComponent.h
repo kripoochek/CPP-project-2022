@@ -38,7 +38,7 @@ private:
 
     sf::Sprite &sprite;
     b2Body* body;
-
+    float angle;
     float maxVelocityMove;
     float maxVelocityRotate;
     float currentVelocityMove;
