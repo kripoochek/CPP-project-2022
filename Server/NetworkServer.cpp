@@ -1,11 +1,11 @@
 #include "NetworkServer.h"
 #include "inc/olc_network.h"
 #include "inc/common.h"
-
 #include "GameState.h"
-#include "GameStateSerializator.h"
+#include <iostream>
 
-NetworkServer::NetworkServer(uint16_t nPort, std::shared_ptr<GameHostState> ptr) : olc::net::server_interface<GameMessage>(nPort), gameStatePtr(ptr) {};
+NetworkServer::NetworkServer(uint16_t nPort) : olc::net::server_interface<GameMessage>(nPort){
+};
 
 NetworkServer::~NetworkServer() {
     olc::net::message<GameMessage> msg;
@@ -20,10 +20,12 @@ bool NetworkServer::OnClientConnect(std::shared_ptr<olc::net::connection<GameMes
 
 void NetworkServer::OnClientValidated(std::shared_ptr<olc::net::connection<GameMessage>> client) {
         olc::net::message<GameMessage> msg;
-        msg.header.id = GameMessage::NEW_GAME_STATE;
+        msg.header.id = GameMessage::NEW_GAME_STATE;   
 
-        GameStateSerializator gameStateSerializator(gameStatePtr);
-        serialized::GameState serializedGameState = gameStateSerializator.serialize();
+        // GameStateSerializator gameStateSerializator;
+        // std::cout << getGameStatePtr()->players.size();
+        // gameStateSerializator.serializeMap(gameStatePtr->map);
+        // serialized::GameState serializedGameState = gameStateSerializator.serialize();
         std::string str;
         char char_array[25000];
         serializedGameState.SerializeToArray(&char_array, 25000);
@@ -39,12 +41,12 @@ void NetworkServer::OnMessage(std::shared_ptr<olc::net::connection<GameMessage>>
         olc::net::message<GameMessage> msg;
         msg.header.id = GameMessage::NEW_GAME_STATE;
 
-        GameStateSerializator gameStateSerializator(gameStatePtr);
-        serialized::GameState serializedGameState = gameStateSerializator.serialize();
-        std::string str;
-        char char_array[25000];
-        serializedGameState.SerializeToArray(&char_array, 25000);
-        msg << char_array;
-        MessageAllClients(msg);
+        // GameStateSerializator gameStateSerializator(gameStatePtr);
+        // serialized::GameState serializedGameState = gameStateSerializator.serialize();
+        // std::string str;
+        // char char_array[25000];
+        // serializedGameState.SerializeToArray(&char_array, 25000);
+        // msg << char_array;
+        // MessageAllClients(msg);
     }
 }

@@ -7,10 +7,7 @@
 
 #include <iostream>
 
-GameStateSerializator::GameStateSerializator(std::shared_ptr<GameState> gameState) : state(gameState){}
-
-
-void GameStateSerializator::serializePlayers() {
+void GameStateSerializator::serializePlayers(serialized::GameState& serializedState, std::shared_ptr<GameState> state) {
     for (int i = 0; i < state->players.size(); i++) {
         serialized::Player player;
         if (state->players[i] != nullptr) {
@@ -28,7 +25,7 @@ void GameStateSerializator::serializePlayers() {
     }
 }
 
-void GameStateSerializator::serializeMap() {
+void GameStateSerializator::serializeMap(serialized::GameState& serializedState, std::shared_ptr<GameState> state) {
     serialized::Map* serializedMap = serializedState.mutable_map();
     serializedMap->set_x(100);
     serializedMap->set_y(100);
@@ -65,10 +62,11 @@ void GameStateSerializator::serializeMap() {
     }
 }
 
-serialized::GameState GameStateSerializator::serialize() {
-    serializePlayers();
-    serializeMap();
-    return serializedState;
+serialized::GameState GameStateSerializator::serialize(std::shared_ptr<GameState> gameState) {
+    serialized::GameState serializedGameState;
+    serializePlayers(serializedGameState, gameState);
+    serializeMap(serializedGameState, gameState);
+    return serializedGameState;
 }
 
 void GameStateSerializator::deserializeMap(serialized::GameState &serializedState, std::shared_ptr<Map> gameMap, sf::Texture& verticalTexture, sf::Texture& horizontalTexture) {
