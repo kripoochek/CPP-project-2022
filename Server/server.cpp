@@ -1,6 +1,5 @@
 #include <iostream>
 #include "inc/olc_network.h"
-#include "dest/addressbook.pb.h"
 #include "inc/common.h"
 #include <memory>
 #include <functional>
@@ -14,16 +13,6 @@
 #include <Box2D/Box2D.h>
 #include "../Serialization/GameStateSerializator.h"
 #include "../Serialization/proto/GameState.pb.h"
-
-std::string testProtobuf() {
-    tutorial::Person person;
-    person.set_id(1);
-    person.set_email("aaa@mail.ru");
-    person.set_name("Guga");
-    std::string out;
-    person.SerializeToString(&out);
-    return out;
-}
 
 std::string time_in_HH_MM_SS_MMM()
 {
@@ -70,7 +59,14 @@ class GameServer : public olc::net::server_interface<GameMessage> {
             // Client passed validation check, so send them a message informing
             // them they can continue to communicate
             olc::net::message<GameMessage> msg;
-            msg.header.id = GameMessage::CLIENT_ACCEPTED;
+            msg.header.id = GameMessage::NEW_GAME_STATE;
+
+            GameStateSerializator gameStateSerializator(gameStatePtr);
+            serialized::GameState serializedGameState = gameStateSerializator.serialize();
+            std::string str;
+            char char_array[25000];
+            serializedGameState.SerializeToArray(&char_array, 25000);
+            msg << char_array;
             client->Send(msg);
         }
         void OnClientDisconnect(std::shared_ptr<olc::net::connection<GameMessage>> client) override
@@ -102,7 +98,7 @@ class GameServer : public olc::net::server_interface<GameMessage> {
 
 int main() {
     Game game;
-    std::thread([&]{
+    // std::thread([&]{
         // GameStateSerializator gameStateSerializator(game.states->back());
         // gameStateSerializator.getSerializedPlayer();
 
@@ -111,7 +107,7 @@ int main() {
         // while (true) {
         //     server.Update(-1, true);
         // }
-    }).detach();
+    // }).detach();
     auto gameState = std::make_shared<GameState>(game.window, game.supportedKeys, game.states);
     GameServer server(60000, gameState);
     server.Start();

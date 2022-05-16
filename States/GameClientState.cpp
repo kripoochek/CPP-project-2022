@@ -1,5 +1,13 @@
 #include "GameClientState.h"
 #include "NetworkClient.h"
+#include "../Serialization/GameStateSerializator.h"
+#include "../Serialization/proto/GameState.pb.h"
+#include "../Entity/Map/Box.h"
+
+
+#include <ctime>
+#include <chrono>
+#include <iomanip>
 
 GameClientState::GameClientState(std::shared_ptr<sf::RenderWindow> window,
                      std::map<std::string, sf::Keyboard::Key> supportedKey,
@@ -27,35 +35,83 @@ void GameClientState::initTextures() {
 }
 
 void GameClientState::initConnection() {
-    networkClient.connect("127.0.0.1", 60000));
+    networkClient.Connect("127.0.0.1", 60000);
 }
 
-void GameClientState::update() {
+// std::string time_in_HH_MM_SS_MMM()
+// {
+//     using namespace std::chrono;
+
+//     // get current time
+//     auto now = system_clock::now();
+
+//     // get number of milliseconds for the current second
+//     // (remainder after division into seconds)
+//     auto ms = duration_cast<milliseconds>(now.time_since_epoch()) % 1000;
+
+//     // convert to std::time_t in order to convert to std::tm (broken time)
+//     auto timer = system_clock::to_time_t(now);
+
+//     // convert to broken time
+//     std::tm bt = *std::localtime(&timer);
+
+//     std::ostringstream oss;
+
+//     oss << std::put_time(&bt, "%H:%M:%S"); // HH:MM:SS
+//     oss << '.' << std::setfill('0') << std::setw(3) << ms.count();
+
+//     return oss.str();
+// }
+
+void GameClientState::update(float dt) {
+    updateInput(dt);
     if (networkClient.IsConnected()) {
-        while (!client.Incoming().empty()) {
-            auto msg = client.Incoming().pop_front().msg;
+        while (!networkClient.Incoming().empty()) {
+            auto msg = networkClient.Incoming().pop_front().msg;
+            std::cout << msg.size();
             if (msg.header.id == GameMessage::NEW_GAME_STATE) {
-                // std::vector<std::vector<Box>> boxes;
-                // char str[25000];
-                // msg >> str;
-                // serialized::GameState gs;
-                // boxes.resize(gs.map().rowsnumber(), std::vector<Box>(gs.map().columnsnumber()));
-                // gs.ParseFromArray(str, 10000);
-                // std::cout << "New game state: " << gs.map().rowsnumber() << ", time: " << time_in_HH_MM_SS_MMM() << "\n";
-                // for (int i = 0; i < gs.map().rowsnumber(); i++) {
-                //     auto mapRow = gs.map().rows().at(i);
-                //     for (int j = 0; j < gs.map().columnsnumber(); j++) {
-                        // boxes[i][j] = Box()
-                        // std::cout << mapRow.boxes().at(j).x() << " ";
-                    // }
-                    // std::cout << '\n';
-                // }
+                char str[25000];
+                msg >> str;
+                serialized::GameState gs;
+                gs.ParseFromArray(str, 10000);
+                std::cout << "New game state: " << gs.map().rowsnumber() << "\n";
+
+                // TODO: update map only when new map, not on every message
+                map = std::make_shared<Map>(
+                                gs.map().rowsnumber(), 
+                                gs.map().columnsnumber(),
+                                sf::Vector2f(200,50),
+                               textures->Box,
+                               textures->VerticalBorder,
+                               textures->HorizontalBorder);
+                players.clear();
+
+                GameStateSerializator::deserializeMap(gs, map, textures->VerticalBorder, textures->HorizontalBorder);
+                GameStateSerializator::deserializePlayers(gs, players, textures);
             }
             if (msg.header.id == GameMessage::SERVER_STOP) {
-                client.Disconnect();
+                networkClient.Disconnect();
             }
         }
     } else {
         // TODO: Go to menu
+        quit = true;
+    }
+}
+
+void GameClientState::render(std::shared_ptr<sf::RenderTarget> target) {
+    if (!target){ target = window; }
+    if(map.get() != nullptr) {
+        map->render(target);
+    }
+
+    for (const std::shared_ptr<Player>&  player: players) {
+        player->render(*target);
+    }
+}
+
+void GameClientState::updateInput(float dt) {
+    if (sf::Keyboard::isKeyPressed(keybindings["CLOSE"])){
+        quit = true;
     }
 }

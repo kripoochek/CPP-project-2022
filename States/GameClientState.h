@@ -1,5 +1,5 @@
-#ifndef MY_TANKS_IN_LABIRINT_GAMESTATECLIENT_H
-#define MY_TANKS_IN_LABIRINT_GAMESTATECLIENT_H
+#ifndef MY_TANKS_IN_LABIRINT_GAMECLIENTSTATE_H
+#define MY_TANKS_IN_LABIRINT_GAMECLIENTSTATE_H
 #include "CollisionManager.h"
 #include "State.h"
 #include "Player.h"
@@ -25,10 +25,12 @@ struct GameClientState : State {
 public:
     // Texture assets
     std::shared_ptr<GameTextures> textures;
+    std::vector<std::shared_ptr<Player>> players;
+    std::shared_ptr<Map> map;
 
     void initKeybindings() final;
     void initTextures();
-    void initConnection() final;
+    void initConnection();
 };
 
 #endif //MY_TANKS_IN_LABIRINT_GAMESTATE_H
