@@ -7,31 +7,17 @@
 
 #include <ctime>
 #include <chrono>
+#include <thread>
 #include <iomanip>
 
 GameClientState::GameClientState(std::shared_ptr<sf::RenderWindow> window,
                      std::map<std::string, sf::Keyboard::Key> supportedKey,
                      std::shared_ptr<std::vector<std::shared_ptr<State>>> states) :
-        State(std::move(window), std::move(supportedKey), std::move(states)){
-    initKeybindings();
-    initTextures();
+        GameState(std::move(window), std::move(supportedKey), std::move(states)){
     initConnection();
-}
-
-void GameClientState::initKeybindings() {
-    std::ifstream file("../Config/gamestate_keybinds.ini");
-
-    if (file.is_open()){
-        std::string action;
-        std::string keyBinding;
-        while(file >> action >> keyBinding){
-            keybindings[action] = supportedKeys[keyBinding];
-        }
-    }
-}
-
-void GameClientState::initTextures() {
-    textures = std::make_shared<GameTextures>();
+    // because of GameState constructor
+    map = nullptr;
+    players.clear();
 }
 
 void GameClientState::initConnection() {
@@ -64,36 +50,28 @@ void GameClientState::update(float dt) {
                 GameStateSerializator::deserializeMap(gs, map, textures->VerticalBorder, textures->HorizontalBorder);
                 GameStateSerializator::deserializePlayers(gs, players, textures);
             }
+            if (msg.header.id == GameMessage::CLIENT_CONNECTED) {
+                int id;
+                msg >> id;
+                networkClient.setId(id);
+            }
             if (msg.header.id == GameMessage::SERVER_STOP) {
                 networkClient.Disconnect();
             }
         }
     } else {
-        // TODO: remove player
-
-        // quit = true;
-    }
-}
-
-void GameClientState::render(std::shared_ptr<sf::RenderTarget> target) {
-    if (!target){ target = window; }
-    if(map.get() != nullptr) {
-        map->render(target);
-    }
-
-    for (const std::shared_ptr<Player>&  player: players) {
-        player->render(*target);
+        networkClient.sendDisconnectMessage();
+        // Time for networkClient.Send to deliver message
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        quit = true;
     }
 }
 
 void GameClientState::updateInput(float dt) {
     if (sf::Keyboard::isKeyPressed(keybindings["CLOSE"]) && isWindowFocused){
-        // TODO: put it in NetworkClient and call in destructor
-        olc::net::message<GameMessage> newGameStateMsg;
-        newGameStateMsg.header.id = GameMessage::CLIENT_DISCONNECT;   
-        newGameStateMsg << 1;
-        networkClient.Send(newGameStateMsg);
-
-        // networkClient.Disconnect();
+        networkClient.sendDisconnectMessage();
+        // Time for networkClient.Send to deliver message
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        quit = true;
     }
 }

@@ -387,6 +387,7 @@ class Player PROTOBUF_FINAL :
     kXFieldNumber = 1,
     kYFieldNumber = 2,
     kIdFieldNumber = 3,
+    kRotationAngleFieldNumber = 4,
   };
   // required float x = 1;
   bool has_x() const;
@@ -427,6 +428,19 @@ class Player PROTOBUF_FINAL :
   void _internal_set_id(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
+  // required float rotationAngle = 4;
+  bool has_rotationangle() const;
+  private:
+  bool _internal_has_rotationangle() const;
+  public:
+  void clear_rotationangle();
+  float rotationangle() const;
+  void set_rotationangle(float value);
+  private:
+  float _internal_rotationangle() const;
+  void _internal_set_rotationangle(float value);
+  public:
+
   // @@protoc_insertion_point(class_scope:serialized.Player)
  private:
   class _Internal;
@@ -442,6 +456,7 @@ class Player PROTOBUF_FINAL :
   float x_;
   float y_;
   ::PROTOBUF_NAMESPACE_ID::int32 id_;
+  float rotationangle_;
   friend struct ::TableStruct_GameState_2eproto;
 };
 // -------------------------------------------------------------------
@@ -1642,6 +1657,34 @@ inline void Player::_internal_set_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
 inline void Player::set_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
   _internal_set_id(value);
   // @@protoc_insertion_point(field_set:serialized.Player.id)
+}
+
+// required float rotationAngle = 4;
+inline bool Player::_internal_has_rotationangle() const {
+  bool value = (_has_bits_[0] & 0x00000008u) != 0;
+  return value;
+}
+inline bool Player::has_rotationangle() const {
+  return _internal_has_rotationangle();
+}
+inline void Player::clear_rotationangle() {
+  rotationangle_ = 0;
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline float Player::_internal_rotationangle() const {
+  return rotationangle_;
+}
+inline float Player::rotationangle() const {
+  // @@protoc_insertion_point(field_get:serialized.Player.rotationAngle)
+  return _internal_rotationangle();
+}
+inline void Player::_internal_set_rotationangle(float value) {
+  _has_bits_[0] |= 0x00000008u;
+  rotationangle_ = value;
+}
+inline void Player::set_rotationangle(float value) {
+  _internal_set_rotationangle(value);
+  // @@protoc_insertion_point(field_set:serialized.Player.rotationAngle)
 }
 
 // -------------------------------------------------------------------

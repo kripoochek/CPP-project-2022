@@ -15,15 +15,30 @@ void GameStateSerializator::serializePlayers(serialized::GameState& serializedSt
             player.set_x(pos.x);
             player.set_y(pos.y);
             player.set_id(state->players[i]->getId());
+            player.set_rotationangle(state->players[i]->getRotation());
             serializedState.add_players()->CopyFrom(player);
         } else {
             player.set_x(0);
             player.set_y(0);
             player.set_id(-1);
+            player.set_rotationangle(0);
             serializedState.add_players()->CopyFrom(player);
         }
     }
 }
+
+void GameStateSerializator::deserializePlayers(serialized::GameState &serializedState, std::vector<std::shared_ptr<Player>> &gamePlayers, std::shared_ptr<GameTextures> gameTextures) {
+    for (int i = 0; i < serializedState.players_size(); i++) {
+        auto player = serializedState.players().at(i);
+        if (player.id() == -1) {
+            gamePlayers.push_back(nullptr);
+            continue;
+        }
+        auto gamePlayer = std::make_shared<Player>(player.x(), player.y(), 0, player.id(), gameTextures->getPlayerTextureById(player.id()));
+        gamePlayer->setRotation(player.rotationangle());
+        gamePlayers.push_back( gamePlayer );
+    }
+};
 
 void GameStateSerializator::serializeMap(serialized::GameState& serializedState, std::shared_ptr<GameState> state) {
     serialized::Map* serializedMap = serializedState.mutable_map();
@@ -108,16 +123,5 @@ void GameStateSerializator::deserializeMap(serialized::GameState &serializedStat
                 }
             }
         }
-    }
-};
-
-void GameStateSerializator::deserializePlayers(serialized::GameState &serializedState, std::vector<std::shared_ptr<Player>> &gamePlayers, std::shared_ptr<GameTextures> gameTextures) {
-    for (int i = 0; i < serializedState.players_size(); i++) {
-        auto player = serializedState.players().at(i);
-        if (player.id() == -1) {
-            gamePlayers.push_back(nullptr);
-            continue;
-        }
-        gamePlayers.push_back( std::make_shared<Player>(player.x(), player.y(), 0, player.id(), gameTextures->getPlayerTextureById(player.id())) );
     }
 };

@@ -174,9 +174,11 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_GameState_2eproto::offsets[] P
   PROTOBUF_FIELD_OFFSET(::serialized::Player, x_),
   PROTOBUF_FIELD_OFFSET(::serialized::Player, y_),
   PROTOBUF_FIELD_OFFSET(::serialized::Player, id_),
+  PROTOBUF_FIELD_OFFSET(::serialized::Player, rotationangle_),
   0,
   1,
   2,
+  3,
   PROTOBUF_FIELD_OFFSET(::serialized::Bullet, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::serialized::Bullet, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -240,12 +242,12 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_GameState_2eproto::offsets[] P
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 7, sizeof(::serialized::GameState)},
-  { 9, 17, sizeof(::serialized::Player)},
-  { 20, 28, sizeof(::serialized::Bullet)},
-  { 31, 41, sizeof(::serialized::Map)},
-  { 46, -1, sizeof(::serialized::MapBoxesRow)},
-  { 52, 63, sizeof(::serialized::MapBox)},
-  { 69, 77, sizeof(::serialized::MapBoxWall)},
+  { 9, 18, sizeof(::serialized::Player)},
+  { 22, 30, sizeof(::serialized::Bullet)},
+  { 33, 43, sizeof(::serialized::Map)},
+  { 48, -1, sizeof(::serialized::MapBoxesRow)},
+  { 54, 65, sizeof(::serialized::MapBox)},
+  { 71, 79, sizeof(::serialized::MapBoxWall)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -261,20 +263,20 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 const char descriptor_table_protodef_GameState_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\017GameState.proto\022\nserialized\"N\n\tGameSta"
   "te\022#\n\007players\030\001 \003(\0132\022.serialized.Player\022"
-  "\034\n\003map\030\002 \002(\0132\017.serialized.Map\"*\n\006Player\022"
-  "\t\n\001x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\022\n\n\002id\030\003 \002(\005\"*\n\006Bul"
-  "let\022\t\n\001x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\022\n\n\002id\030\003 \002(\005\"m\n"
-  "\003Map\022\t\n\001x\030\001 \002(\005\022\t\n\001y\030\002 \002(\005\022\022\n\nrowsNumber"
-  "\030\003 \002(\005\022\025\n\rcolumnsNumber\030\004 \002(\005\022%\n\004rows\030\005 "
-  "\003(\0132\027.serialized.MapBoxesRow\"0\n\013MapBoxes"
-  "Row\022!\n\005boxes\030\001 \003(\0132\022.serialized.MapBox\"\311"
-  "\001\n\006MapBox\022\t\n\001x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\022(\n\010leftW"
-  "all\030\003 \002(\0132\026.serialized.MapBoxWall\022)\n\tupp"
-  "erWall\030\004 \002(\0132\026.serialized.MapBoxWall\022)\n\t"
-  "rightWall\030\005 \002(\0132\026.serialized.MapBoxWall\022"
-  ")\n\tlowerWall\030\006 \002(\0132\026.serialized.MapBoxWa"
-  "ll\"4\n\nMapBoxWall\022\t\n\001x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\022\020"
-  "\n\010isHidden\030\003 \002(\010"
+  "\034\n\003map\030\002 \002(\0132\017.serialized.Map\"A\n\006Player\022"
+  "\t\n\001x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\022\n\n\002id\030\003 \002(\005\022\025\n\rrot"
+  "ationAngle\030\004 \002(\002\"*\n\006Bullet\022\t\n\001x\030\001 \002(\002\022\t\n"
+  "\001y\030\002 \002(\002\022\n\n\002id\030\003 \002(\005\"m\n\003Map\022\t\n\001x\030\001 \002(\005\022\t"
+  "\n\001y\030\002 \002(\005\022\022\n\nrowsNumber\030\003 \002(\005\022\025\n\rcolumns"
+  "Number\030\004 \002(\005\022%\n\004rows\030\005 \003(\0132\027.serialized."
+  "MapBoxesRow\"0\n\013MapBoxesRow\022!\n\005boxes\030\001 \003("
+  "\0132\022.serialized.MapBox\"\311\001\n\006MapBox\022\t\n\001x\030\001 "
+  "\002(\002\022\t\n\001y\030\002 \002(\002\022(\n\010leftWall\030\003 \002(\0132\026.seria"
+  "lized.MapBoxWall\022)\n\tupperWall\030\004 \002(\0132\026.se"
+  "rialized.MapBoxWall\022)\n\trightWall\030\005 \002(\0132\026"
+  ".serialized.MapBoxWall\022)\n\tlowerWall\030\006 \002("
+  "\0132\026.serialized.MapBoxWall\"4\n\nMapBoxWall\022"
+  "\t\n\001x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\022\020\n\010isHidden\030\003 \002(\010"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_GameState_2eproto_deps[1] = {
 };
@@ -289,7 +291,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_Gam
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_GameState_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_GameState_2eproto = {
-  false, false, descriptor_table_protodef_GameState_2eproto, "GameState.proto", 616,
+  false, false, descriptor_table_protodef_GameState_2eproto, "GameState.proto", 639,
   &descriptor_table_GameState_2eproto_once, descriptor_table_GameState_2eproto_sccs, descriptor_table_GameState_2eproto_deps, 7, 0,
   schemas, file_default_instances, TableStruct_GameState_2eproto::offsets,
   file_level_metadata_GameState_2eproto, 7, file_level_enum_descriptors_GameState_2eproto, file_level_service_descriptors_GameState_2eproto,
@@ -580,8 +582,11 @@ class Player::_Internal {
   static void set_has_id(HasBits* has_bits) {
     (*has_bits)[0] |= 4u;
   }
+  static void set_has_rotationangle(HasBits* has_bits) {
+    (*has_bits)[0] |= 8u;
+  }
   static bool MissingRequiredFields(const HasBits& has_bits) {
-    return ((has_bits[0] & 0x00000007) ^ 0x00000007) != 0;
+    return ((has_bits[0] & 0x0000000f) ^ 0x0000000f) != 0;
   }
 };
 
@@ -596,15 +601,15 @@ Player::Player(const Player& from)
       _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::memcpy(&x_, &from.x_,
-    static_cast<size_t>(reinterpret_cast<char*>(&id_) -
-    reinterpret_cast<char*>(&x_)) + sizeof(id_));
+    static_cast<size_t>(reinterpret_cast<char*>(&rotationangle_) -
+    reinterpret_cast<char*>(&x_)) + sizeof(rotationangle_));
   // @@protoc_insertion_point(copy_constructor:serialized.Player)
 }
 
 void Player::SharedCtor() {
   ::memset(&x_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&id_) -
-      reinterpret_cast<char*>(&x_)) + sizeof(id_));
+      reinterpret_cast<char*>(&rotationangle_) -
+      reinterpret_cast<char*>(&x_)) + sizeof(rotationangle_));
 }
 
 Player::~Player() {
@@ -639,10 +644,10 @@ void Player::Clear() {
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000007u) {
+  if (cached_has_bits & 0x0000000fu) {
     ::memset(&x_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&id_) -
-        reinterpret_cast<char*>(&x_)) + sizeof(id_));
+        reinterpret_cast<char*>(&rotationangle_) -
+        reinterpret_cast<char*>(&x_)) + sizeof(rotationangle_));
   }
   _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
@@ -679,6 +684,14 @@ const char* Player::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::int
           _Internal::set_has_id(&has_bits);
           id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // required float rotationAngle = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 37)) {
+          _Internal::set_has_rotationangle(&has_bits);
+          rotationangle_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
         } else goto handle_unusual;
         continue;
       default: {
@@ -729,6 +742,12 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_id(), target);
   }
 
+  // required float rotationAngle = 4;
+  if (cached_has_bits & 0x00000008u) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(4, this->_internal_rotationangle(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -758,13 +777,18 @@ size_t Player::RequiredFieldsByteSizeFallback() const {
         this->_internal_id());
   }
 
+  if (_internal_has_rotationangle()) {
+    // required float rotationAngle = 4;
+    total_size += 1 + 4;
+  }
+
   return total_size;
 }
 size_t Player::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:serialized.Player)
   size_t total_size = 0;
 
-  if (((_has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
+  if (((_has_bits_[0] & 0x0000000f) ^ 0x0000000f) == 0) {  // All required fields are present.
     // required float x = 1;
     total_size += 1 + 4;
 
@@ -775,6 +799,9 @@ size_t Player::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
         this->_internal_id());
+
+    // required float rotationAngle = 4;
+    total_size += 1 + 4;
 
   } else {
     total_size += RequiredFieldsByteSizeFallback();
@@ -815,7 +842,7 @@ void Player::MergeFrom(const Player& from) {
   (void) cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x00000007u) {
+  if (cached_has_bits & 0x0000000fu) {
     if (cached_has_bits & 0x00000001u) {
       x_ = from.x_;
     }
@@ -824,6 +851,9 @@ void Player::MergeFrom(const Player& from) {
     }
     if (cached_has_bits & 0x00000004u) {
       id_ = from.id_;
+    }
+    if (cached_has_bits & 0x00000008u) {
+      rotationangle_ = from.rotationangle_;
     }
     _has_bits_[0] |= cached_has_bits;
   }
@@ -853,8 +883,8 @@ void Player::InternalSwap(Player* other) {
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Player, id_)
-      + sizeof(Player::id_)
+      PROTOBUF_FIELD_OFFSET(Player, rotationangle_)
+      + sizeof(Player::rotationangle_)
       - PROTOBUF_FIELD_OFFSET(Player, x_)>(
           reinterpret_cast<char*>(&x_),
           reinterpret_cast<char*>(&other->x_));

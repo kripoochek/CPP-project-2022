@@ -9,6 +9,8 @@
 #include "../Serialization/proto/GameState.pb.h"
 
 const int NEW_STATE_MESSAGE_SIZE = 25000;
+const int MAX_PLAYERS_NUMBER = 2;
+const int MIN_PLAYERS_NUMBER = 1;
 
 class NetworkServer : public olc::net::server_interface<GameMessage> {
     public:
@@ -18,12 +20,13 @@ class NetworkServer : public olc::net::server_interface<GameMessage> {
 
         std::function<std::pair<int, serialized::GameState>()> addPlayerFunc;
         std::function<serialized::GameState(int)> deletePlayerFunc;
+        std::function<int()> getPlayersNumberFunc;
         bool OnClientConnect(std::shared_ptr<olc::net::connection<GameMessage>> client);
-        void OnClientDisconnect(std::shared_ptr<olc::net::connection<GameMessage>> client);
         void OnClientValidated(std::shared_ptr<olc::net::connection<GameMessage>> client);
         void OnMessage(std::shared_ptr<olc::net::connection<GameMessage>> client, olc::net::message<GameMessage>& msg);
+        void sendAllClientsNewGameState(serialized::GameState serializedState);
         bool isGameStarted = false;
-        std::map<int, int> ids; // key: client id, value: player id   
+        void startGame();
 };
 
 #endif
