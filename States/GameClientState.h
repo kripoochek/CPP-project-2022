@@ -14,7 +14,6 @@ struct GameClientState : State {
                        std::map<std::string, sf::Keyboard::Key> supportedKey,
                        std::shared_ptr<std::vector<std::shared_ptr<State>>> states);
     NetworkClient networkClient;
-    
 
     // Updates
     void updateInput(float dt) final;

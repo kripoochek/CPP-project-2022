@@ -6,6 +6,7 @@ enum GameMessage {
 
     // Client sending
     ON_KEY_PRESSED,
+    CLIENT_DISCONNECT,
 
     // Server sending
     NEW_GAME_STATE,

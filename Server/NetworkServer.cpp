@@ -18,19 +18,28 @@ bool NetworkServer::OnClientConnect(std::shared_ptr<olc::net::connection<GameMes
     return true;
 }
 
-void NetworkServer::OnClientValidated(std::shared_ptr<olc::net::connection<GameMessage>> client) {
-        olc::net::message<GameMessage> msg;
-        msg.header.id = GameMessage::NEW_GAME_STATE;   
+void NetworkServer::OnClientDisconnect(std::shared_ptr<olc::net::connection<GameMessage>> client) {
+    olc::net::message<GameMessage> newGameStateMsg;
+    newGameStateMsg.header.id = GameMessage::NEW_GAME_STATE;   
+    std::cout << ids[client->GetID()] << " ";
+    serialized::GameState serializedGameState = deletePlayerFunc(ids[client->GetID()]);
+    char char_array[NEW_STATE_MESSAGE_SIZE];
+    serializedGameState.SerializeToArray(&char_array, NEW_STATE_MESSAGE_SIZE);
+    newGameStateMsg << char_array;
+    MessageAllClients(newGameStateMsg);
+}
 
-        // GameStateSerializator gameStateSerializator;
-        // std::cout << getGameStatePtr()->players.size();
-        // gameStateSerializator.serializeMap(gameStatePtr->map);
-        // serialized::GameState serializedGameState = gameStateSerializator.serialize();
-        std::string str;
-        char char_array[25000];
-        serializedGameState.SerializeToArray(&char_array, 25000);
-        msg << char_array;
-        client->Send(msg);
+void NetworkServer::OnClientValidated(std::shared_ptr<olc::net::connection<GameMessage>> client) {
+    std::pair<int, serialized::GameState> res = addPlayerFunc();
+    ids[client->GetID()] = res.first;
+
+    olc::net::message<GameMessage> newGameStateMsg;
+    newGameStateMsg.header.id = GameMessage::NEW_GAME_STATE;   
+    serialized::GameState serializedGameState = res.second;
+    char char_array[NEW_STATE_MESSAGE_SIZE];
+    serializedGameState.SerializeToArray(&char_array, NEW_STATE_MESSAGE_SIZE);
+    newGameStateMsg << char_array;
+    MessageAllClients(newGameStateMsg);
 }
 
 void NetworkServer::OnMessage(std::shared_ptr<olc::net::connection<GameMessage>> client, olc::net::message<GameMessage>& msg) {
@@ -48,5 +57,17 @@ void NetworkServer::OnMessage(std::shared_ptr<olc::net::connection<GameMessage>>
         // serializedGameState.SerializeToArray(&char_array, 25000);
         // msg << char_array;
         // MessageAllClients(msg);
+    }
+    if (msg.header.id == GameMessage::CLIENT_DISCONNECT) {
+        int id;
+        msg >> id;
+
+        olc::net::message<GameMessage> newGameStateMsg;
+        newGameStateMsg.header.id = GameMessage::NEW_GAME_STATE;   
+        serialized::GameState serializedGameState = deletePlayerFunc(id);
+        char char_array[NEW_STATE_MESSAGE_SIZE];
+        serializedGameState.SerializeToArray(&char_array, NEW_STATE_MESSAGE_SIZE);
+        newGameStateMsg << char_array;
+        MessageAllClients(newGameStateMsg);
     }
 }

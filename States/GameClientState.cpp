@@ -38,37 +38,12 @@ void GameClientState::initConnection() {
     networkClient.Connect("127.0.0.1", 60000);
 }
 
-// std::string time_in_HH_MM_SS_MMM()
-// {
-//     using namespace std::chrono;
-
-//     // get current time
-//     auto now = system_clock::now();
-
-//     // get number of milliseconds for the current second
-//     // (remainder after division into seconds)
-//     auto ms = duration_cast<milliseconds>(now.time_since_epoch()) % 1000;
-
-//     // convert to std::time_t in order to convert to std::tm (broken time)
-//     auto timer = system_clock::to_time_t(now);
-
-//     // convert to broken time
-//     std::tm bt = *std::localtime(&timer);
-
-//     std::ostringstream oss;
-
-//     oss << std::put_time(&bt, "%H:%M:%S"); // HH:MM:SS
-//     oss << '.' << std::setfill('0') << std::setw(3) << ms.count();
-
-//     return oss.str();
-// }
-
 void GameClientState::update(float dt) {
     updateInput(dt);
     if (networkClient.IsConnected()) {
         while (!networkClient.Incoming().empty()) {
             auto msg = networkClient.Incoming().pop_front().msg;
-            std::cout << msg.size();
+
             if (msg.header.id == GameMessage::NEW_GAME_STATE) {
                 char str[25000];
                 msg >> str;
@@ -94,8 +69,9 @@ void GameClientState::update(float dt) {
             }
         }
     } else {
-        // TODO: Go to menu
-        quit = true;
+        // TODO: remove player
+
+        // quit = true;
     }
 }
 
@@ -111,7 +87,13 @@ void GameClientState::render(std::shared_ptr<sf::RenderTarget> target) {
 }
 
 void GameClientState::updateInput(float dt) {
-    if (sf::Keyboard::isKeyPressed(keybindings["CLOSE"])){
-        quit = true;
+    if (sf::Keyboard::isKeyPressed(keybindings["CLOSE"]) && isWindowFocused){
+        // TODO: put it in NetworkClient and call in destructor
+        olc::net::message<GameMessage> newGameStateMsg;
+        newGameStateMsg.header.id = GameMessage::CLIENT_DISCONNECT;   
+        newGameStateMsg << 1;
+        networkClient.Send(newGameStateMsg);
+
+        // networkClient.Disconnect();
     }
 }
