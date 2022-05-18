@@ -1,4 +1,7 @@
 #include "MainMenuState.h"
+#include "GameClientState.h"
+#include "GameHostState.h"
+
 
 MainMenuState::MainMenuState(std::shared_ptr<sf::RenderWindow> window,
                      std::map<std::string, sf::Keyboard::Key> supportedKey,
@@ -26,6 +29,12 @@ void MainMenuState::updateButtons() {
 
     if (buttons["GAME_STATE"]->isPressed()){
         states->push_back(std::make_shared<GameState>(window, supportedKeys, states));
+    }
+    if (buttons["GAME_CLIENT_STATE"]->isPressed()){
+        states->push_back(std::make_shared<GameClientState>(window, supportedKeys, states));
+    }
+    if (buttons["GAME_HOST_STATE"]->isPressed()){
+        states->push_back(std::make_shared<GameHostState>(window, supportedKeys, states));
     }
     if (buttons["EXIT_STATE"]->isPressed()){
         quit = true;
@@ -100,12 +109,22 @@ void MainMenuState::initButtons() {
                                                      textIdleColor, textHoverColor, textActiveColor,
                                                      idleColor, hoverColor, activeColor);
 
-    buttons["SETTINGS"] = std::make_shared<Button>(initialX, initialY + btnPadding, 2 * btnWidth, btnHeight,
+    buttons["GAME_HOST_STATE"] = std::make_shared<Button>(initialX, initialY + btnPadding, 2 * btnWidth, btnHeight,
+                                                   font, "Host a Game", 50,
+                                                   textIdleColor, textHoverColor, textActiveColor,
+                                                   idleColor, hoverColor, activeColor);
+
+    buttons["GAME_CLIENT_STATE"] = std::make_shared<Button>(initialX, initialY + 2 * btnPadding, 2 * btnWidth, btnHeight,
+                                                   font, "Connect to a Game", 50,
+                                                   textIdleColor, textHoverColor, textActiveColor,
+                                                   idleColor, hoverColor, activeColor);
+
+    buttons["SETTINGS"] = std::make_shared<Button>(initialX, initialY + 3 * btnPadding, 2 * btnWidth, btnHeight,
                                                    font, "Settings", 50,
                                                    textIdleColor, textHoverColor, textActiveColor,
                                                    idleColor, hoverColor, activeColor);
 
-    buttons["EXIT_STATE"] = std::make_shared<Button>(initialX, initialY + 2 * btnPadding, btnWidth, btnHeight,
+    buttons["EXIT_STATE"] = std::make_shared<Button>(initialX, initialY + 4 * btnPadding, btnWidth, btnHeight,
                                                      font, "Quit", 50,
                                                      textIdleColor, textHoverColor, textActiveColor,
                                                      idleColor, hoverColor, activeColor);

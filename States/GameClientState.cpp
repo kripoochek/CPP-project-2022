@@ -37,10 +37,6 @@ void GameClientState::update(float dt) {
                 msg >> str >> bulletsNumber;
                 serialized::GameState gs;
                 gs.ParseFromArray(str, NEW_STATE_MESSAGE_SIZE);
-                for (auto i = 0; i < gs.bullets_size(); i++) {
-                    std::cout << "(" << gs.bullets().at(i).x() << ", " << gs.bullets().at(i).y() << "), ";
-                }
-                std::cout << '\n';
                 // TODO: update map only when new map, not on every message
                 map = std::make_shared<Map>(
                                 gs.map().rowsnumber(), 

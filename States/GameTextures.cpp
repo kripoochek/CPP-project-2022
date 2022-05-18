@@ -26,3 +26,10 @@ GameTextures::GameTextures() {
         throw std::exception();
     }
 }
+
+sf::Texture& GameTextures::getPlayerTextureById(int id) {
+    if (id == 0) {
+        return this->FirstPlayerIdle;
+    }
+    return this->SecondPlayerIdle;
+}

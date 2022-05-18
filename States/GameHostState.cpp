@@ -16,11 +16,10 @@ GameHostState::GameHostState(std::shared_ptr<sf::RenderWindow> window,
 };
 
 void GameHostState::updateInput(float dt) {
-    if (!isWindowFocused) { return; }
-    if (sf::Keyboard::isKeyPressed(keybindings["CLOSE"])){
+    if (sf::Keyboard::isKeyPressed(keybindings["CLOSE"]) && isWindowFocused){
         quit = true;
     }
-    if (sf::Keyboard::isKeyPressed(keybindings["START_GAME"])) {
+    if (sf::Keyboard::isKeyPressed(keybindings["START_GAME"]) && isWindowFocused) {
         networkServer->startGame();
     }
 
@@ -33,16 +32,14 @@ void GameHostState::updateInput(float dt) {
         keybindings["MOVE_RIGHT2"],
         keybindings["ATTACK2"]
     };
-    for (auto key : actionKeys) {
-        if (sf::Keyboard::isKeyPressed(key)) {
-            networkServer->pressedKeysQueue.push({ 0, key });
+    if (isWindowFocused) {
+        for (auto key : actionKeys) {
+            if (sf::Keyboard::isKeyPressed(key)) {
+                networkServer->pressedKeysQueue.push({ 0, key });
+            }
         }
     }
-}
 
-void GameHostState::update(float dt) {
-    GameState::update(dt);
-    networkServer->Update(-1, false);
     while (!networkServer->pressedKeysQueue.empty()) {
         auto& [id, key] = networkServer->pressedKeysQueue.back();
         networkServer->pressedKeysQueue.pop();
@@ -62,6 +59,25 @@ void GameHostState::update(float dt) {
             players[id]->move(false, dt);
         }
     }
+}
+
+void GameHostState::update(float dt) {
+    networkServer->Update(-1, false);
+    GameState::update(dt);
+    // updateInput(dt);
+
+    // while(!bullets.empty() && bullets.front().second->isDeathTime()){
+    //     players[bullets.front().first]->addBullet();
+    //     bullets.pop_front();
+    // }
+
+    // for (auto& [id, bullet]: bullets) {
+    //     bullet->update(dt);
+    // }
+
+    // for (auto& player: players) {
+    //     if (player != nullptr) { player->update(dt); }
+    // }
     networkServer->sendAllClientsNewGameState(GameStateSerializator::serialize(shared_from_this()));
 }
 

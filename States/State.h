@@ -23,6 +23,8 @@ struct State {
 
     //Render
     virtual void render(std::shared_ptr<sf::RenderTarget> target) = 0;
+
+    bool isWindowFocused;
 protected:
     std::shared_ptr<std::vector<std::shared_ptr<State>>> states;
     std::shared_ptr<sf::RenderWindow> window;

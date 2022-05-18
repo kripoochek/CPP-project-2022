@@ -22,7 +22,7 @@ struct Game {
     //Core
     void run();
 
-private:
+public:
     //Variables
     std::shared_ptr<sf::RenderWindow> window;
     sf::Event sfEvent{};

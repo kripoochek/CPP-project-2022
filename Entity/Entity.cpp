@@ -73,7 +73,10 @@ void Entity::setOrigin(float x, float y) {
     sprite.setOrigin(x, y);
 }
 
+float Entity::getRotation() {
+    return sprite.getRotation();
+}
 
-
-
-
+void Entity::setRotation(float newRotation) {
+    sprite.setRotation(newRotation);
+}

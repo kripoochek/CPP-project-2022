@@ -12,6 +12,10 @@ Player::Player(float x, float y, int maxBulletCount, int id, sf::Texture &textur
     initComponents();
 }
 
+int Player::getId() {
+    return id;
+}
+
 void Player::initVariables() {
 
 }

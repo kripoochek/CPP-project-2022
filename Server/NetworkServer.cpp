@@ -53,10 +53,6 @@ void NetworkServer::sendAllClientsNewGameState(serialized::GameState serializedS
     newGameStateMsg.header.id = GameMessage::NEW_GAME_STATE;   
     char char_array[NEW_STATE_MESSAGE_SIZE];
     serializedState.SerializeToArray(&char_array, NEW_STATE_MESSAGE_SIZE);
-    for (auto i = 0; i < serializedState.bullets().size(); i++) {
-        std::cout << "(" << serializedState.bullets().at(i).x() << ", " << serializedState.bullets().at(i).y() << "), ";
-    }
-    std::cout << '\n';
     newGameStateMsg << serializedState.bullets().size() << char_array;
     MessageAllClients(newGameStateMsg);
 }

@@ -17,12 +17,14 @@ struct Entity {
     virtual void setPosition(float x, float y);
     virtual void setPosition(sf::Vector2f& coordinates);
     virtual void setOrigin(float x, float y);
+    virtual void setRotation(float newRotation);
 
     //Getters
     virtual const sf::Vector2f& getPosition() const;
     virtual const sf::Vector2f& getSpritePosition() const;
     virtual sf::FloatRect getGlobalBounds() const;
     virtual sf::FloatRect getNextPositionBounds(float dt) const;
+    virtual float getRotation();
 
 
     virtual void rotate(bool clockwise, float dt);

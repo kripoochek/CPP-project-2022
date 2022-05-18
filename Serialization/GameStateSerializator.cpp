@@ -80,7 +80,7 @@ void GameStateSerializator::serializeMap(serialized::GameState& serializedState,
 serialized::GameState GameStateSerializator::serialize(std::shared_ptr<GameState> gameState) {
     serialized::GameState serializedGameState;
     serializePlayers(serializedGameState, gameState);
-    // serializeMap(serializedGameState, gameState);
+    serializeMap(serializedGameState, gameState);
     serializeBullets(serializedGameState, gameState);
     return serializedGameState;
 }

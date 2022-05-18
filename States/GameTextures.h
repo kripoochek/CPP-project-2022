@@ -1,6 +1,7 @@
 #ifndef MY_TANKS_IN_LABIRINT_GAMETEXTURES_H
 #define MY_TANKS_IN_LABIRINT_GAMETEXTURES_H
 
+#include <vector>
 #include "Entity.h"
 
 struct GameTextures {
@@ -24,6 +25,8 @@ public:
 
     // menu backgroundLayout.
     sf::Texture MenuBackground;
+
+    sf::Texture& getPlayerTextureById(int id);
 };
 
 #endif //MY_TANKS_IN_LABIRINT_GAMETEXTURES_H

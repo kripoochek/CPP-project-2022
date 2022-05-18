@@ -64,7 +64,7 @@ void GameState::update(float dt) {
     }
 
     for (auto& player: players) {
-        player->update(dt);
+        if (player != nullptr) { player->update(dt); }
     }
 
 
@@ -73,14 +73,14 @@ void GameState::update(float dt) {
 void GameState::render(std::shared_ptr<sf::RenderTarget> target) {
     if (!target){ target = window; }
 
-    map->render(target);
+    if(map != nullptr) { map->render(target); }
 
     for (auto& [id, bullet]: bullets){
         bullet->render(*target);
     }
 
     for (const std::shared_ptr<Player>&  player: players) {
-        player->render(*target);
+        if(player != nullptr) { player->render(*target); }
     }
 }
 
@@ -111,5 +111,9 @@ void GameState::initTextures() {
     textures = std::make_shared<GameTextures>();
 }
 
-
+void GameState::initFonts() {
+    if (!font.loadFromFile("../Fonts/SuperMario256.ttf")){
+        std::cout << "Font don't open!\n";
+    }
+}
 

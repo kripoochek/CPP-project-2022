@@ -14,12 +14,12 @@ struct GameState : State {
                        std::shared_ptr<std::vector<std::shared_ptr<State>>> states);
 
     // Updates
-    void updateInput(float dt) final;
-    void update(float dt) final;
+    void updateInput(float dt);
+    void update(float dt);
 
     // Rendering
-    void render(std::shared_ptr<sf::RenderTarget> target) final;
-private:
+    void render(std::shared_ptr<sf::RenderTarget> target);
+public:
     // Texture assets
     std::shared_ptr<GameTextures> textures;
     std::shared_ptr<CollisionManager> collisionManager;
@@ -30,6 +30,9 @@ private:
     void initKeybindings() final;
     void initTextures();
     void initPlayers();
+
+    sf::Font font;
+    void initFonts();
 };
 
 #endif //MY_TANKS_IN_LABIRINT_GAMESTATE_H
