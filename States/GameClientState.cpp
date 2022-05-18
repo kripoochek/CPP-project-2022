@@ -1,5 +1,6 @@
 #include "GameClientState.h"
 #include "NetworkClient.h"
+#include "NetworkServer.h"
 #include "../Serialization/GameStateSerializator.h"
 #include "../Serialization/proto/GameState.pb.h"
 #include "../Entity/Map/Box.h"
@@ -31,12 +32,15 @@ void GameClientState::update(float dt) {
             auto msg = networkClient.Incoming().pop_front().msg;
 
             if (msg.header.id == GameMessage::NEW_GAME_STATE) {
-                char str[25000];
-                msg >> str;
+                char str[NEW_STATE_MESSAGE_SIZE];
+                int bulletsNumber;
+                msg >> str >> bulletsNumber;
                 serialized::GameState gs;
-                gs.ParseFromArray(str, 10000);
-                std::cout << "New game state: " << gs.map().rowsnumber() << "\n";
-
+                gs.ParseFromArray(str, NEW_STATE_MESSAGE_SIZE);
+                for (auto i = 0; i < gs.bullets_size(); i++) {
+                    std::cout << "(" << gs.bullets().at(i).x() << ", " << gs.bullets().at(i).y() << "), ";
+                }
+                std::cout << '\n';
                 // TODO: update map only when new map, not on every message
                 map = std::make_shared<Map>(
                                 gs.map().rowsnumber(), 
@@ -46,9 +50,11 @@ void GameClientState::update(float dt) {
                                textures->VerticalBorder,
                                textures->HorizontalBorder);
                 players.clear();
+                bullets.clear();
 
                 GameStateSerializator::deserializeMap(gs, map, textures->VerticalBorder, textures->HorizontalBorder);
                 GameStateSerializator::deserializePlayers(gs, players, textures);
+                GameStateSerializator::deserializeBullets(gs, bullets, textures->Bullet, bulletsNumber);
             }
             if (msg.header.id == GameMessage::CLIENT_CONNECTED) {
                 int id;
@@ -68,10 +74,23 @@ void GameClientState::update(float dt) {
 }
 
 void GameClientState::updateInput(float dt) {
-    if (sf::Keyboard::isKeyPressed(keybindings["CLOSE"]) && isWindowFocused){
+    if (!isWindowFocused) { return; }
+    if (sf::Keyboard::isKeyPressed(keybindings["CLOSE"])){
         networkClient.sendDisconnectMessage();
         // Time for networkClient.Send to deliver message
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
         quit = true;
+    }
+    const std::vector<sf::Keyboard::Key> actionKeys{
+        keybindings["MOVE_UP2"], 
+        keybindings["MOVE_DOWN2"],
+        keybindings["MOVE_LEFT2"],
+        keybindings["MOVE_RIGHT2"],
+        keybindings["ATTACK2"]
+    };
+    for (auto key : actionKeys) {
+        if (sf::Keyboard::isKeyPressed(key)) {
+            networkClient.sendOnKeyPressedMessage(key);
+        }
     }
 }

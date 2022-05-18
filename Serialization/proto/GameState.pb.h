@@ -211,6 +211,7 @@ class GameState PROTOBUF_FINAL :
 
   enum : int {
     kPlayersFieldNumber = 1,
+    kBulletsFieldNumber = 3,
     kMapFieldNumber = 2,
   };
   // repeated .serialized.Player players = 1;
@@ -231,7 +232,25 @@ class GameState PROTOBUF_FINAL :
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::serialized::Player >&
       players() const;
 
-  // required .serialized.Map map = 2;
+  // repeated .serialized.Bullet bullets = 3;
+  int bullets_size() const;
+  private:
+  int _internal_bullets_size() const;
+  public:
+  void clear_bullets();
+  ::serialized::Bullet* mutable_bullets(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::serialized::Bullet >*
+      mutable_bullets();
+  private:
+  const ::serialized::Bullet& _internal_bullets(int index) const;
+  ::serialized::Bullet* _internal_add_bullets();
+  public:
+  const ::serialized::Bullet& bullets(int index) const;
+  ::serialized::Bullet* add_bullets();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::serialized::Bullet >&
+      bullets() const;
+
+  // optional .serialized.Map map = 2;
   bool has_map() const;
   private:
   bool _internal_has_map() const;
@@ -259,6 +278,7 @@ class GameState PROTOBUF_FINAL :
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::serialized::Player > players_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::serialized::Bullet > bullets_;
   ::serialized::Map* map_;
   friend struct ::TableStruct_GameState_2eproto;
 };
@@ -583,7 +603,7 @@ class Bullet PROTOBUF_FINAL :
   enum : int {
     kXFieldNumber = 1,
     kYFieldNumber = 2,
-    kIdFieldNumber = 3,
+    kRotationAngleFieldNumber = 3,
   };
   // required float x = 1;
   bool has_x() const;
@@ -611,17 +631,17 @@ class Bullet PROTOBUF_FINAL :
   void _internal_set_y(float value);
   public:
 
-  // required int32 id = 3;
-  bool has_id() const;
+  // required float rotationAngle = 3;
+  bool has_rotationangle() const;
   private:
-  bool _internal_has_id() const;
+  bool _internal_has_rotationangle() const;
   public:
-  void clear_id();
-  ::PROTOBUF_NAMESPACE_ID::int32 id() const;
-  void set_id(::PROTOBUF_NAMESPACE_ID::int32 value);
+  void clear_rotationangle();
+  float rotationangle() const;
+  void set_rotationangle(float value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_id() const;
-  void _internal_set_id(::PROTOBUF_NAMESPACE_ID::int32 value);
+  float _internal_rotationangle() const;
+  void _internal_set_rotationangle(float value);
   public:
 
   // @@protoc_insertion_point(class_scope:serialized.Bullet)
@@ -638,7 +658,7 @@ class Bullet PROTOBUF_FINAL :
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   float x_;
   float y_;
-  ::PROTOBUF_NAMESPACE_ID::int32 id_;
+  float rotationangle_;
   friend struct ::TableStruct_GameState_2eproto;
 };
 // -------------------------------------------------------------------
@@ -1490,7 +1510,7 @@ GameState::players() const {
   return players_;
 }
 
-// required .serialized.Map map = 2;
+// optional .serialized.Map map = 2;
 inline bool GameState::_internal_has_map() const {
   bool value = (_has_bits_[0] & 0x00000001u) != 0;
   PROTOBUF_ASSUME(!value || map_ != nullptr);
@@ -1569,6 +1589,45 @@ inline void GameState::set_allocated_map(::serialized::Map* map) {
   }
   map_ = map;
   // @@protoc_insertion_point(field_set_allocated:serialized.GameState.map)
+}
+
+// repeated .serialized.Bullet bullets = 3;
+inline int GameState::_internal_bullets_size() const {
+  return bullets_.size();
+}
+inline int GameState::bullets_size() const {
+  return _internal_bullets_size();
+}
+inline void GameState::clear_bullets() {
+  bullets_.Clear();
+}
+inline ::serialized::Bullet* GameState::mutable_bullets(int index) {
+  // @@protoc_insertion_point(field_mutable:serialized.GameState.bullets)
+  return bullets_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::serialized::Bullet >*
+GameState::mutable_bullets() {
+  // @@protoc_insertion_point(field_mutable_list:serialized.GameState.bullets)
+  return &bullets_;
+}
+inline const ::serialized::Bullet& GameState::_internal_bullets(int index) const {
+  return bullets_.Get(index);
+}
+inline const ::serialized::Bullet& GameState::bullets(int index) const {
+  // @@protoc_insertion_point(field_get:serialized.GameState.bullets)
+  return _internal_bullets(index);
+}
+inline ::serialized::Bullet* GameState::_internal_add_bullets() {
+  return bullets_.Add();
+}
+inline ::serialized::Bullet* GameState::add_bullets() {
+  // @@protoc_insertion_point(field_add:serialized.GameState.bullets)
+  return _internal_add_bullets();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::serialized::Bullet >&
+GameState::bullets() const {
+  // @@protoc_insertion_point(field_list:serialized.GameState.bullets)
+  return bullets_;
 }
 
 // -------------------------------------------------------------------
@@ -1747,32 +1806,32 @@ inline void Bullet::set_y(float value) {
   // @@protoc_insertion_point(field_set:serialized.Bullet.y)
 }
 
-// required int32 id = 3;
-inline bool Bullet::_internal_has_id() const {
+// required float rotationAngle = 3;
+inline bool Bullet::_internal_has_rotationangle() const {
   bool value = (_has_bits_[0] & 0x00000004u) != 0;
   return value;
 }
-inline bool Bullet::has_id() const {
-  return _internal_has_id();
+inline bool Bullet::has_rotationangle() const {
+  return _internal_has_rotationangle();
 }
-inline void Bullet::clear_id() {
-  id_ = 0;
+inline void Bullet::clear_rotationangle() {
+  rotationangle_ = 0;
   _has_bits_[0] &= ~0x00000004u;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 Bullet::_internal_id() const {
-  return id_;
+inline float Bullet::_internal_rotationangle() const {
+  return rotationangle_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 Bullet::id() const {
-  // @@protoc_insertion_point(field_get:serialized.Bullet.id)
-  return _internal_id();
+inline float Bullet::rotationangle() const {
+  // @@protoc_insertion_point(field_get:serialized.Bullet.rotationAngle)
+  return _internal_rotationangle();
 }
-inline void Bullet::_internal_set_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void Bullet::_internal_set_rotationangle(float value) {
   _has_bits_[0] |= 0x00000004u;
-  id_ = value;
+  rotationangle_ = value;
 }
-inline void Bullet::set_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _internal_set_id(value);
-  // @@protoc_insertion_point(field_set:serialized.Bullet.id)
+inline void Bullet::set_rotationangle(float value) {
+  _internal_set_rotationangle(value);
+  // @@protoc_insertion_point(field_set:serialized.Bullet.rotationAngle)
 }
 
 // -------------------------------------------------------------------

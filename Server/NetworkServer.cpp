@@ -15,7 +15,7 @@ NetworkServer::~NetworkServer() {
 }
 
 bool NetworkServer::OnClientConnect(std::shared_ptr<olc::net::connection<GameMessage>> client) {
-    return (getPlayersNumberFunc() < MAX_PLAYERS_NUMBER);
+    return (getPlayersNumberFunc() < MAX_PLAYERS_NUMBER) && (!isGameStarted);
 }
 
 void NetworkServer::OnClientValidated(std::shared_ptr<olc::net::connection<GameMessage>> client) {
@@ -31,19 +31,9 @@ void NetworkServer::OnClientValidated(std::shared_ptr<olc::net::connection<GameM
 
 void NetworkServer::OnMessage(std::shared_ptr<olc::net::connection<GameMessage>> client, olc::net::message<GameMessage>& msg) {
     if (msg.header.id == GameMessage::ON_KEY_PRESSED) {
-        char key;
-        msg >> key;
-        std::cout << client->GetID() << " pressed: " << key << "\n";
-        olc::net::message<GameMessage> msg;
-        msg.header.id = GameMessage::NEW_GAME_STATE;
-
-        // GameStateSerializator gameStateSerializator(gameStatePtr);
-        // serialized::GameState serializedGameState = gameStateSerializator.serialize();
-        // std::string str;
-        // char char_array[25000];
-        // serializedGameState.SerializeToArray(&char_array, 25000);
-        // msg << char_array;
-        // MessageAllClients(msg);
+        int id, key;
+        msg >> key >> id;
+        pressedKeysQueue.push({ id, key });
     }
     if (msg.header.id == GameMessage::CLIENT_DISCONNECTED) {
         int id;
@@ -63,6 +53,10 @@ void NetworkServer::sendAllClientsNewGameState(serialized::GameState serializedS
     newGameStateMsg.header.id = GameMessage::NEW_GAME_STATE;   
     char char_array[NEW_STATE_MESSAGE_SIZE];
     serializedState.SerializeToArray(&char_array, NEW_STATE_MESSAGE_SIZE);
-    newGameStateMsg << char_array;
+    for (auto i = 0; i < serializedState.bullets().size(); i++) {
+        std::cout << "(" << serializedState.bullets().at(i).x() << ", " << serializedState.bullets().at(i).y() << "), ";
+    }
+    std::cout << '\n';
+    newGameStateMsg << serializedState.bullets().size() << char_array;
     MessageAllClients(newGameStateMsg);
 }

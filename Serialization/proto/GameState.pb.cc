@@ -14,6 +14,7 @@
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
+extern PROTOBUF_INTERNAL_EXPORT_GameState_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Bullet_GameState_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_GameState_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_Map_GameState_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_GameState_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_MapBox_GameState_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_GameState_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_MapBoxWall_GameState_2eproto;
@@ -74,10 +75,11 @@ static void InitDefaultsscc_info_GameState_GameState_2eproto() {
   ::serialized::GameState::InitAsDefaultInstance();
 }
 
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_GameState_GameState_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_GameState_GameState_2eproto}, {
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<3> scc_info_GameState_GameState_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 3, 0, InitDefaultsscc_info_GameState_GameState_2eproto}, {
       &scc_info_Player_GameState_2eproto.base,
-      &scc_info_Map_GameState_2eproto.base,}};
+      &scc_info_Map_GameState_2eproto.base,
+      &scc_info_Bullet_GameState_2eproto.base,}};
 
 static void InitDefaultsscc_info_Map_GameState_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -164,8 +166,10 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_GameState_2eproto::offsets[] P
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::serialized::GameState, players_),
   PROTOBUF_FIELD_OFFSET(::serialized::GameState, map_),
+  PROTOBUF_FIELD_OFFSET(::serialized::GameState, bullets_),
   ~0u,
   0,
+  ~0u,
   PROTOBUF_FIELD_OFFSET(::serialized::Player, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::serialized::Player, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -186,7 +190,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_GameState_2eproto::offsets[] P
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::serialized::Bullet, x_),
   PROTOBUF_FIELD_OFFSET(::serialized::Bullet, y_),
-  PROTOBUF_FIELD_OFFSET(::serialized::Bullet, id_),
+  PROTOBUF_FIELD_OFFSET(::serialized::Bullet, rotationangle_),
   0,
   1,
   2,
@@ -241,13 +245,13 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_GameState_2eproto::offsets[] P
   2,
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 7, sizeof(::serialized::GameState)},
-  { 9, 18, sizeof(::serialized::Player)},
-  { 22, 30, sizeof(::serialized::Bullet)},
-  { 33, 43, sizeof(::serialized::Map)},
-  { 48, -1, sizeof(::serialized::MapBoxesRow)},
-  { 54, 65, sizeof(::serialized::MapBox)},
-  { 71, 79, sizeof(::serialized::MapBoxWall)},
+  { 0, 8, sizeof(::serialized::GameState)},
+  { 11, 20, sizeof(::serialized::Player)},
+  { 24, 32, sizeof(::serialized::Bullet)},
+  { 35, 45, sizeof(::serialized::Map)},
+  { 50, -1, sizeof(::serialized::MapBoxesRow)},
+  { 56, 67, sizeof(::serialized::MapBox)},
+  { 73, 81, sizeof(::serialized::MapBoxWall)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -261,22 +265,24 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_GameState_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\017GameState.proto\022\nserialized\"N\n\tGameSta"
+  "\n\017GameState.proto\022\nserialized\"s\n\tGameSta"
   "te\022#\n\007players\030\001 \003(\0132\022.serialized.Player\022"
-  "\034\n\003map\030\002 \002(\0132\017.serialized.Map\"A\n\006Player\022"
-  "\t\n\001x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\022\n\n\002id\030\003 \002(\005\022\025\n\rrot"
-  "ationAngle\030\004 \002(\002\"*\n\006Bullet\022\t\n\001x\030\001 \002(\002\022\t\n"
-  "\001y\030\002 \002(\002\022\n\n\002id\030\003 \002(\005\"m\n\003Map\022\t\n\001x\030\001 \002(\005\022\t"
-  "\n\001y\030\002 \002(\005\022\022\n\nrowsNumber\030\003 \002(\005\022\025\n\rcolumns"
-  "Number\030\004 \002(\005\022%\n\004rows\030\005 \003(\0132\027.serialized."
-  "MapBoxesRow\"0\n\013MapBoxesRow\022!\n\005boxes\030\001 \003("
-  "\0132\022.serialized.MapBox\"\311\001\n\006MapBox\022\t\n\001x\030\001 "
-  "\002(\002\022\t\n\001y\030\002 \002(\002\022(\n\010leftWall\030\003 \002(\0132\026.seria"
-  "lized.MapBoxWall\022)\n\tupperWall\030\004 \002(\0132\026.se"
-  "rialized.MapBoxWall\022)\n\trightWall\030\005 \002(\0132\026"
-  ".serialized.MapBoxWall\022)\n\tlowerWall\030\006 \002("
-  "\0132\026.serialized.MapBoxWall\"4\n\nMapBoxWall\022"
-  "\t\n\001x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\022\020\n\010isHidden\030\003 \002(\010"
+  "\034\n\003map\030\002 \001(\0132\017.serialized.Map\022#\n\007bullets"
+  "\030\003 \003(\0132\022.serialized.Bullet\"A\n\006Player\022\t\n\001"
+  "x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\022\n\n\002id\030\003 \002(\005\022\025\n\rrotati"
+  "onAngle\030\004 \002(\002\"5\n\006Bullet\022\t\n\001x\030\001 \002(\002\022\t\n\001y\030"
+  "\002 \002(\002\022\025\n\rrotationAngle\030\003 \002(\002\"m\n\003Map\022\t\n\001x"
+  "\030\001 \002(\005\022\t\n\001y\030\002 \002(\005\022\022\n\nrowsNumber\030\003 \002(\005\022\025\n"
+  "\rcolumnsNumber\030\004 \002(\005\022%\n\004rows\030\005 \003(\0132\027.ser"
+  "ialized.MapBoxesRow\"0\n\013MapBoxesRow\022!\n\005bo"
+  "xes\030\001 \003(\0132\022.serialized.MapBox\"\311\001\n\006MapBox"
+  "\022\t\n\001x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\022(\n\010leftWall\030\003 \002(\013"
+  "2\026.serialized.MapBoxWall\022)\n\tupperWall\030\004 "
+  "\002(\0132\026.serialized.MapBoxWall\022)\n\trightWall"
+  "\030\005 \002(\0132\026.serialized.MapBoxWall\022)\n\tlowerW"
+  "all\030\006 \002(\0132\026.serialized.MapBoxWall\"4\n\nMap"
+  "BoxWall\022\t\n\001x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\022\020\n\010isHidde"
+  "n\030\003 \002(\010"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_GameState_2eproto_deps[1] = {
 };
@@ -291,7 +297,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_Gam
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_GameState_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_GameState_2eproto = {
-  false, false, descriptor_table_protodef_GameState_2eproto, "GameState.proto", 639,
+  false, false, descriptor_table_protodef_GameState_2eproto, "GameState.proto", 687,
   &descriptor_table_GameState_2eproto_once, descriptor_table_GameState_2eproto_sccs, descriptor_table_GameState_2eproto_deps, 7, 0,
   schemas, file_default_instances, TableStruct_GameState_2eproto::offsets,
   file_level_metadata_GameState_2eproto, 7, file_level_enum_descriptors_GameState_2eproto, file_level_service_descriptors_GameState_2eproto,
@@ -314,9 +320,6 @@ class GameState::_Internal {
   static void set_has_map(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
-  static bool MissingRequiredFields(const HasBits& has_bits) {
-    return ((has_bits[0] & 0x00000001) ^ 0x00000001) != 0;
-  }
 };
 
 const ::serialized::Map&
@@ -325,7 +328,8 @@ GameState::_Internal::map(const GameState* msg) {
 }
 GameState::GameState(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena),
-  players_(arena) {
+  players_(arena),
+  bullets_(arena) {
   SharedCtor();
   RegisterArenaDtor(arena);
   // @@protoc_insertion_point(arena_constructor:serialized.GameState)
@@ -333,7 +337,8 @@ GameState::GameState(::PROTOBUF_NAMESPACE_ID::Arena* arena)
 GameState::GameState(const GameState& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _has_bits_(from._has_bits_),
-      players_(from.players_) {
+      players_(from.players_),
+      bullets_(from.bullets_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   if (from._internal_has_map()) {
     map_ = new ::serialized::Map(*from.map_);
@@ -381,6 +386,7 @@ void GameState::Clear() {
   (void) cached_has_bits;
 
   players_.Clear();
+  bullets_.Clear();
   cached_has_bits = _has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
     GOOGLE_DCHECK(map_ != nullptr);
@@ -411,11 +417,23 @@ const char* GameState::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
         } else goto handle_unusual;
         continue;
-      // required .serialized.Map map = 2;
+      // optional .serialized.Map map = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
           ptr = ctx->ParseMessage(_internal_mutable_map(), ptr);
           CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // repeated .serialized.Bullet bullets = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_bullets(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
         } else goto handle_unusual;
         continue;
       default: {
@@ -456,12 +474,20 @@ failure:
   }
 
   cached_has_bits = _has_bits_[0];
-  // required .serialized.Map map = 2;
+  // optional .serialized.Map map = 2;
   if (cached_has_bits & 0x00000001u) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(
         2, _Internal::map(this), target, stream);
+  }
+
+  // repeated .serialized.Bullet bullets = 3;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->_internal_bullets_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(3, this->_internal_bullets(i), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -476,12 +502,6 @@ size_t GameState::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:serialized.GameState)
   size_t total_size = 0;
 
-  // required .serialized.Map map = 2;
-  if (_internal_has_map()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *map_);
-  }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -491,6 +511,21 @@ size_t GameState::ByteSizeLong() const {
   for (const auto& msg : this->players_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  // repeated .serialized.Bullet bullets = 3;
+  total_size += 1UL * this->_internal_bullets_size();
+  for (const auto& msg : this->bullets_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  // optional .serialized.Map map = 2;
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *map_);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -525,6 +560,7 @@ void GameState::MergeFrom(const GameState& from) {
   (void) cached_has_bits;
 
   players_.MergeFrom(from.players_);
+  bullets_.MergeFrom(from.bullets_);
   if (from._internal_has_map()) {
     _internal_mutable_map()->::serialized::Map::MergeFrom(from._internal_map());
   }
@@ -545,8 +581,8 @@ void GameState::CopyFrom(const GameState& from) {
 }
 
 bool GameState::IsInitialized() const {
-  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
   if (!::PROTOBUF_NAMESPACE_ID::internal::AllAreInitialized(players_)) return false;
+  if (!::PROTOBUF_NAMESPACE_ID::internal::AllAreInitialized(bullets_)) return false;
   if (_internal_has_map()) {
     if (!map_->IsInitialized()) return false;
   }
@@ -558,6 +594,7 @@ void GameState::InternalSwap(GameState* other) {
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
   players_.InternalSwap(&other->players_);
+  bullets_.InternalSwap(&other->bullets_);
   swap(map_, other->map_);
 }
 
@@ -908,7 +945,7 @@ class Bullet::_Internal {
   static void set_has_y(HasBits* has_bits) {
     (*has_bits)[0] |= 2u;
   }
-  static void set_has_id(HasBits* has_bits) {
+  static void set_has_rotationangle(HasBits* has_bits) {
     (*has_bits)[0] |= 4u;
   }
   static bool MissingRequiredFields(const HasBits& has_bits) {
@@ -927,15 +964,15 @@ Bullet::Bullet(const Bullet& from)
       _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::memcpy(&x_, &from.x_,
-    static_cast<size_t>(reinterpret_cast<char*>(&id_) -
-    reinterpret_cast<char*>(&x_)) + sizeof(id_));
+    static_cast<size_t>(reinterpret_cast<char*>(&rotationangle_) -
+    reinterpret_cast<char*>(&x_)) + sizeof(rotationangle_));
   // @@protoc_insertion_point(copy_constructor:serialized.Bullet)
 }
 
 void Bullet::SharedCtor() {
   ::memset(&x_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&id_) -
-      reinterpret_cast<char*>(&x_)) + sizeof(id_));
+      reinterpret_cast<char*>(&rotationangle_) -
+      reinterpret_cast<char*>(&x_)) + sizeof(rotationangle_));
 }
 
 Bullet::~Bullet() {
@@ -972,8 +1009,8 @@ void Bullet::Clear() {
   cached_has_bits = _has_bits_[0];
   if (cached_has_bits & 0x00000007u) {
     ::memset(&x_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&id_) -
-        reinterpret_cast<char*>(&x_)) + sizeof(id_));
+        reinterpret_cast<char*>(&rotationangle_) -
+        reinterpret_cast<char*>(&x_)) + sizeof(rotationangle_));
   }
   _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
@@ -1004,12 +1041,12 @@ const char* Bullet::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::int
           ptr += sizeof(float);
         } else goto handle_unusual;
         continue;
-      // required int32 id = 3;
+      // required float rotationAngle = 3;
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
-          _Internal::set_has_id(&has_bits);
-          id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
-          CHK_(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 29)) {
+          _Internal::set_has_rotationangle(&has_bits);
+          rotationangle_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
         } else goto handle_unusual;
         continue;
       default: {
@@ -1054,10 +1091,10 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(2, this->_internal_y(), target);
   }
 
-  // required int32 id = 3;
+  // required float rotationAngle = 3;
   if (cached_has_bits & 0x00000004u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_id(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(3, this->_internal_rotationangle(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1082,11 +1119,9 @@ size_t Bullet::RequiredFieldsByteSizeFallback() const {
     total_size += 1 + 4;
   }
 
-  if (_internal_has_id()) {
-    // required int32 id = 3;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->_internal_id());
+  if (_internal_has_rotationangle()) {
+    // required float rotationAngle = 3;
+    total_size += 1 + 4;
   }
 
   return total_size;
@@ -1102,10 +1137,8 @@ size_t Bullet::ByteSizeLong() const {
     // required float y = 2;
     total_size += 1 + 4;
 
-    // required int32 id = 3;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->_internal_id());
+    // required float rotationAngle = 3;
+    total_size += 1 + 4;
 
   } else {
     total_size += RequiredFieldsByteSizeFallback();
@@ -1154,7 +1187,7 @@ void Bullet::MergeFrom(const Bullet& from) {
       y_ = from.y_;
     }
     if (cached_has_bits & 0x00000004u) {
-      id_ = from.id_;
+      rotationangle_ = from.rotationangle_;
     }
     _has_bits_[0] |= cached_has_bits;
   }
@@ -1184,8 +1217,8 @@ void Bullet::InternalSwap(Bullet* other) {
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Bullet, id_)
-      + sizeof(Bullet::id_)
+      PROTOBUF_FIELD_OFFSET(Bullet, rotationangle_)
+      + sizeof(Bullet::rotationangle_)
       - PROTOBUF_FIELD_OFFSET(Bullet, x_)>(
           reinterpret_cast<char*>(&x_),
           reinterpret_cast<char*>(&other->x_));

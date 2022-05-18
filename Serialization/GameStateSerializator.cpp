@@ -80,7 +80,8 @@ void GameStateSerializator::serializeMap(serialized::GameState& serializedState,
 serialized::GameState GameStateSerializator::serialize(std::shared_ptr<GameState> gameState) {
     serialized::GameState serializedGameState;
     serializePlayers(serializedGameState, gameState);
-    serializeMap(serializedGameState, gameState);
+    // serializeMap(serializedGameState, gameState);
+    serializeBullets(serializedGameState, gameState);
     return serializedGameState;
 }
 
@@ -125,3 +126,22 @@ void GameStateSerializator::deserializeMap(serialized::GameState &serializedStat
         }
     }
 };
+
+void GameStateSerializator::serializeBullets(serialized::GameState& serializedState, std::shared_ptr<GameState> state) {
+    for (int i = 0; i < state->bullets.size(); i++) {
+        serialized::Bullet bullet;
+        bullet.set_x(state->bullets[i].second->getPosition().x);
+        bullet.set_y(state->bullets[i].second->getPosition().y);
+        bullet.set_rotationangle(state->bullets[i].second->getRotation());
+        serializedState.add_bullets()->CopyFrom(bullet);
+    }
+}
+
+void GameStateSerializator::deserializeBullets(serialized::GameState &serializedState, std::deque<std::pair<int, std::shared_ptr<Bullet>>> &gameBullets, sf::Texture& bulletTexture, int bulletsNumber) {
+    for (int i = 0; i < bulletsNumber; i++) {
+        auto bullet = serializedState.bullets().at(i);
+        gameBullets.push_back({ 0, std::make_shared<Bullet>(
+            bullet.x(), bullet.y(), bullet.rotationangle(), 1, bulletTexture
+        )});
+    }
+}

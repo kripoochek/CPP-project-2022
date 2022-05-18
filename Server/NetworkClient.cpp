@@ -9,6 +9,13 @@ void NetworkClient::sendDisconnectMessage() {
     Send(msg);
 }
 
+void NetworkClient::sendOnKeyPressedMessage(int key) {
+    olc::net::message<GameMessage> msg;
+    msg.header.id = GameMessage::ON_KEY_PRESSED;
+    msg << id << key;
+    Send(msg);
+}
+
 void NetworkClient::setId(int newId) {
     id = newId;
 }

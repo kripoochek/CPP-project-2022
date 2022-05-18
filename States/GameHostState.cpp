@@ -16,7 +16,8 @@ GameHostState::GameHostState(std::shared_ptr<sf::RenderWindow> window,
 };
 
 void GameHostState::updateInput(float dt) {
-    if (sf::Keyboard::isKeyPressed(keybindings["CLOSE"]) && isWindowFocused){
+    if (!isWindowFocused) { return; }
+    if (sf::Keyboard::isKeyPressed(keybindings["CLOSE"])){
         quit = true;
     }
     if (sf::Keyboard::isKeyPressed(keybindings["START_GAME"])) {
@@ -25,31 +26,43 @@ void GameHostState::updateInput(float dt) {
 
     if (!networkServer->isGameStarted) { return; }
 
-    if (sf::Keyboard::isKeyPressed(keybindings["ATTACK2"])){
-        players[0]->attack(bullets, textures->Bullet, dt);
-        networkServer->sendAllClientsNewGameState(GameStateSerializator::serialize(shared_from_this()));
-    }
-    if (sf::Keyboard::isKeyPressed(keybindings["MOVE_LEFT2"])){
-        players[0]->rotate(false, dt);
-        networkServer->sendAllClientsNewGameState(GameStateSerializator::serialize(shared_from_this()));
-    }
-    if (sf::Keyboard::isKeyPressed(keybindings["MOVE_RIGHT2"])){
-        players[0]->rotate(true, dt);
-        networkServer->sendAllClientsNewGameState(GameStateSerializator::serialize(shared_from_this()));
-    }
-    if (sf::Keyboard::isKeyPressed(keybindings["MOVE_UP2"])){
-        players[0]->move(true, dt);
-        networkServer->sendAllClientsNewGameState(GameStateSerializator::serialize(shared_from_this()));
-    }
-    if (sf::Keyboard::isKeyPressed(keybindings["MOVE_DOWN2"])){
-        players[0]->move(false, dt);
-        networkServer->sendAllClientsNewGameState(GameStateSerializator::serialize(shared_from_this()));
+    const std::vector<sf::Keyboard::Key> actionKeys{
+        keybindings["MOVE_UP2"], 
+        keybindings["MOVE_DOWN2"],
+        keybindings["MOVE_LEFT2"],
+        keybindings["MOVE_RIGHT2"],
+        keybindings["ATTACK2"]
+    };
+    for (auto key : actionKeys) {
+        if (sf::Keyboard::isKeyPressed(key)) {
+            networkServer->pressedKeysQueue.push({ 0, key });
+        }
     }
 }
 
 void GameHostState::update(float dt) {
     GameState::update(dt);
     networkServer->Update(-1, false);
+    while (!networkServer->pressedKeysQueue.empty()) {
+        auto& [id, key] = networkServer->pressedKeysQueue.back();
+        networkServer->pressedKeysQueue.pop();
+        if (key == keybindings["ATTACK2"]){
+            players[id]->attack(bullets, textures->Bullet, dt);
+        }
+        if (key == keybindings["MOVE_LEFT2"]){
+            players[id]->rotate(false, dt);
+        }
+        if (key == keybindings["MOVE_RIGHT2"]){
+            players[id]->rotate(true, dt);
+        }
+        if (key == keybindings["MOVE_UP2"]){
+            players[id]->move(true, dt);
+        }
+        if (key == keybindings["MOVE_DOWN2"]){
+            players[id]->move(false, dt);
+        }
+    }
+    networkServer->sendAllClientsNewGameState(GameStateSerializator::serialize(shared_from_this()));
 }
 
 void GameHostState::initPlayers() {

@@ -4,7 +4,8 @@ package serialized;
 
 message GameState {
   repeated Player players = 1;
-  required Map map = 2;
+  optional Map map = 2;
+  repeated Bullet bullets = 3;
 }
 
 message Player {
@@ -17,7 +18,7 @@ message Player {
 message Bullet {
   required float x = 1;
   required float y = 2;
-  required int32 id = 3;
+  required float rotationAngle = 3;
 }
 
 message Map {
