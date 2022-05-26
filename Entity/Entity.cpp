@@ -17,6 +17,7 @@ void Entity::rotate(bool clockwise, float dt) {
 void Entity::update(float dt) {
     if (movementComponent){ movementComponent->update(dt); }
     if (hitboxComponent){ hitboxComponent->update(); }
+    body->SetAngularVelocity(0);
     b2Vec2 pos=body->GetPosition();
     float ang=body->GetAngle();
     sprite.setPosition(pos.x*SCALE,pos.y*SCALE);
@@ -35,8 +36,8 @@ void Entity::initVariables() {
     hitboxComponent = nullptr;
 }
 
-void Entity::createMovementComponent(float maxVelocityMove, float maxVelocityRotate, float currentVelocityMove, float acceleration, float deceleration) {
-    movementComponent = std::make_shared<MovementComponent>(sprite, body, maxVelocityMove, maxVelocityRotate, currentVelocityMove, acceleration, deceleration);
+void Entity::createMovementComponent(float velocityMove, float velocityRotate) {
+    movementComponent = std::make_shared<MovementComponent>(sprite, body, velocityMove, velocityRotate);
 }
 
 void Entity::createHitboxComponent(sf::Sprite &sprite, float offsetX, float offsetY, float width, float height) {

@@ -7,6 +7,10 @@ Bullet::Bullet(std::shared_ptr<b2World> world, float x, float y, float angle, fl
     initBox2D(world);
 
     initComponents();
+    sf::Vector2f velocity;
+    velocity.x = std::cos(sprite.getRotation() * (3.1415f / 180)) * 5.0f;
+    velocity.y = std::sin(sprite.getRotation() * (3.1415f / 180)) * 5.0f;
+    body->SetLinearVelocity(b2Vec2(velocity.x, velocity.y));
 }
 
 bool Bullet::isDeathTime() {
@@ -16,7 +20,7 @@ bool Bullet::isDeathTime() {
 }
 
 void Bullet::initComponents() {
-    createMovementComponent(200.f, 200.f, 200.f, 200.f,  0);
+
     createHitboxComponent(sprite, 0, 0, sprite.getGlobalBounds().width, sprite.getGlobalBounds().height);
 }
 
@@ -40,14 +44,15 @@ void Bullet::initBox2D(std::shared_ptr<b2World> initWorld) {
 
     body = world->CreateBody(bodyDef.get());
 
-    shape = std::make_shared<b2PolygonShape>();
+    shape = std::make_shared<b2CircleShape>();
     auto size = sprite.getGlobalBounds();
-    shape->SetAsBox(size.width / 2 / SCALE,  size.height / 2 / SCALE);
+    shape->m_radius=size.height/2/SCALE;
 
     fixtureDef = std::make_shared<b2FixtureDef>();
     fixtureDef->shape = shape.get();
     fixtureDef->density = 1.0f;
     fixtureDef->friction = 0.3f;
+    fixtureDef->restitution=1.0f;
     body->CreateFixture(fixtureDef.get());
 }
 

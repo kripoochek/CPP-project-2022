@@ -19,7 +19,7 @@
 #include <chrono>
 
 struct MovementComponent {
-    MovementComponent(sf::Sprite& sprite, b2Body* body, float maxVelocityMove, float currentVelocityMove, float maxVelocityRotate, float acceleration, float deceleration);
+    MovementComponent(sf::Sprite& sprite, b2Body* body,float velocityMove, float velocityRotate);
 
     [[nodiscard]] sf::Vector2f getVelocity() const;
 
@@ -39,13 +39,10 @@ private:
     sf::Sprite &sprite;
     b2Body* body;
     float angle;
-    float maxVelocityMove;
-    float maxVelocityRotate;
-    float currentVelocityMove;
+    float velocityRotate;
+    float velocityMove;
 
     sf::Vector2f velocity;
-    float acceleration;
-    float deceleration;
 
     // solution, to start stop vehicle (tank)
     std::chrono::time_point<std::chrono::system_clock, std::chrono::duration<double>> lastMoveCommandTime;

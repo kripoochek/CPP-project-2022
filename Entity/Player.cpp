@@ -14,7 +14,7 @@ Player::Player(std::shared_ptr<b2World> world,
 }
 
 void Player::initComponents() {
-    createMovementComponent(200.f, 5.f, 1.5f, 200.f, 400.f);
+    createMovementComponent(2.f,3.f);
     createHitboxComponent(sprite, 0, 0, sprite.getGlobalBounds().width,
                           sprite.getGlobalBounds().height);
 }
@@ -66,7 +66,5 @@ void Player::initBox2D(std::shared_ptr<b2World> initWorld) {
     fixtureDef->density = 1.0f;
     fixtureDef->friction = 0.3f;
     body->CreateFixture(fixtureDef.get());
-    char* type="player";
-    body->SetUserData(type);
 }
 

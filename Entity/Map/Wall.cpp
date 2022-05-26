@@ -9,19 +9,23 @@ Wall::Wall(std::shared_ptr<b2World> world, float x, float y, sf::Texture &textur
 
 bool Wall::isHidden() const { return hidden; }
 
-void Wall::setHidden(bool type) { hidden = type; }
+void Wall::setHidden(bool type) {
+    hidden = type;
+    world->DestroyBody(body);
+}
 
-void Wall::render(sf::RenderTarget& target) {
+void Wall::render(sf::RenderTarget &target) {
     if (!hidden) { target.draw(sprite); }
-    if (hitboxComponent){ hitboxComponent->render(target); }
+    if (hitboxComponent) { hitboxComponent->render(target); }
 }
 
 void Wall::initSFML(float x, float y, sf::Texture &texture) {
     setTexture(texture);
     setPosition(x, y);
 
-    sprite.setScale((sprite.getTexture()->getSize().x <= 100 ? 1.0 : 100.0 / sprite.getTexture()->getSize().x) ,(sprite.getTexture()->getSize().y<=100 ? 1.0 : 100.0/sprite.getTexture()->getSize().y));
-    sprite.setOrigin(sprite.getTexture()->getSize().x/2,sprite.getTexture()->getSize().y/2);
+    sprite.setScale((sprite.getTexture()->getSize().x <= 100 ? 1.0 : 100.0 / sprite.getTexture()->getSize().x),
+                    (sprite.getTexture()->getSize().y <= 100 ? 1.0 : 100.0 / sprite.getTexture()->getSize().y));
+    sprite.setOrigin(sprite.getTexture()->getSize().x / 2, sprite.getTexture()->getSize().y / 2);
 }
 
 void Wall::initBox2D(std::shared_ptr<b2World> initWorld) {
@@ -35,7 +39,7 @@ void Wall::initBox2D(std::shared_ptr<b2World> initWorld) {
 
     shape = std::make_shared<b2PolygonShape>();
     auto size = sprite.getGlobalBounds();
-    shape->SetAsBox(size.width / 2 / SCALE,  size.height / 2 / SCALE);
+    shape->SetAsBox(size.width / 2 / SCALE, size.height / 2 / SCALE);
 
     fixtureDef = std::make_shared<b2FixtureDef>();
     fixtureDef->shape = shape.get();
