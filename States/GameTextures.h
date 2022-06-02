@@ -1,6 +1,8 @@
 #ifndef MY_TANKS_IN_LABIRINT_GAMETEXTURES_H
 #define MY_TANKS_IN_LABIRINT_GAMETEXTURES_H
 
+#include <filesystem>
+
 #include "Entity.h"
 
 struct GameTextures {

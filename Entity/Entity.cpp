@@ -5,26 +5,42 @@ void Entity::setTexture(sf::Texture &texture) { sprite.setTexture(texture); }
 void Entity::setPosition(float x, float y) { sprite.setPosition(x, y); }
 
 void Entity::move(bool forward, float dt) {
+    if (!alive){
+        return;
+    }
+
     if (!movementComponent){ return; }
     movementComponent->move(forward, dt);
 }
 
 void Entity::rotate(bool clockwise, float dt) {
+    if (!alive){
+        return;
+    }
+
     if (!movementComponent) { return; }
     movementComponent->rotate(clockwise, dt);
 }
 
 void Entity::update(float dt) {
+    if (!alive){
+        return;
+    }
+
     if (movementComponent){ movementComponent->update(dt); }
     if (hitboxComponent){ hitboxComponent->update(); }
     body->SetAngularVelocity(0);
-    b2Vec2 pos=body->GetPosition();
-    float ang=body->GetAngle();
+    b2Vec2 pos = body->GetPosition();
+    float ang = body->GetAngle();
     sprite.setPosition(pos.x*SCALE,pos.y*SCALE);
     sprite.setRotation(ang*SCALE);
 }
 
 void Entity::render(sf::RenderTarget& target) {
+    if (!alive){
+        return;
+    }
+
     target.draw(sprite);
     if (hitboxComponent){
         hitboxComponent->render(target);
@@ -74,4 +90,13 @@ void Entity::stopVelocityY() { movementComponent->stopVelocityY(); }
 void Entity::setOrigin(float x, float y) {
     if (hitboxComponent){ hitboxComponent->setOrigin(x, y);}
     sprite.setOrigin(x, y);
+}
+
+bool Entity::isAlive() {
+    return alive;
+}
+
+void Entity::killObject() {
+    alive = false;
+    world->DestroyBody(body);
 }

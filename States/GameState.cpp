@@ -2,121 +2,32 @@
 
 GameState::GameState(std::shared_ptr<sf::RenderWindow> window,
                      std::map<std::string, sf::Keyboard::Key> supportedKey,
-                     std::shared_ptr<std::vector<std::shared_ptr<State>>> states) :
-        State(std::move(window), std::move(supportedKey), std::move(states)){
-
-    initWorld();
-    initTextures();
-    initKeybindings();
-    initPlayers();
-}
-
-void GameState::updateInput(float dt) {
-    //Update player input
-    if (sf::Keyboard::isKeyPressed(keybindings["ATTACK1"])){
-        players[0]->attack(bullets, textures->Bullet, dt);
+                     std::shared_ptr<std::vector<std::shared_ptr<State>>> states, int numOfRounds, const sf::Font &font) :
+        State(std::move(window), std::move(supportedKey), std::move(states)), numOfRounds(numOfRounds), font(font){
+    for (int i = 0; i < MAXN; ++i){
+        scores.push_back(Result(10.f, 5.f + 50.f * i, font, "P" + std::to_string(i + 1) + ":", 24, sf::Color::White));
     }
-    if (sf::Keyboard::isKeyPressed(keybindings["MOVE_LEFT1"])){
-        players[0]->rotate(false, dt);
-    }
-    if (sf::Keyboard::isKeyPressed(keybindings["MOVE_RIGHT1"])){
-        players[0]->rotate(true, dt);
-    }
-    if (sf::Keyboard::isKeyPressed(keybindings["MOVE_UP1"])){
-        players[0]->move(true, dt);
-    }
-    if (sf::Keyboard::isKeyPressed(keybindings["MOVE_DOWN1"])){
-        players[0]->move(false, dt);
-    }
-
-    if (sf::Keyboard::isKeyPressed(keybindings["ATTACK2"])){
-        players[1]->attack(bullets, textures->Bullet, dt);
-    }
-    if (sf::Keyboard::isKeyPressed(keybindings["MOVE_LEFT2"])){
-        players[1]->rotate(false, dt);
-    }
-    if (sf::Keyboard::isKeyPressed(keybindings["MOVE_RIGHT2"])){
-        players[1]->rotate(true, dt);
-    }
-    if (sf::Keyboard::isKeyPressed(keybindings["MOVE_UP2"])){
-        players[1]->move(true, dt);
-    }
-    if (sf::Keyboard::isKeyPressed(keybindings["MOVE_DOWN2"])){
-        players[1]->move(false, dt);
-    }
-
-    if (sf::Keyboard::isKeyPressed(keybindings["CLOSE"])){
-        quit = true;
-    }
-}
-
-void GameState::update(float dt) {
-    world->Step(1/60.f, 8, 3);
-    updateMousePositions();
-    updateInput(dt);
-
-   //collisionManager->update(dt);
-
-    while(!bullets.empty() && bullets.front().second->isDeathTime()){
-        players[bullets.front().first]->addBullet();
-        bullets.pop_front();
-    }
-
-    for (auto& [id, bullet]: bullets) {
-        bullet->update(dt);
-    }
-
-    for (auto& player: players) {
-        player->update(dt);
-    }
-
-
+    timer = 0;
 }
 
 void GameState::render(std::shared_ptr<sf::RenderTarget> target) {
-    if (!target){ target = window; }
 
-    map->render(target);
+}
 
-    for (auto& [id, bullet]: bullets){
-        bullet->render(*target);
+void GameState::updateInput(float dt) {
+
+}
+
+void GameState::update(float dt) {
+    timer++;
+    if (timer > numOfRounds){
+        quit = true;
     }
-
-    for (const std::shared_ptr<Player>&  player: players) {
-        player->render(*target);
+    else{
+        states->push_back(std::make_shared<RoundState>(window, supportedKeys, states, scores));
     }
 }
 
 void GameState::initKeybindings() {
-    std::ifstream file("../Config/gamestate_keybinds.ini");
 
-    if (file.is_open()){
-        std::string action;
-        std::string keyBinding;
-        while(file >> action >> keyBinding){
-            keybindings[action] = supportedKeys[keyBinding];
-        }
-    }
 }
-
-void GameState::initPlayers() {
-    map = std::make_shared<Map>(world, sf::Vector2f(200,50),
-                               textures->Box,
-                               textures->VerticalBorder,
-                               textures->HorizontalBorder);
-    players.push_back( std::make_shared<Player>(world, 250, 100, 5, 0, textures->FirstPlayerIdle));
-    players.push_back( std::make_shared<Player>(world, 850, 500, 5, 1, textures->SecondPlayerIdle));
-    collisionManager = std::make_shared<CollisionManager>(map,players);
-}
-
-
-void GameState::initTextures() {
-    textures = std::make_shared<GameTextures>();
-}
-
-void GameState::initWorld() {
-    world = std::make_shared<b2World>(b2Vec2(0, 0));
-}
-
-
-

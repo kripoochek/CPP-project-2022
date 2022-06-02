@@ -31,7 +31,7 @@ void Bullet::initSFML(float x, float y, float angle, sf::Texture &texture) {
 
     sf::Vector2u size = texture.getSize();
     sprite.setOrigin(size.x / 2,size.y / 2);
-    sprite.setScale(0.01f,0.01f);
+    sprite.setScale(0.03f,0.03f);
     sprite.setRotation(angle);
 }
 
@@ -51,8 +51,8 @@ void Bullet::initBox2D(std::shared_ptr<b2World> initWorld) {
     fixtureDef = std::make_shared<b2FixtureDef>();
     fixtureDef->shape = shape.get();
     fixtureDef->density = 1.0f;
-    fixtureDef->friction = 0.3f;
-    fixtureDef->restitution=1.0f;
+    fixtureDef->friction = 0;
+    fixtureDef->restitution = 1.0f;
     body->CreateFixture(fixtureDef.get());
 }
 

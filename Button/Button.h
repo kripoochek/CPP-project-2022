@@ -26,7 +26,6 @@ struct Button {
     void render(sf::RenderTarget &target);
 private:
     sf::RectangleShape shape;
-    sf::Font font;
     sf::Text text;
 
     sf::Color textIdleColor;

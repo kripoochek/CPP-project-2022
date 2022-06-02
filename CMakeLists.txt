@@ -9,7 +9,7 @@ find_package(Box2D COMPONENTS collision common dynamics rope REQUIRED)
 include_directories(Entity States Config Button Entity/Components Entity/Map Bullet CollisionManager)
 
 add_executable(my_tanks_in_labirint Bullet/Bullet.cpp main.cpp Game.cpp
-        States/State.cpp States/State.h States/GameState.cpp 
+        States/State.cpp States/State.h States/RoundState.cpp States/GameState.cpp
         Entity/Entity.cpp Entity/Entity.h
         States/MainMenuState.cpp States/MainMenuState.h
         Button/Button.cpp Button/Button.h Entity/Player.cpp Entity/Player.h

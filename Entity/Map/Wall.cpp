@@ -43,6 +43,7 @@ void Wall::initBox2D(std::shared_ptr<b2World> initWorld) {
 
     fixtureDef = std::make_shared<b2FixtureDef>();
     fixtureDef->shape = shape.get();
+    fixtureDef->friction = 0;
     body->CreateFixture(shape.get(), 0);
 }
 

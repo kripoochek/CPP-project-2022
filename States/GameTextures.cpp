@@ -1,4 +1,3 @@
-#include <filesystem>
 #include "GameTextures.h"
 
 GameTextures::GameTextures() {

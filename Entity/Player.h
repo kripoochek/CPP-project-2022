@@ -8,7 +8,7 @@
 struct Player : Entity {
     Player(std::shared_ptr<b2World> world, float x, float y, int maxBulletCount, int id, sf::Texture &texture);
 
-    void attack(std::deque<std::pair<int, std::shared_ptr<Bullet>>> &bullets, sf::Texture &texture, float dt);
+    void attack(std::set<std::pair<int, std::shared_ptr<Bullet>>> &bullets, sf::Texture &texture, float dt);
     void addBullet();
 protected:
 

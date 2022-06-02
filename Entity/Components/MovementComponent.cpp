@@ -1,6 +1,6 @@
 #include "MovementComponent.h"
 
-#include <cmath>
+
 
 
 MovementComponent::MovementComponent(sf::Sprite &sprite, b2Body *body, float velocityMove,
@@ -28,8 +28,6 @@ void MovementComponent::rotate(bool clockwise, float dt) {
 
 void MovementComponent::update(float dt) {
     if (this->isStopMove() && velocityRotate) { gracefullyReduceVelocity(dt); }
-
-
 }
 
 sf::Vector2f MovementComponent::getVelocity() const { return velocity; }

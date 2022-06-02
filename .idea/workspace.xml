@@ -3,6 +3,9 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="CMakeReloadState">
+    <option name="reloaded" value="true" />
+  </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
       <config projectName="my_tanks_in_labirint" targetName="my_tanks_in_labirint" />
@@ -15,17 +18,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="186892db-bc70-4185-9f7f-bb83463b679b" name="Changes" comment="feat: smooth graceful move stop">
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/tank-blue.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/States/RoundState.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/States/RoundState.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Bullet/Bullet.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Bullet/Bullet.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bullet/Bullet.h" beforeDir="false" afterPath="$PROJECT_DIR$/Bullet/Bullet.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Button/Button.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Button/Button.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Button/Button.h" beforeDir="false" afterPath="$PROJECT_DIR$/Button/Button.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Entity/Components/MovementComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Components/MovementComponent.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/Components/MovementComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Components/MovementComponent.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Entity/Entity.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Entity.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Entity/Entity.h" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Entity.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/Map/Map.h" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Map/Map.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Entity/Map/Wall.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Map/Wall.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Entity/Player.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Player.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Player.h" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Player.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/States/GameState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/States/GameState.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/States/GameState.h" beforeDir="false" afterPath="$PROJECT_DIR$/States/GameState.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/States/GameTextures.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/States/GameTextures.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/States/GameTextures.h" beforeDir="false" afterPath="$PROJECT_DIR$/States/GameTextures.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/States/MainMenuState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/States/MainMenuState.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/States/State.h" beforeDir="false" afterPath="$PROJECT_DIR$/States/State.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils.h" beforeDir="false" afterPath="$PROJECT_DIR$/Utils.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +79,8 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;cf.advertisement.text.has.clang-format&quot;: &quot;true&quot;,
@@ -92,6 +108,11 @@
     </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="my_tanks_in_labirint" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="my_tanks_in_labirint" TARGET_NAME="my_tanks_in_labirint" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="my_tanks_in_labirint" RUN_TARGET_NAME="my_tanks_in_labirint">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -145,6 +166,12 @@
       <workItem from="1651665888996" duration="639000" />
       <workItem from="1651760759823" duration="352000" />
       <workItem from="1651778662604" duration="9673000" />
+      <workItem from="1654037530679" duration="6021000" />
+      <workItem from="1654106427755" duration="12057000" />
+      <workItem from="1654122487699" duration="27000" />
+      <workItem from="1654122523165" duration="145000" />
+      <workItem from="1654122678964" duration="6712000" />
+      <workItem from="1654181348905" duration="1216000" />
     </task>
     <task id="LOCAL-00001" summary="fix: gitignore (no cmake-build-debug dir)">
       <created>1647742017953</created>
@@ -242,11 +269,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Entity/Player.h</url>
-          <line>22</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Entity/Map/Map.h</url>
           <line>13</line>

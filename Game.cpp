@@ -95,7 +95,7 @@ void Game::initStates() {
     states->push_back(std::make_shared<MainMenuState>(window, supportedKeys, states));
 
     // TODO:
-    // states->push_back(std::make_shared<GameState>(window, supportedKeys, states));
+    // states->push_back(std::make_shared<RoundState>(window, supportedKeys, states));
 }
 
 void Game::initKeys() {

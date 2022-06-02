@@ -35,7 +35,12 @@ struct Entity {
 
     virtual void update(float dt);
     virtual void render(sf::RenderTarget& target);
+
+    virtual bool isAlive();
+    virtual void killObject();
 protected:
+    bool alive = true;
+
     std::shared_ptr<MovementComponent> movementComponent;
     std::shared_ptr<HitboxComponent> hitboxComponent;
 

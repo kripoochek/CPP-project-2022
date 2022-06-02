@@ -24,11 +24,12 @@ struct State {
     //Render
     virtual void render(std::shared_ptr<sf::RenderTarget> target) = 0;
 protected:
+    bool quit;
+
     std::shared_ptr<std::vector<std::shared_ptr<State>>> states;
     std::shared_ptr<sf::RenderWindow> window;
     std::map<std::string, sf::Keyboard::Key> supportedKeys;
     std::map<std::string, sf::Keyboard::Key> keybindings;
-    bool quit;
 
     sf::Vector2i mousePosScreen;
     sf::Vector2i mousePosWindow;

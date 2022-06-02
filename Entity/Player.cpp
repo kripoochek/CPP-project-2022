@@ -14,15 +14,19 @@ Player::Player(std::shared_ptr<b2World> world,
 }
 
 void Player::initComponents() {
-    createMovementComponent(2.f,3.f);
+    createMovementComponent(2.5f,5.f);
     createHitboxComponent(sprite, 0, 0, sprite.getGlobalBounds().width,
                           sprite.getGlobalBounds().height);
 }
 
 void Player::attack(
-    std::deque<std::pair<int, std::shared_ptr<Bullet>>> &bullets,
+    std::set<std::pair<int, std::shared_ptr<Bullet>>> &bullets,
     sf::Texture &texture,
     float dt) {
+    if (!alive){
+        return;
+    }
+
     auto currentTime = std::chrono::system_clock::now();
     std::chrono::duration<double> currentInterval =
         currentTime - lastAttackCommandTime;
@@ -32,11 +36,11 @@ void Player::attack(
     lastAttackCommandTime = std::chrono::system_clock::now();
     bulletCount--;
     sf::Vector2f bulletPos;
-    bulletPos.x=sprite.getPosition().x+std::cos(sprite.getRotation()*(3.1415f)/180)*(sprite.getGlobalBounds().width/2);
-    bulletPos.y=sprite.getPosition().y+std::sin(sprite.getRotation()*(3.1415f)/180)*(sprite.getGlobalBounds().height/2);
-    bullets.emplace_back(id, std::make_shared<Bullet>(
+    bulletPos.x = sprite.getPosition().x + std::cos(sprite.getRotation()*(3.1415f)/180) * (sprite.getGlobalBounds().width);
+    bulletPos.y = sprite.getPosition().y + std::sin(sprite.getRotation()*(3.1415f)/180) * (sprite.getGlobalBounds().height);
+    bullets.insert({id, std::make_shared<Bullet>(
                                  world, bulletPos.x,bulletPos.y,
-                                 sprite.getRotation(), 2, texture));
+                                 sprite.getRotation(), 10, texture)});
 }
 
 void Player::addBullet() { bulletCount++; }
@@ -67,4 +71,3 @@ void Player::initBox2D(std::shared_ptr<b2World> initWorld) {
     fixtureDef->friction = 0.3f;
     body->CreateFixture(fixtureDef.get());
 }
-

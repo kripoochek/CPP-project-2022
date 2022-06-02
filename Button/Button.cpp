@@ -4,7 +4,7 @@ Button::Button(float x, float y, float width, float height,
                const sf::Font& font, const std::string& text, int characterSize,
                sf::Color textIdleColor, sf::Color textHoverColor, sf::Color textActiveColor,
                sf::Color idleColor, sf::Color hoverColor, sf::Color activeColor) :
-               font(font), idleColor(idleColor), hoverColor(hoverColor), activeColor(activeColor),
+               idleColor(idleColor), hoverColor(hoverColor), activeColor(activeColor),
                textIdleColor(textIdleColor), textHoverColor(textHoverColor), textActiveColor(textActiveColor) {
     shape.setOrigin(width / 2, height / 2);
     shape.setPosition(sf::Vector2f(x, y));

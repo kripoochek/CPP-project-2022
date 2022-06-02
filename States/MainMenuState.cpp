@@ -25,7 +25,7 @@ void MainMenuState::updateButtons() {
     }
 
     if (buttons["GAME_STATE"]->isPressed()){
-        states->push_back(std::make_shared<GameState>(window, supportedKeys, states));
+        states->push_back(std::make_shared<GameState>(window, supportedKeys, states, 5, font));
     }
     if (buttons["EXIT_STATE"]->isPressed()){
         quit = true;
@@ -52,7 +52,7 @@ void MainMenuState::render(std::shared_ptr<sf::RenderTarget> target) {
 
     renderButtons(*target);
 
-    //REMOVE LATER!!
+    //TODO: REMOVE LATER!!
     sf::Text mouseText;
     mouseText.setPosition(mousePosView.x, mousePosView.y - 20);
     mouseText.setFont(font);
