@@ -6,7 +6,13 @@ set(THREADS_PREFER_PTHREAD_FLAG ON)
 
 find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)
 find_package(Box2D COMPONENTS collision common dynamics rope REQUIRED)
+
+find_package(Protobuf REQUIRED)
+include_directories(${Protobuf_INCLUDE_DIRS})
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
+
 find_package(Threads)
+
 
 include_directories(Entity States Config Button Entity/Components Entity/Map Bullet CollisionManager Server Serialization)
 
@@ -27,6 +33,6 @@ add_executable(my_tanks_in_labirint Bullet/Bullet.cpp main.cpp Game.cpp
         CollisionManager/CollisionManager.cpp
         )
 
+target_link_libraries(my_tanks_in_labirint ${Protobuf_LIBRARIES})
 target_link_libraries(my_tanks_in_labirint sfml-graphics sfml-audio Box2D)
-target_link_libraries(my_tanks_in_labirint protobuf)
 target_link_libraries(my_tanks_in_labirint Threads::Threads)

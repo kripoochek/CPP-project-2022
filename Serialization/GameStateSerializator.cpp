@@ -29,7 +29,7 @@ void GameStateSerializator::serializePlayers(serialized::GameState& serializedSt
 
 void GameStateSerializator::deserializePlayers(std::shared_ptr<b2World> world, serialized::GameState &serializedState, std::vector<std::shared_ptr<Player>> &gamePlayers, std::shared_ptr<GameTextures> gameTextures) {
     for (int i = 0; i < serializedState.players_size(); i++) {
-        auto player = serializedState.players().at(i);
+        auto player = serializedState.players()[i];
         if (player.id() == -1) {
             gamePlayers.push_back(nullptr);
             continue;
@@ -87,9 +87,9 @@ serialized::GameState GameStateSerializator::serialize(std::shared_ptr<RoundStat
 
 void GameStateSerializator::deserializeMap(std::shared_ptr<b2World> world, serialized::Map &serializedMap, std::shared_ptr<Map> gameMap, sf::Texture& verticalTexture, sf::Texture& horizontalTexture) {
     for (int i = 0; i < serializedMap.rowsnumber(); i++) {
-        auto mapRow = serializedMap.rows().at(i);
+        auto mapRow = serializedMap.rows()[i];
         for (int j = 0; j < serializedMap.columnsnumber(); j++) {
-            auto mapBox = mapRow.boxes().at(j);
+            auto mapBox = mapRow.boxes()[j];
             Edges edges = gameMap->getBoxes()[i][j]->getEdges();
             if (edges.upper == nullptr){
                 std::shared_ptr<Wall> upper = std::make_shared<Wall>(world, mapBox.upperwall().x(), mapBox.upperwall().y(), horizontalTexture);
@@ -141,7 +141,7 @@ void GameStateSerializator::serializeBullets(serialized::GameState& serializedSt
 
 void GameStateSerializator::deserializeBullets(std::shared_ptr<b2World> world, serialized::GameState &serializedState, std::set<std::pair<int, std::shared_ptr<Bullet>>> &gameBullets, sf::Texture& bulletTexture, int bulletsNumber) {
     for (int i = 0; i < bulletsNumber; i++) {
-        auto bullet = serializedState.bullets().at(i);
+        auto bullet = serializedState.bullets()[i];
         gameBullets.insert({ 0, std::make_shared<Bullet>(
             world, bullet.x(), bullet.y(), bullet.rotationangle(), 1, bulletTexture
         )});
