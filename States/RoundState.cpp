@@ -2,17 +2,19 @@
 
 RoundState::RoundState(std::shared_ptr<sf::RenderWindow> window,
                        std::map<std::string, sf::Keyboard::Key> supportedKey,
-                       std::shared_ptr<std::vector<std::shared_ptr<State>>> states, std::vector<Result> &scores) :
-        State(std::move(window), std::move(supportedKey), std::move(states)), scores(scores) {
+                       std::shared_ptr<std::vector<std::shared_ptr<State>>> states, std::vector<Result> &scores, bool renderOnStart) :
+        State(std::move(window), std::move(supportedKey), std::move(states)), scores(scores), renderOnStart(renderOnStart) {
 
     initWorld();
     initTextures();
     initKeybindings();
     initPlayers();
 
-    render(this->window);
-    this->window->display();
-    sf::sleep(sf::milliseconds(500));
+    if (renderOnStart) {
+        render(this->window);
+        this->window->display();
+        sf::sleep(sf::milliseconds(500));
+    }
 }
 
 void RoundState::updateInput(float dt) {
@@ -104,23 +106,23 @@ void RoundState::update(float dt) {
         players[i]->update(dt);
     }
 
-    if (cntLifePlayer == 1){
-        scores[lastLifePlayer].wins++;
-        quit = true;
-    }
+    // if (cntLifePlayer == 1){
+    //     scores[lastLifePlayer].wins++;
+    //     quit = true;
+    // }
 }
 
 void RoundState::render(std::shared_ptr<sf::RenderTarget> target) {
     if (!target){ target = window; }
 
-    map->render(target);
+    if (map != nullptr) map->render(target);
 
     for (auto& [id, bullet]: bullets){
-        bullet->render(*target);
+        if(bullet != nullptr) bullet->render(*target);
     }
 
     for (const std::shared_ptr<Player>&  player: players) {
-        player->render(*target);
+        if (player != nullptr) player->render(*target);
     }
 
     for (auto &i: scores){
@@ -159,6 +161,20 @@ void RoundState::initWorld() {
     world = std::make_shared<b2World>(b2Vec2(0, 0));
 }
 
+std::vector<std::shared_ptr<Player>> RoundState::getPlayers() {
+    return players;
+}
+
+std::shared_ptr<Map> RoundState::getMap() {
+    return map;
+}
+
+std::set<std::pair<int, std::shared_ptr<Bullet>>> RoundState::getBullets() {
+    return bullets;
+}
+
+
+
 Result::Result(float x, float y, const sf::Font &font, const std::string &prefText, int characterSize,
                sf::Color textColor) : textColor(textColor), prefText(prefText) {
     wins = 0;
@@ -175,4 +191,10 @@ void Result::render(sf::RenderTarget &target) {
     text.setString(newText);
 
     target.draw(text);
+}
+
+void RoundState::initFonts() {
+    if (!font.loadFromFile("../Fonts/SuperMario256.ttf")){
+        std::cout << "Font don't open!\n";
+    }
 }

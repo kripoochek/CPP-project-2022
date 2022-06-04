@@ -100,3 +100,11 @@ void Entity::killObject() {
     alive = false;
     world->DestroyBody(body);
 }
+
+float Entity::getRotation() {
+    return sprite.getRotation();
+}
+
+void Entity::setRotation(float newRotation) {
+    sprite.setRotation(newRotation);
+}

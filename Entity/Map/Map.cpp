@@ -44,6 +44,20 @@ Map::Map(std::shared_ptr<b2World> world, sf::Vector2f coordinates, sf::Texture &
     generateMap();
 }
 
+Map::Map(std::shared_ptr<b2World> world, int rows, int columns, sf::Vector2f coordinates, sf::Texture& texture_, sf::Texture& verticalTexture, sf::Texture& horizontalTexture) : rows(rows), columns(columns) {
+    this->world = world;
+    for (int i = 0; i < rows; i++) {
+        map.push_back(std::vector<std::shared_ptr<Box>>{
+                std::make_shared<Box>(coordinates, texture_)});
+        coordinates = sf::Vector2f(coordinates.x, coordinates.y + 100);
+        sf::Vector2f rowCoor=sf::Vector2f(coordinates.x+100,coordinates.y-100);
+        for (int j = 0; j < columns; j++) {
+            map[i].push_back(std::make_shared<Box>(rowCoor, texture_));
+            rowCoor = sf::Vector2f(rowCoor.x + 100, rowCoor.y);
+        }
+    }
+};
+
 void Map::addWalls(sf::Texture &verticalTexture, sf::Texture &horizontalTexture) {
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < columns; j++) {
@@ -134,4 +148,8 @@ std::vector<std::shared_ptr<Wall>> Map::getActiveWalls() {
         }
     }
     return std::vector<std::shared_ptr<Wall>>(activeWalls.begin(),activeWalls.end());
+}
+
+std::vector<std::vector<std::shared_ptr<Box>>> Map::getBoxes() {
+    return map;
 }

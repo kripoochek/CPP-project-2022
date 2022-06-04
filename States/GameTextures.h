@@ -16,6 +16,7 @@ public:
     // textures of tanks, playable models.
     sf::Texture FirstPlayerIdle;
     sf::Texture SecondPlayerIdle;
+    sf::Texture ThirdPlayerIdle;
 
     // labyrinth borders.
     sf::Texture VerticalBorder;
@@ -26,6 +27,8 @@ public:
 
     // menu backgroundLayout.
     sf::Texture MenuBackground;
+
+    sf::Texture& getPlayerTextureById(int id);
 };
 
 #endif //MY_TANKS_IN_LABIRINT_GAMETEXTURES_H

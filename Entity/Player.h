@@ -10,6 +10,7 @@ struct Player : Entity {
 
     void attack(std::set<std::pair<int, std::shared_ptr<Bullet>>> &bullets, sf::Texture &texture, float dt);
     void addBullet();
+    int getId();
 protected:
 
 private:

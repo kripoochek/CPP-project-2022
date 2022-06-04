@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "Utils.h"
 
 Game::Game() {
     initVariables();
@@ -15,6 +16,14 @@ void Game::updateDt() { dt = dtClock.restart().asSeconds();}
 
 void Game::updateSFMLEvents() {
     while(window->pollEvent(sfEvent)){
+        if (IS_DEBUG) {
+            if (sfEvent.type == sf::Event::GainedFocus && !states->empty()) {
+                states->back()->isWindowFocused = true;
+            }
+            if (sfEvent.type == sf::Event::LostFocus && !states->empty()) {
+                states->back()->isWindowFocused = false;
+            }
+        }
         if (sfEvent.type == sf::Event::Closed){
             window->close();
         }

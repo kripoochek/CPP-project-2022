@@ -36,7 +36,7 @@ void Player::attack(
     lastAttackCommandTime = std::chrono::system_clock::now();
     bulletCount--;
     sf::Vector2f bulletPos;
-    bulletPos.x = sprite.getPosition().x + std::cos(sprite.getRotation()*(3.1415f)/180) * (sprite.getGlobalBounds().width);
+    bulletPos.x = sprite.getPosition().x + std::cos(sprite.getRotation()*(3.1415f)/180) * (sprite.getGlobalBounds().height);
     bulletPos.y = sprite.getPosition().y + std::sin(sprite.getRotation()*(3.1415f)/180) * (sprite.getGlobalBounds().height);
     bullets.insert({id, std::make_shared<Bullet>(
                                  world, bulletPos.x,bulletPos.y,
@@ -70,4 +70,8 @@ void Player::initBox2D(std::shared_ptr<b2World> initWorld) {
     fixtureDef->density = 1.0f;
     fixtureDef->friction = 0.3f;
     body->CreateFixture(fixtureDef.get());
+}
+
+int Player::getId() {
+    return id;
 }

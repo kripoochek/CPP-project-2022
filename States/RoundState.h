@@ -29,17 +29,27 @@ struct RoundState : State {
     RoundState(std::shared_ptr<sf::RenderWindow> window,
                std::map<std::string, sf::Keyboard::Key> supportedKey,
                std::shared_ptr<std::vector<std::shared_ptr<State>>> states,
-               std::vector<Result> &scores);
+               std::vector<Result> &scores,
+               bool renderOnStart);
 
     // Updates
-    void updateInput(float dt) final;
-    void update(float dt) final;
+    void updateInput(float dt);
+    void update(float dt);
+
+    // Getters
+    std::vector<std::shared_ptr<Player>> getPlayers();
+    std::shared_ptr<Map> getMap();
+    std::set<std::pair<int, std::shared_ptr<Bullet>>> getBullets();
 
     // Rendering
-    void render(std::shared_ptr<sf::RenderTarget> target) final;
+    void render(std::shared_ptr<sf::RenderTarget> target);
 
-private:
+    sf::Font font;
+    void initFonts();
+
+protected:
     bool endOfRaund;
+    bool renderOnStart;
     std::vector<Result> &scores;
 
     // Texture assets

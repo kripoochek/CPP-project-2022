@@ -9,6 +9,9 @@ GameTextures::GameTextures() {
     if (!this->SecondPlayerIdle.loadFromFile(spritesDirPath / "tank-red.png")){
         throw std::exception();
     }
+    if (!this->ThirdPlayerIdle.loadFromFile(spritesDirPath / "tank-blue.png")){
+        throw std::exception();
+    }
     if (!this->Bullet.loadFromFile(spritesDirPath / "bullet.png")){
         throw std::exception();
     }
@@ -24,4 +27,14 @@ GameTextures::GameTextures() {
     if (!this->MenuBackground.loadFromFile(spritesDirPath / "start-menu-background.png")){
         throw std::exception();
     }
+}
+
+sf::Texture& GameTextures::getPlayerTextureById(int id) {
+    if (id == 0) {
+        return this->FirstPlayerIdle;
+    }
+    if (id == 1) {
+        return this->SecondPlayerIdle;
+    }
+    return this->ThirdPlayerIdle;
 }

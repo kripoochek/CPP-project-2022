@@ -1,0 +1,49 @@
+syntax = "proto2";
+
+package serialized;
+
+message GameState {
+  repeated Player players = 1;
+  optional Map map = 2;
+  repeated Bullet bullets = 3;
+}
+
+message Player {
+  required float x = 1;
+  required float y = 2;
+  required int32 id = 3;
+  required float rotationAngle = 4;
+}
+
+message Bullet {
+  required float x = 1;
+  required float y = 2;
+  required float rotationAngle = 3;
+}
+
+message Map {
+  required int32 x = 1;
+  required int32 y = 2;
+  required int32 rowsNumber = 3;
+  required int32 columnsNumber = 4;
+  repeated MapBoxesRow rows = 5; 
+}
+
+message MapBoxesRow {
+  repeated MapBox boxes = 1;
+}
+
+message MapBox {
+  required float x = 1;
+  required float y = 2;
+  required MapBoxWall leftWall = 3;
+  required MapBoxWall upperWall = 4;
+  required MapBoxWall rightWall = 5;
+  required MapBoxWall lowerWall = 6;
+}
+
+message MapBoxWall {
+  required float x = 1;
+  required float y = 2;
+  required bool isHidden = 3;
+}
