@@ -10,6 +10,7 @@ enum GameMessage {
 
     // Server sending
     NEW_GAME_STATE,
+    NEW_GAME_MAP,
     SERVER_STOP,
     CLIENT_CONNECTED
 };

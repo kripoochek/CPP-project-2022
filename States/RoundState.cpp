@@ -74,6 +74,7 @@ void RoundState::update(float dt) {
 
         bool wasBreak = false;
         for (auto &player: players) {
+            if (player == nullptr) continue;
             if (!player->isAlive()){
                 continue;
             }
@@ -99,6 +100,7 @@ void RoundState::update(float dt) {
 
     int cntLifePlayer = 0, lastLifePlayer = -1;
     for (int i = 0; i < players.size(); ++i){
+        if (players[i] == nullptr) continue;
         if (players[i]->isAlive()){
             cntLifePlayer++;
             lastLifePlayer = i;
@@ -106,10 +108,10 @@ void RoundState::update(float dt) {
         players[i]->update(dt);
     }
 
-    // if (cntLifePlayer == 1){
-    //     scores[lastLifePlayer].wins++;
-    //     quit = true;
-    // }
+    if (cntLifePlayer == 1){
+        scores[lastLifePlayer].wins++;
+        quit = true;
+    }
 }
 
 void RoundState::render(std::shared_ptr<sf::RenderTarget> target) {

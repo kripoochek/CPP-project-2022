@@ -13,8 +13,7 @@ struct RoundClientState : public RoundState {
     explicit RoundClientState(std::shared_ptr<sf::RenderWindow> window,
                        std::map<std::string, sf::Keyboard::Key> supportedKey,
                        std::shared_ptr<std::vector<std::shared_ptr<State>>> states,
-                       std::vector<Result> &scores,
-                       std::shared_ptr<NetworkClient> networkClient);
+                       std::vector<Result> &scores, std::shared_ptr<NetworkClient> networkClient);
     std::shared_ptr<NetworkClient> networkClient;
     // Updates
     void updateInput(float dt);

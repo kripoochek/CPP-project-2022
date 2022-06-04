@@ -4,6 +4,7 @@
 #include "RoundClientState.h"
 #include "NetworkServer.h"
 #include "NetworkClient.h"
+#include <iostream>
 
 GameState::GameState(std::shared_ptr<sf::RenderWindow> window,
                      std::map<std::string, sf::Keyboard::Key> supportedKey,
@@ -14,8 +15,10 @@ GameState::GameState(std::shared_ptr<sf::RenderWindow> window,
         networkServer->Start();
     }
     if (type == GameStateType::CLIENT) {
+        std::string ip;
+        std::cin >> ip;
         networkClient = std::make_shared<NetworkClient>();
-        networkClient->Connect("127.0.0.1", 60000);
+        networkClient->Connect(ip, 60000);
     }
     for (int i = 0; i < MAXN; ++i){
         scores.push_back(Result(10.f, 5.f + 50.f * i, font, "P" + std::to_string(i + 1) + ":", 24, sf::Color::White));

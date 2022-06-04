@@ -10,7 +10,7 @@
 void GameStateSerializator::serializePlayers(serialized::GameState& serializedState, std::shared_ptr<RoundState> state) {
     for (int i = 0; i < state->getPlayers().size(); i++) {
         serialized::Player player;
-        if (state->getPlayers()[i] != nullptr) {
+        if (state->getPlayers()[i] != nullptr && state->getPlayers()[i].get()->isAlive()) {
             auto pos = state->getPlayers()[i]->getPosition();
             player.set_x(pos.x);
             player.set_y(pos.y);
@@ -40,15 +40,15 @@ void GameStateSerializator::deserializePlayers(std::shared_ptr<b2World> world, s
     }
 };
 
-void GameStateSerializator::serializeMap(serialized::GameState& serializedState, std::shared_ptr<RoundState> state) {
-    serialized::Map* serializedMap = serializedState.mutable_map();
-    serializedMap->set_x(100);
-    serializedMap->set_y(100);
-    serializedMap->set_rowsnumber(state->getMap()->rows);
-    serializedMap->set_columnsnumber(state->getMap()->columns);
+serialized::Map GameStateSerializator::serializeMap(std::shared_ptr<RoundState> state) {
+    serialized::Map serializedMap;
+    serializedMap.set_x(100);
+    serializedMap.set_y(100);
+    serializedMap.set_rowsnumber(state->getMap()->rows);
+    serializedMap.set_columnsnumber(state->getMap()->columns);
     auto boxes = state->getMap()->getBoxes();
     for (int i = 0; i < state->getMap()->rows; i++) {
-        serialized::MapBoxesRow* serializedRow = serializedMap->add_rows();
+        serialized::MapBoxesRow* serializedRow = serializedMap.add_rows();
         for (int j = 0; j < state->getMap()->columns; j++) {
             serialized::MapBox* serializedMapBox = serializedRow->add_boxes();
             serializedMapBox->set_x(boxes[i][j]->getCoordinates().x);
@@ -75,20 +75,20 @@ void GameStateSerializator::serializeMap(serialized::GameState& serializedState,
             downWall->set_ishidden(boxes[i][j]->getEdges().lower->isHidden());
         }
     }
+    return serializedMap;
 }
 
 serialized::GameState GameStateSerializator::serialize(std::shared_ptr<RoundState> gameState) {
     serialized::GameState serializedGameState;
     serializePlayers(serializedGameState, gameState);
-    serializeMap(serializedGameState, gameState);
     serializeBullets(serializedGameState, gameState);
     return serializedGameState;
 }
 
-void GameStateSerializator::deserializeMap(std::shared_ptr<b2World> world, serialized::GameState &serializedState, std::shared_ptr<Map> gameMap, sf::Texture& verticalTexture, sf::Texture& horizontalTexture) {
-    for (int i = 0; i < serializedState.map().rowsnumber(); i++) {
-        auto mapRow = serializedState.map().rows().at(i);
-        for (int j = 0; j < serializedState.map().columnsnumber(); j++) {
+void GameStateSerializator::deserializeMap(std::shared_ptr<b2World> world, serialized::Map &serializedMap, std::shared_ptr<Map> gameMap, sf::Texture& verticalTexture, sf::Texture& horizontalTexture) {
+    for (int i = 0; i < serializedMap.rowsnumber(); i++) {
+        auto mapRow = serializedMap.rows().at(i);
+        for (int j = 0; j < serializedMap.columnsnumber(); j++) {
             auto mapBox = mapRow.boxes().at(j);
             Edges edges = gameMap->getBoxes()[i][j]->getEdges();
             if (edges.upper == nullptr){
@@ -103,7 +103,7 @@ void GameStateSerializator::deserializeMap(std::shared_ptr<b2World> world, seria
                 std::shared_ptr<Wall> lower = std::make_shared<Wall>(world, mapBox.lowerwall().x(), mapBox.lowerwall().y(), horizontalTexture);
                 lower->setHidden(mapBox.lowerwall().ishidden());
                 gameMap->getBoxes()[i][j]->addEdge(lower, "lower");
-                if (i + 1 < serializedState.map().rowsnumber()){
+                if (i + 1 < serializedMap.rowsnumber()){
                     gameMap->getBoxes()[i + 1][j]->addEdge(lower, "upper");
                 }
             }
@@ -119,7 +119,7 @@ void GameStateSerializator::deserializeMap(std::shared_ptr<b2World> world, seria
                 std::shared_ptr<Wall> right = std::make_shared<Wall>(world, mapBox.rightwall().x(), mapBox.rightwall().y(), verticalTexture);
                 right->setHidden(mapBox.rightwall().ishidden());
                 gameMap->getBoxes()[i][j]->addEdge(right, "right");
-                if (j + 1 < serializedState.map().columnsnumber()){
+                if (j + 1 < serializedMap.columnsnumber()){
                     gameMap->getBoxes()[i][j + 1]->addEdge(right, "left");
                 }
             }

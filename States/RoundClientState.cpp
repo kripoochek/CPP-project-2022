@@ -4,6 +4,7 @@
 #include "../Serialization/GameStateSerializator.h"
 #include "../Serialization/proto/GameState.pb.h"
 #include "../Entity/Map/Box.h"
+#include "MainMenuState.h"
 
 
 #include <ctime>
@@ -14,8 +15,7 @@
 RoundClientState::RoundClientState(std::shared_ptr<sf::RenderWindow> window,
                      std::map<std::string, sf::Keyboard::Key> supportedKey,
                      std::shared_ptr<std::vector<std::shared_ptr<State>>> states,
-                     std::vector<Result> &scores,
-                     std::shared_ptr<NetworkClient> networkClient) :
+                     std::vector<Result> &scores, std::shared_ptr<NetworkClient> networkClient) :
         RoundState(std::move(window), std::move(supportedKey), std::move(states), scores, false), networkClient(networkClient){
     // because of GameState constructor
     map = nullptr;
@@ -34,21 +34,26 @@ void RoundClientState::update(float dt) {
                 msg >> str >> bulletsNumber;
                 serialized::GameState gs;
                 gs.ParseFromArray(str, NEW_STATE_MESSAGE_SIZE);
-                // TODO: update map only when new map, not on every message
-                map = std::make_shared<Map>(
-                                world,
-                                gs.map().rowsnumber(), 
-                                gs.map().columnsnumber(),
-                                sf::Vector2f(200,50),
-                               textures->Box,
-                               textures->VerticalBorder,
-                               textures->HorizontalBorder);
                 players.clear();
                 bullets.clear();
 
-                GameStateSerializator::deserializeMap(world, gs, map, textures->VerticalBorder, textures->HorizontalBorder);
                 GameStateSerializator::deserializePlayers(world, gs, players, textures);
                 GameStateSerializator::deserializeBullets(world, gs, bullets, textures->Bullet, bulletsNumber);
+            }
+            if (msg.header.id == GameMessage::NEW_GAME_MAP) {
+                char str[NEW_STATE_MESSAGE_SIZE];
+                msg >> str;
+                serialized::Map gs;
+                gs.ParseFromArray(str, NEW_STATE_MESSAGE_SIZE);
+                map = std::make_shared<Map>(
+                            world,
+                            gs.rowsnumber(), 
+                            gs.columnsnumber(),
+                            sf::Vector2f(200,50),
+                            textures->Box,
+                            textures->VerticalBorder,
+                            textures->HorizontalBorder);
+                GameStateSerializator::deserializeMap(world, gs, map, textures->VerticalBorder, textures->HorizontalBorder);
             }
             if (msg.header.id == GameMessage::CLIENT_CONNECTED) {
                 int id;
@@ -63,7 +68,7 @@ void RoundClientState::update(float dt) {
         networkClient->sendDisconnectMessage();
         // Time for networkClient->Send to deliver message
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
-        quit = true;
+        states->push_back(std::make_shared<MainMenuState>(window, supportedKeys, states));
     }
 }
 
@@ -73,7 +78,7 @@ void RoundClientState::updateInput(float dt) {
         networkClient->sendDisconnectMessage();
         // Time for networkClient->Send to deliver message
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
-        quit = true;
+        // states->push_back(std::make_shared<MainMenuState>(window, supportedKeys, states));
     }
     const std::vector<sf::Keyboard::Key> actionKeys{
         keybindings["MOVE_UP2"], 

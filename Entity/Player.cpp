@@ -14,7 +14,7 @@ Player::Player(std::shared_ptr<b2World> world,
 }
 
 void Player::initComponents() {
-    createMovementComponent(2.5f,5.f);
+    createMovementComponent(2.f,5.f);
     createHitboxComponent(sprite, 0, 0, sprite.getGlobalBounds().width,
                           sprite.getGlobalBounds().height);
 }

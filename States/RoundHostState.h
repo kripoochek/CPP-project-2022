@@ -28,6 +28,7 @@ struct RoundHostState : public RoundState, std::enable_shared_from_this<RoundHos
         int getNewPlayerId();
         // for NetworkServer
         void initFunctionsForNetworkServer();
+        bool areClientsNotified = false;
 };
 
 #endif

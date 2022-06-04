@@ -5,6 +5,8 @@
 #include <iostream>
 
 NetworkServer::NetworkServer(uint16_t nPort) : olc::net::server_interface<GameMessage>(nPort){
+    playersExisting.resize(2 * MAX_PLAYERS_NUMBER, false);
+    playersExisting[0] = true;
 };
 
 NetworkServer::~NetworkServer() {
@@ -26,7 +28,10 @@ void NetworkServer::OnClientValidated(std::shared_ptr<olc::net::connection<GameM
     clientConnectedMsg << res.first;
     client->Send(clientConnectedMsg);
 
+    playersExisting[res.first] = true;
+
     sendAllClientsNewGameState(res.second);
+    sendAllClientsNewGameMap(getGameMapFunc());
 }
 
 void NetworkServer::OnMessage(std::shared_ptr<olc::net::connection<GameMessage>> client, olc::net::message<GameMessage>& msg) {
@@ -38,6 +43,7 @@ void NetworkServer::OnMessage(std::shared_ptr<olc::net::connection<GameMessage>>
     if (msg.header.id == GameMessage::CLIENT_DISCONNECTED) {
         int id;
         msg >> id;
+        playersExisting[id] = false;
         sendAllClientsNewGameState(deletePlayerFunc(id));
     }
 }
@@ -55,4 +61,13 @@ void NetworkServer::sendAllClientsNewGameState(serialized::GameState serializedS
     serializedState.SerializeToArray(&char_array, NEW_STATE_MESSAGE_SIZE);
     newGameStateMsg << serializedState.bullets().size() << char_array;
     MessageAllClients(newGameStateMsg);
+}
+
+void NetworkServer::sendAllClientsNewGameMap(serialized::Map serializedMap) {
+    olc::net::message<GameMessage> newGameMapMsg;
+    newGameMapMsg.header.id = GameMessage::NEW_GAME_MAP;
+    char char_array[NEW_STATE_MESSAGE_SIZE];
+    serializedMap.SerializeToArray(&char_array, NEW_STATE_MESSAGE_SIZE);
+    newGameMapMsg << char_array;
+    MessageAllClients(newGameMapMsg);
 }

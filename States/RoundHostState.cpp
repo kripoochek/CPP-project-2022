@@ -2,6 +2,8 @@
 #include "GameState.h"
 #include "NetworkServer.h"
 #include "GameStateSerializator.h"
+#include "MainMenuState.h"
+#include "../../Utils.h"
 #include <SFML/Graphics.hpp>
 
 RoundHostState::RoundHostState(std::shared_ptr<sf::RenderWindow> window,
@@ -9,6 +11,7 @@ RoundHostState::RoundHostState(std::shared_ptr<sf::RenderWindow> window,
                        std::shared_ptr<std::vector<std::shared_ptr<State>>> states, std::vector<Result> &scores, std::shared_ptr<NetworkServer> networkServer) : RoundState(
                            std::move(window), std::move(supportedKey), std::move(states), scores, false
                        ), networkServer(networkServer) {
+    networkServer->isGameStarted = false;
     initWorld();
     initPlayers();
     initFonts();
@@ -16,6 +19,10 @@ RoundHostState::RoundHostState(std::shared_ptr<sf::RenderWindow> window,
 };
 
 void RoundHostState::updateInput(float dt) {
+    if (sf::Keyboard::isKeyPressed(keybindings["CLOSE"]) && isWindowFocused) {
+        networkServer->Stop();
+        states->push_back(std::make_shared<MainMenuState>(window, supportedKeys, states));
+    }
     if (sf::Keyboard::isKeyPressed(keybindings["START_GAME"]) && isWindowFocused) {
         networkServer->startGame();
     }
@@ -59,6 +66,11 @@ void RoundHostState::updateInput(float dt) {
 }
 
 void RoundHostState::update(float dt) {
+    if(!areClientsNotified) {
+        networkServer->sendAllClientsNewGameMap(GameStateSerializator::serializeMap(shared_from_this()));
+        networkServer->sendAllClientsNewGameState(GameStateSerializator::serialize(shared_from_this()));
+        areClientsNotified = true;
+    }
     if (networkServer->isGameStarted) {
         networkServer->Update(-1, false);
         RoundState::update(dt);
@@ -74,7 +86,14 @@ void RoundHostState::initPlayers() {
                                textures->VerticalBorder,
                                textures->HorizontalBorder);
     players.clear(); // because of GameState constructor
-    players.push_back( std::make_shared<Player>(world, 550, 100, 5, 0, textures->FirstPlayerIdle));
+    players.resize(2 * MAX_PLAYERS_NUMBER);
+    for (int i = 0; i < networkServer->playersExisting.size(); i++) {
+        if (networkServer->playersExisting[i]) {
+            int x = 250 + 100 * randNum(0, map->columns - 1);
+            int y = 100 + 100 * randNum(0, map->rows - 1);
+            players[i] = std::make_shared<Player>(world, x, y, 5, i, textures->getPlayerTextureById(i));
+        }
+    }
     collisionManager = std::make_shared<CollisionManager>(map, players);
 }
 
@@ -96,17 +115,25 @@ void RoundHostState::render(std::shared_ptr<sf::RenderTarget> target) {
 void RoundHostState::initFunctionsForNetworkServer() {
     networkServer->addPlayerFunc = [&](){
         int id = getNewPlayerId();
-        auto player = std::make_shared<Player>(world, 250 + 100 * id, 100, 5, id, textures->getPlayerTextureById(id));
-        if (id == players.size()) { players.push_back(player); }
-        else { players[id] = player; }  
+        int x = 250 + 100 * randNum(0, map->columns - 1);
+        int y = 100 + 100 * randNum(0, map->rows - 1);
+        auto player = std::make_shared<Player>(world, x, y, 5, id, textures->getPlayerTextureById(id));
+        players[id] = player;
         return std::make_pair(id, GameStateSerializator::serialize(shared_from_this()));
+    };
+    networkServer->getGameMapFunc = [&](){
+        return GameStateSerializator::serializeMap(shared_from_this());
     };
     networkServer->deletePlayerFunc = [&](int id) {
         players[id] = nullptr;
         return GameStateSerializator::serialize(shared_from_this());
     };
     networkServer->getPlayersNumberFunc = [&]() {
-        return players.size();
+        int counter = 0;
+        for (int i = 0; i < players.size(); i++) {
+            if (players[i] != nullptr) counter++;
+        }
+        return counter;
     };
 }
 
