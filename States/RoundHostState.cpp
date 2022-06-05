@@ -39,7 +39,22 @@ void RoundHostState::updateInput(float dt) {
     if (isWindowFocused) {
         for (auto key : actionKeys) {
             if (sf::Keyboard::isKeyPressed(key)) {
-                networkServer->pressedKeysQueue.push({ 0, key });
+                // networkServer->pressedKeysQueue.push({ 0, key });
+                if (key == keybindings["ATTACK2"]){
+                    players[0]->attack(bullets, textures->Bullet, dt);
+                }
+                if (key == keybindings["MOVE_LEFT2"]){
+                    players[0]->rotate(false, dt);
+                }
+                if (key == keybindings["MOVE_RIGHT2"]){
+                    players[0]->rotate(true, dt);
+                }
+                if (key == keybindings["MOVE_UP2"]){
+                    players[0]->move(true, dt);
+                }
+                if (key == keybindings["MOVE_DOWN2"]){
+                    players[0]->move(false, dt);
+                }
             }
         }
     }

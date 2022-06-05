@@ -41,10 +41,10 @@ void RoundClientState::update(float dt) {
                 GameStateSerializator::deserializeBullets(world, gs, bullets, textures->Bullet, bulletsNumber);
             }
             if (msg.header.id == GameMessage::NEW_GAME_MAP) {
-                char str[NEW_STATE_MESSAGE_SIZE];
+                char str[5000];
                 msg >> str;
                 serialized::Map gs;
-                gs.ParseFromArray(str, NEW_STATE_MESSAGE_SIZE);
+                gs.ParseFromArray(str, 5000);
                 map = std::make_shared<Map>(
                             world,
                             gs.rowsnumber(), 

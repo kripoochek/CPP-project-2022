@@ -66,8 +66,8 @@ void NetworkServer::sendAllClientsNewGameState(serialized::GameState serializedS
 void NetworkServer::sendAllClientsNewGameMap(serialized::Map serializedMap) {
     olc::net::message<GameMessage> newGameMapMsg;
     newGameMapMsg.header.id = GameMessage::NEW_GAME_MAP;
-    char char_array[NEW_STATE_MESSAGE_SIZE];
-    serializedMap.SerializeToArray(&char_array, NEW_STATE_MESSAGE_SIZE);
+    char char_array[5000];
+    serializedMap.SerializeToArray(&char_array, 5000);
     newGameMapMsg << char_array;
     MessageAllClients(newGameMapMsg);
 }

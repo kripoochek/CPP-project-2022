@@ -1,29 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
-  </component>
   <component name="CMakeReloadState">
     <option name="reloaded" value="true" />
   </component>
   <component name="CMakeRunConfigurationManager">
-    <generated>
-      <config projectName="my_tanks_in_labirint" targetName="my_tanks_in_labirint" />
-    </generated>
+    <generated />
   </component>
-  <component name="CMakeSettings">
+  <component name="CMakeSettings" AUTO_RELOAD="true">
     <configurations>
       <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="186892db-bc70-4185-9f7f-bb83463b679b" name="Changes" comment="feat: smooth graceful move stop">
+    <list default="true" id="83200321-9328-47b4-8100-06f2b67d460f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Serialization/GameStateSerializator.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Serialization/GameStateSerializator.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Serialization/proto/GameState.pb.cc" beforeDir="false" afterPath="$PROJECT_DIR$/Serialization/proto/GameState.pb.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Serialization/proto/GameState.pb.h" beforeDir="false" afterPath="$PROJECT_DIR$/Serialization/proto/GameState.pb.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/NetworkServer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Server/NetworkServer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/NetworkServer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Server/NetworkServer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/States/RoundClientState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/States/RoundClientState.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/States/RoundHostState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/States/RoundHostState.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,30 +30,19 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
-    <option name="majorVersion" value="2021" />
-    <option name="minorVersion" value="3.3" />
+    <option name="majorVersion" value="2022" />
+    <option name="minorVersion" value="1.2" />
   </component>
-  <component name="ProjectId" id="26Fne6DJW1JCNHVMKWWRQazqq0y" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="2A86BmAdvxGvtHPWqCPCYLcf5nN" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -67,199 +53,26 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;cf.advertisement.text.has.clang-format&quot;: &quot;true&quot;,
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;cmake.loaded.for.project&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/lol/CLionProjects/CPP-project-2022&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;structure.view.defaults.are.configured&quot;: &quot;true&quot;
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   }
 }</component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Entity/Components/SmoothMovement" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Serialization/proto" />
-      <recent name="$PROJECT_DIR$/" />
-      <recent name="$PROJECT_DIR$/Resources/Sprites" />
-      <recent name="$PROJECT_DIR$/Resources" />
-      <recent name="$PROJECT_DIR$/Entity/Map" />
-    </key>
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="my_tanks_in_labirint" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="my_tanks_in_labirint" TARGET_NAME="my_tanks_in_labirint" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="my_tanks_in_labirint" RUN_TARGET_NAME="my_tanks_in_labirint">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="186892db-bc70-4185-9f7f-bb83463b679b" name="Changes" comment="" />
-      <created>1647028293995</created>
+      <changelist id="83200321-9328-47b4-8100-06f2b67d460f" name="Changes" comment="" />
+      <created>1654378734422</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1647028293995</updated>
-      <workItem from="1647028295954" duration="5814000" />
-      <workItem from="1647076154842" duration="3240000" />
-      <workItem from="1647090200090" duration="5000" />
-      <workItem from="1647090372262" duration="2678000" />
-      <workItem from="1647546561079" duration="18651000" />
-      <workItem from="1647603240309" duration="291000" />
-      <workItem from="1647603547268" duration="11647000" />
-      <workItem from="1647684016602" duration="5234000" />
-      <workItem from="1647709116253" duration="4709000" />
-      <workItem from="1647716964567" duration="4000" />
-      <workItem from="1647717272738" duration="11060000" />
-      <workItem from="1647767405498" duration="6891000" />
-      <workItem from="1647778657375" duration="8384000" />
-      <workItem from="1647788846652" duration="16365000" />
-      <workItem from="1647858044453" duration="12000" />
-      <workItem from="1647881829606" duration="20000" />
-      <workItem from="1647899399172" duration="8447000" />
-      <workItem from="1648063040447" duration="2652000" />
-      <workItem from="1649156235543" duration="6859000" />
-      <workItem from="1649343172101" duration="819000" />
-      <workItem from="1649350114843" duration="378000" />
-      <workItem from="1649360707370" duration="19351000" />
-      <workItem from="1649464513417" duration="1243000" />
-      <workItem from="1649503719861" duration="898000" />
-      <workItem from="1649518839108" duration="44000" />
-      <workItem from="1649884301612" duration="7000" />
-      <workItem from="1649886411012" duration="3766000" />
-      <workItem from="1649944906007" duration="85000" />
-      <workItem from="1649947917199" duration="2777000" />
-      <workItem from="1650111101029" duration="14000" />
-      <workItem from="1650217051303" duration="318000" />
-      <workItem from="1650757917797" duration="176000" />
-      <workItem from="1650792434667" duration="12924000" />
-      <workItem from="1650824996818" duration="12861000" />
-      <workItem from="1650882939523" duration="757000" />
-      <workItem from="1650921424495" duration="10000" />
-      <workItem from="1651665888996" duration="639000" />
-      <workItem from="1651760759823" duration="352000" />
-      <workItem from="1651778662604" duration="9673000" />
-      <workItem from="1654037530679" duration="6021000" />
-      <workItem from="1654106427755" duration="12057000" />
-      <workItem from="1654122487699" duration="27000" />
-      <workItem from="1654122523165" duration="145000" />
-      <workItem from="1654122678964" duration="6712000" />
-      <workItem from="1654181348905" duration="1216000" />
+      <updated>1654378734422</updated>
+      <workItem from="1654378736682" duration="3352000" />
+      <workItem from="1654443467908" duration="3756000" />
+      <workItem from="1654448633364" duration="621000" />
     </task>
-    <task id="LOCAL-00001" summary="fix: gitignore (no cmake-build-debug dir)">
-      <created>1647742017953</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1647742017953</updated>
-    </task>
-    <task id="LOCAL-00002" summary="fix: no full screen default">
-      <created>1647743572051</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1647743572051</updated>
-    </task>
-    <task id="LOCAL-00003" summary="refactor: extracted colors and positions of menu buttons">
-      <created>1647744664243</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1647744664243</updated>
-    </task>
-    <task id="LOCAL-00004" summary="refactor: textures struct loading">
-      <created>1647746945110</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1647746945110</updated>
-    </task>
-    <task id="LOCAL-00005" summary="fix: mark with TODO">
-      <created>1647747149007</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1647747149007</updated>
-    </task>
-    <task id="LOCAL-00006" summary="refactor: menu state uses GameTextures">
-      <created>1647747570464</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1647747570465</updated>
-    </task>
-    <task id="LOCAL-00007" summary="refactor: adaptive menu buttons">
-      <created>1647754336806</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1647754336806</updated>
-    </task>
-    <task id="LOCAL-00008" summary="feat: better smooth movement (no stopping )">
-      <created>1647757883251</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1647757883251</updated>
-    </task>
-    <task id="LOCAL-00009" summary="feat: smooth graceful move stop">
-      <created>1647770560174</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1647770560174</updated>
-    </task>
-    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fix: gitignore (no cmake-build-debug dir)" />
-    <MESSAGE value="fix: no full screen default" />
-    <MESSAGE value="refactor: extracted colors and positions of menu buttons" />
-    <MESSAGE value="refactor: textures struct loading" />
-    <MESSAGE value="fix: mark with TODO" />
-    <MESSAGE value="refactor: menu state uses GameTextures" />
-    <MESSAGE value="refactor: adaptive menu buttons" />
-    <MESSAGE value="feat: better smooth movement (no stopping )" />
-    <MESSAGE value="feat: smooth graceful move stop" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: smooth graceful move stop" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Entity/Map/Map.h</url>
-          <line>13</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

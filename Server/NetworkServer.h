@@ -8,7 +8,7 @@
 #include <queue>
 #include "../Serialization/proto/GameState.pb.h"
 
-const int NEW_STATE_MESSAGE_SIZE = 25000;
+const int NEW_STATE_MESSAGE_SIZE = 500;
 const int MAX_PLAYERS_NUMBER = 4;
 const int MIN_PLAYERS_NUMBER = 1;
 
